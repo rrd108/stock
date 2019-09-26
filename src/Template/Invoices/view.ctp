@@ -21,8 +21,6 @@
     </ul>
 </nav>
 <div class="invoices view small-9 medium-10 large-10 columns content">
-    <h3><?= h($invoice->id) ?></h3>
-    <h4><?= $this->Html->link(__('Billingo'), ['controller' => 'Invoices', 'action' => 'billingo', $invoice->id]) ?></h4>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Storage') ?></th>
@@ -44,6 +42,7 @@
                     <?= $num[1] . ' ' . $this->Html->link('<i class="fi-page-pdf"></i>', $num[2], ['escape' => false]) ?>
                 <?php else : ?>
                     <?= h($invoice->number) ?>
+                        <?= $this->Html->link(__('Billingo'), ['controller' => 'Invoices', 'action' => 'billingo', $invoice->id]) ?>
                 <?php endif; ?>
             </td>
         </tr>
@@ -61,33 +60,52 @@
         </tr>
     </table>
     <div class="related">
-        <h4><?= __('Related Items') ?></h4>
         <?php if (!empty($invoice->items)): ?>
         <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Invoice Id') ?></th>
-                <th scope="col"><?= __('Product Id') ?></th>
-                <th scope="col"><?= __('Quantity') ?></th>
-                <th scope="col"><?= __('Price') ?></th>
-                <th scope="col"><?= __('Currency') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($invoice->items as $items): ?>
-            <tr>
-                <td><?= h($items->id) ?></td>
-                <td><?= h($items->invoice_id) ?></td>
-                <td><?= h($items->product_id) ?></td>
-                <td><?= h($items->quantity) ?></td>
-                <td><?= h($items->price) ?></td>
-                <td><?= h($items->currency) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link('<i class="fi-eye" title="' . __('View') . '"></i>', ['controller' => 'Items', 'action' => 'view', $items->id], ['escape' => false]) ?>
-                    <?= $this->Html->link('<i class="fi-pencil" title="' . __('Edit') . '"></i>', ['controller' => 'Items', 'action' => 'edit', $items->id], ['escape' => false]) ?>
-                    <?= $this->Form->postLink('<i class="fi-x" title="' . __('Delete') . '"></i>', ['controller' => 'Items', 'action' => 'delete', $items->id], ['confirm' => __('Are you sure you want to delete # {0}?', $items->id), 'escape' => false]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
+            <thead>
+                <tr>
+                    <th scope="col"><?= __('Product') ?></th>
+                    <th scope="col"><?= __('Quantity') ?></th>
+                    <th scope="col"><?= __('Price') ?></th>
+                    <th scope="col"><?= __('Currency') ?></th>
+                    <th scope="col"><?= __('Amount') ?></th>
+                    <th scope="col"><?= __('VAT') ?></th>
+                    <th scope="col"><?= __('VAT') ?></th>
+                    <th scope="col"><?= __('Amount') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($invoice->items as $item): ?>
+                <tr>
+                    <td><?= h($item->product->name) ?></td>
+                    <td><?= h($item->quantity) ?></td>
+                    <td><?= $this->Number->format($item->price) ?></td>
+                    <td><?= h($item->currency) ?></td>
+                    <td><?= $this->Number->format($item->price * $item->quantity) ?></td>
+                    <td><?= h($item->product->vat) ?> %</td>
+                    <td><?= $this->Number->format($item->product->vat * $item->price * $item->quantity / 100) ?></td>
+                    <td><?= $this->Number->format($item->price * $item->quantity * (1 + $item->product->vat / 100)) ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><?= __('Total') ?></td>
+                    <td><?= collection($invoice->items)->sumOf('quantity') ?></td>
+                    <td></td>
+                    <td></td>
+                    <td><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
+                        return $item->price * $item->quantity;
+                    })) ?></td>
+                    <td></td>
+                    <td><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
+                        return $item->price * $item->quantity * $item->product->vat / 100;
+                    })) ?></td>
+                    <td><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
+                        return $item->price * $item->quantity * (1 + $item->product->vat / 100);
+                    })) ?></td>
+                </tr>
+            </tfoot>
         </table>
         <?php endif; ?>
     </div>

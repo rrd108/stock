@@ -39,7 +39,7 @@ class InvoicesController extends AppController
     public function view($id = null)
     {
         $invoice = $this->Invoices->get($id, [
-            'contain' => ['Storages', 'Invoicetypes', 'Partners', 'Items']
+            'contain' => ['Storages', 'Invoicetypes', 'Partners', 'Items.Products']
         ]);
 
         $this->set('invoice', $invoice);
