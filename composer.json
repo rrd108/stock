@@ -12,7 +12,8 @@
         "cakephp/plugin-installer": "^1.0",
         "mobiledetect/mobiledetectlib": "2.*",
         "rrd108/cakephp-datalist": "^1.1",
-        "rrd108/cakephp-menulink": "^1.1"
+        "rrd108/cakephp-menulink": "^1.1",
+        "voov/billingo-api-connector": "^1.1"
     },
     "require-dev": {
         "cakephp/bake": "~1.0",
