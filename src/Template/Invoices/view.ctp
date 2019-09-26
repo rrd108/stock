@@ -22,6 +22,7 @@
 </nav>
 <div class="invoices view small-9 medium-10 large-10 columns content">
     <h3><?= h($invoice->id) ?></h3>
+    <h4><?= $this->Html->link(__('Billingo'), ['controller' => 'Invoices', 'action' => 'billingo', $invoice->id]) ?></h4>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Storage') ?></th>
@@ -37,7 +38,14 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Number') ?></th>
-            <td><?= h($invoice->number) ?></td>
+            <td>
+                <?php if (strpos($invoice->number, '|')) : ?>
+                    <?php $num = explode('|', $invoice->number); ?>
+                    <?= $num[1] . ' ' . $this->Html->link('<i class="fi-page-pdf"></i>', $num[2], ['escape' => false]) ?>
+                <?php else : ?>
+                    <?= h($invoice->number) ?>
+                <?php endif; ?>
+            </td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
@@ -74,9 +82,9 @@
                 <td><?= h($items->price) ?></td>
                 <td><?= h($items->currency) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link('<i class="fi-eye" title="' . __('View') . '"></i>', ['controller' => 'Items', 'action' => 'view', $items->id]) ?>
-                    <?= $this->Html->link('<i class="fi-pencil" title="' . __('Edit') . '"></i>', ['controller' => 'Items', 'action' => 'edit', $items->id]) ?>
-                    <?= $this->Form->postLink('<i class="fi-x" title="' . __('Delete') . '"></i>', ['controller' => 'Items', 'action' => 'delete', $items->id], ['confirm' => __('Are you sure you want to delete # {0}?', $items->id)]) ?>
+                    <?= $this->Html->link('<i class="fi-eye" title="' . __('View') . '"></i>', ['controller' => 'Items', 'action' => 'view', $items->id], ['escape' => false]) ?>
+                    <?= $this->Html->link('<i class="fi-pencil" title="' . __('Edit') . '"></i>', ['controller' => 'Items', 'action' => 'edit', $items->id], ['escape' => false]) ?>
+                    <?= $this->Form->postLink('<i class="fi-x" title="' . __('Delete') . '"></i>', ['controller' => 'Items', 'action' => 'delete', $items->id], ['confirm' => __('Are you sure you want to delete # {0}?', $items->id), 'escape' => false]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
