@@ -65,49 +65,45 @@
                                 ]
                             ) ?>
                         </li>
-
-                        <?php if ($this->request->getSession()->read('Auth.User.is_superuser')
-                            && $this->request->getSession()->read('Auth.User.role') == 'superuser') : ?>
-                            <li>
-                                <?= $this->MenuLink->menuLink(
-                                    '<i class="fi-widget"> ' . __('Main data') . '</i>',
-                                    ['plugin' => false],
-                                    ['escape' => false]
-                                ) ?>
-                                <ul class="nested vertical menu">
-                                    <li><?= $this->MenuLink->menuLink(
-                                            '<i class="fi-torso-business"> ' . __('Companies') . '</i>',
-                                            ['plugin' => false, 'controller' => 'companies', 'action' => 'index'],
-                                            ['escape' => false]
-                                        ) ?></li>
-                                    <li><?= $this->MenuLink->menuLink(
-                                            '<i class="fi-contrast"> ' . __('Storages') . '</i>',
-                                            ['plugin' => false, 'controller' => 'storages', 'action' => 'index'],
-                                            ['escape' => false]
-                                        ) ?></li>
-                                    <li><?= $this->MenuLink->menuLink(
-                                            '<i class="fi-puzzle"> ' . __('Groups') . '</i>',
-                                            ['plugin' => false, 'controller' => 'groups', 'action' => 'index'],
-                                            ['escape' => false]
-                                        ) ?></li>
-                                    <li><?= $this->MenuLink->menuLink(
-                                            '<i class="fi-torsos"> ' . __('Partners') . '</i>',
-                                            ['plugin' => false, 'controller' => 'partners', 'action' => 'index'],
-                                            ['escape' => false]
-                                        ) ?></li>
-                                    <li><?= $this->MenuLink->menuLink(
-                                            '<i class="fi-shield"> ' . __('Invoice types') . '</i>',
-                                            ['plugin' => false, 'controller' => 'invoicetypes', 'action' => 'index'],
-                                            ['escape' => false]
-                                        ) ?></li>
-                                    <li><?= $this->MenuLink->menuLink(
-                                            '<i class="fi-foot"> ' . __('Products') . '</i>',
-                                            ['plugin' => false, 'controller' => 'products', 'action' => 'index'],
-                                            ['escape' => false]
-                                        ) ?></li>
-                                </ul>
-                            </li>
-                        <?php endif; ?>
+                        <li>
+                            <?= $this->MenuLink->menuLink(
+                                '<i class="fi-widget"> ' . __('Main data') . '</i>',
+                                ['plugin' => false],
+                                ['escape' => false]
+                            ) ?>
+                            <ul class="nested vertical menu">
+                                <li><?= $this->MenuLink->menuLink(
+                                        '<i class="fi-torso-business"> ' . __('Companies') . '</i>',
+                                        ['plugin' => false, 'controller' => 'companies', 'action' => 'index'],
+                                        ['escape' => false]
+                                    ) ?></li>
+                                <li><?= $this->MenuLink->menuLink(
+                                        '<i class="fi-contrast"> ' . __('Storages') . '</i>',
+                                        ['plugin' => false, 'controller' => 'storages', 'action' => 'index'],
+                                        ['escape' => false]
+                                    ) ?></li>
+                                <li><?= $this->MenuLink->menuLink(
+                                        '<i class="fi-puzzle"> ' . __('Groups') . '</i>',
+                                        ['plugin' => false, 'controller' => 'groups', 'action' => 'index'],
+                                        ['escape' => false]
+                                    ) ?></li>
+                                <li><?= $this->MenuLink->menuLink(
+                                        '<i class="fi-torsos"> ' . __('Partners') . '</i>',
+                                        ['plugin' => false, 'controller' => 'partners', 'action' => 'index'],
+                                        ['escape' => false]
+                                    ) ?></li>
+                                <li><?= $this->MenuLink->menuLink(
+                                        '<i class="fi-shield"> ' . __('Invoice types') . '</i>',
+                                        ['plugin' => false, 'controller' => 'invoicetypes', 'action' => 'index'],
+                                        ['escape' => false]
+                                    ) ?></li>
+                                <li><?= $this->MenuLink->menuLink(
+                                        '<i class="fi-foot"> ' . __('Products') . '</i>',
+                                        ['plugin' => false, 'controller' => 'products', 'action' => 'index'],
+                                        ['escape' => false]
+                                    ) ?></li>
+                            </ul>
+                        </li>
                     </ul>
                     <?php endif; ?>
                 </div>
