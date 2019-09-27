@@ -115,11 +115,19 @@
                 <div class="top-bar-right">
                     <ul class="menu">
                         <li>
+                            <?= $this->Html->link(
+                                '<i class="fi-torso"></i> ' . ($this->getRequest()->getSession()->read('company'))->name,
+                                ['plugin' => false, 'controller' => 'Companies', 'action' => 'setDefault'],
+                                ['escape' => false]
+                            ) ?>
+                        </li>
+                        <li>
                             <?= $this->User->logout(
                                 '<span id="username">'
                                     . $this->request->getSession()->read('Auth.User.username') .
                                 '</span>'
-                                . ' ' . __('Logout'),
+                                . ' ' . __('Logout')
+                                . ' ' . '<i class="fi-power"></i>',
                             ['escape' => false]
                                         ) ?>
                         </li>

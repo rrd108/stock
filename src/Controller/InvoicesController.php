@@ -223,6 +223,7 @@ class InvoicesController extends AppController
                 'partner_id' => $this->request->getData('partner'),
                 'date' => $this->request->getData('date'),
                 'number' => 'IMP/' . date('Y-m-d H:i'),
+                'sale' => false,
                 'items' => []
             ];
             $minimumQuantity = $this->request->getData('importZero') ? -1 : 0;

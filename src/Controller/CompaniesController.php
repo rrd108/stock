@@ -103,4 +103,18 @@ class CompaniesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function setDefault()
+    {
+        if (!$this->request->getData('company')) {
+            $companies = $this->Companies->find('list')
+                ->where(['id IN' => $this->Auth->user('additional_data')]);
+            $this->set(compact('companies'));
+            return;
+        }
+
+        $company = $this->Companies->get($this->request->getData('company'));
+        $this->getRequest()->getSession()->write('company', $company);
+        $this->redirect('/');
+    }
 }
