@@ -9,13 +9,23 @@ return [
         ],
         [
             'role' => '*',
-            'controller' => 'Stats',
+            'controller' => 'Companies',
+            'action' => ['setDefault'],
+        ],
+        [
+            'role' => '*',
+            'controller' => 'Invoices',
             'action' => ['index'],
         ],
         [
             'role' => '*',
-            'controller' => 'Companies',
-            'action' => ['setDefault'],
-        ]
+            'controller' => 'Products',
+            'action' => ['index'],
+        ],
+        [
+            'role' => '*',
+            'controller' => 'Stats',
+            'action' => ['index'],
+        ],
     ]
 ];
