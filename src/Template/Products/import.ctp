@@ -10,45 +10,57 @@
                     'type' => 'file'
                 ]
             ) ?>
-            <?= $this->Form->file('File', ['style' => ($this->request->getQueryParams() + $this->request->getData()) ? 'display: none' : '']); ?>
+            <?php if(!$this->request->getData()) : ?>
+                <?= $this->Form->file('File'); ?>
+            <?php endif; ?>
         </div>
     </div>
 
-    <?php if ($this->request->getQueryParams() + $this->request->getData()) : ?>
+    <?php if ($this->request->getData('File')) : ?>
     <div class="row">
         <div class="column small-12">
-            <?= $this->Form->control('name',
+            <?= $this->Form->control(
+                'name',
                 [
                     'label' => __('Product'),
                     'required' => true,
                     'options' => $columns,
                     'empty' => __('--- choose ---')
-                ]) ?>
-            <?= $this->Form->control('size',
+                ]
+            ) ?>
+            <?= $this->Form->control(
+                    'size',
                 [
                     'label' => __('Size'),
                     'options' => $columns,
                     'empty' => __('--- choose ---')
-                ]) ?>
-            <?= $this->Form->control('vat',
+                ]
+                ) ?>
+            <?= $this->Form->control(
+                    'vat',
                 [
                     'label' => __('VAT'),
                     'options' => $columns,
                     'empty' => __('--- choose ---')
-                ]) ?>
-            <?= $this->Form->control('quantity',
+                ]
+                ) ?>
+            <?= $this->Form->control(
+                    'quantity',
                 [
                     'label' => __('Quantity'),
                     'options' => $columns,
                     'empty' => __('--- choose ---')
-                ]) ?>
-            <?= $this->Form->control('price',
+                ]
+                ) ?>
+            <?= $this->Form->control(
+                    'price',
                 [
                     'label' => __('Price'),
                     'required' => true,
                     'options' => $columns,
                     'empty' => __('--- choose ---')
-                ]) ?>
+                ]
+                ) ?>
         </div>
     </div>
     <?php endif; ?>
