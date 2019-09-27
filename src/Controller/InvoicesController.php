@@ -23,7 +23,8 @@ class InvoicesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Storages', 'Invoicetypes', 'Partners']
+            'contain' => ['Storages', 'Invoicetypes', 'Partners'],
+            'order' => ['date' => 'DESC']
         ];
         $invoices = $this->paginate($this->Invoices);
 
@@ -40,7 +41,7 @@ class InvoicesController extends AppController
     public function view($id = null)
     {
         $invoice = $this->Invoices->get($id, [
-            'contain' => ['Storages', 'Invoicetypes', 'Partners', 'Items.Products']
+            'contain' => ['Storages.Companies', 'Invoicetypes', 'Partners.Groups', 'Items.Products']
         ]);
 
         $this->set('invoice', $invoice);
@@ -214,7 +215,6 @@ class InvoicesController extends AppController
 
         // step 2 fields associated with csv columns
         if (!is_null($this->request->getData('name'))) {
-
             $storage = $this->Invoices->Storages->get($this->request->getData('storage'));
 
             $data = [
@@ -227,21 +227,23 @@ class InvoicesController extends AppController
             ];
             $minimumQuantity = $this->request->getData('importZero') ? -1 : 0;
             $i = 0;
+            // TODO currency is not saved
             $this->getRequest()->getSession()->read('productImportFile')->skip(1)->each(
                 function ($value, $key) use (&$data, $minimumQuantity, &$i, $storage) {
                     if ($value[$this->request->getData('quantity')] > $minimumQuantity) {
                         foreach ($this->request->getData() as $key => $column) {
-                            if (in_array($key, ['quantity', 'price', 'currency'])
+                            if (in_array($key, ['quantity', 'price'])
                                 && isset($value[$this->request->getData($key)])) {
                                 $data['items'][$i][$key] = $value[$this->request->getData($key)];
                             }
                         }
-                    $data['items'][$i]['product'] = [
+                        $data['items'][$i]['currency'] = $this->request->getData('currency');
+                        $data['items'][$i]['product'] = [
                         'company_id' => $storage->company_id,
                         'name' => $value[$this->request->getData('name')],
                         'vat' => $value[$this->request->getData('vat')]
                     ];
-                    $i++;
+                        $i++;
                     }
                 }
             );
@@ -254,8 +256,6 @@ class InvoicesController extends AppController
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
-
-
         }
     }
 }
