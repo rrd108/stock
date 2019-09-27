@@ -10,7 +10,7 @@
                     'type' => 'file'
                 ]
             ) ?>
-            <?php if(!$this->request->getData()) : ?>
+            <?php if (!$this->request->getData()) : ?>
                 <?= $this->Form->file('File'); ?>
             <?php endif; ?>
         </div>
@@ -19,6 +19,40 @@
     <?php if ($this->request->getData('File')) : ?>
     <div class="row">
         <div class="column small-12">
+            <?= $this->Form->control(
+                'storage',
+                [
+                    'label' => __('Storage'),
+                    'required' => true,
+                    'options' => $storages,
+                    'empty' => __('--- choose ---')
+                ]
+            ) ?>
+            <?= $this->Form->control(
+                'partner',
+                [
+                    'label' => __('Partner'),
+                    'required' => true,
+                    'options' => $partners,
+                    'empty' => __('--- choose ---')
+                ]
+            ) ?>
+            <?= $this->Form->control(
+                'date',
+                [
+                    'label' => __('Date'),
+                    'required' => true,
+                    'value' => date('Y-m-d'),
+                ]
+            ) ?>
+            <?= $this->Form->control(
+                'currency',
+                [
+                    'label' => __('Currency'),
+                    'required' => true,
+                    'value' => 'HUF',
+                ]
+            ) ?>
             <?= $this->Form->control(
                 'name',
                 [
@@ -29,7 +63,7 @@
                 ]
             ) ?>
             <?= $this->Form->control(
-                    'size',
+                'size',
                 [
                     'label' => __('Size'),
                     'options' => $columns,
@@ -37,15 +71,16 @@
                 ]
                 ) ?>
             <?= $this->Form->control(
-                    'vat',
+                'vat',
                 [
                     'label' => __('VAT'),
+                    'required' => true,
                     'options' => $columns,
                     'empty' => __('--- choose ---')
                 ]
                 ) ?>
             <?= $this->Form->control(
-                    'quantity',
+                'quantity',
                 [
                     'label' => __('Quantity'),
                     'options' => $columns,
@@ -53,12 +88,18 @@
                 ]
                 ) ?>
             <?= $this->Form->control(
-                    'price',
+                'price',
                 [
                     'label' => __('Price'),
-                    'required' => true,
                     'options' => $columns,
                     'empty' => __('--- choose ---')
+                ]
+                ) ?>
+            <?= $this->Form->control(
+                'importZero',
+                [
+                    'label' => __('Import zero quantity products'),
+                    'type' => 'checkbox',
                 ]
                 ) ?>
         </div>

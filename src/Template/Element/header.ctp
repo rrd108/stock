@@ -52,6 +52,20 @@
                                 ]
                             ) ?>
                         </li>
+                        <li>
+                            <?= $this->MenuLink->menuLink(
+                                '<i class="fi-upload"> ' . __('Import') . '</i>',
+                                [
+                                    'plugin' => false,
+                                    'controller' => 'invoices',
+                                    'action' => 'import'
+                                ],
+                                [
+                                    'escape' => false
+                                ]
+                            ) ?>
+                        </li>
+
                         <?php if ($this->request->getSession()->read('Auth.User.is_superuser')
                             && $this->request->getSession()->read('Auth.User.role') == 'superuser') : ?>
                             <li>

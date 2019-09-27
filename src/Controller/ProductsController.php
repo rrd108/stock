@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use SplFileObject;
 
 /**
  * Products Controller
@@ -115,47 +114,5 @@ class ProductsController extends AppController
         $products = $this->Products->find('stock');
 
         $this->set(compact('products'));
-    }
-
-    public function import()
-    {
-        if ($this->request->getData() && is_uploaded_file($this->request->getData('File.tmp_name'))) {
-            $fileType = $this->request->getData('File.type');
-            $csvMimes = ['text/csv', 'text/comma-separated-values', 'text/plain'];
-
-            if (in_array($fileType, $csvMimes)) {
-                $file = new SplFileObject($this->request->getData('File.tmp_name'), 'r');
-                $file->setFlags(
-                    SplFileObject::READ_CSV | SplFileObject::SKIP_EMPTY
-                    |  SplFileObject::READ_AHEAD | SplFileObject::DROP_NEW_LINE
-                );
-                $file->setCsvControl(';');
-                $this->getRequest()->getSession()->write('productImportFile', collection($file));
-                $columns = $file->current();
-
-                $this->set(compact('columns'));
-                return;
-            }
-
-            $this->Flash->error(__('Unrecognized file type: {0}', $fileType));
-        }
-
-        if (!is_null($this->request->getData('name'))) {
-            $this->getRequest()->getSession()->read('productImportFile')->skip(1)->each(function ($value, $key) {
-                // TODO this should be an option to set at the previous step
-                if ($value[$this->request->getData('quantity')] > 0) {
-                    $data = [
-                        'company_id' => 1
-                    ];
-                    foreach ($this->request->getData() as $key => $column) {
-                        if (isset($value[$this->request->getData($key)])) {
-                            $data[$key] = $value[$this->request->getData($key)];
-                        }
-                    }
-                    debug($data);
-                    // quantity price
-                }
-            });
-        }
     }
 }
