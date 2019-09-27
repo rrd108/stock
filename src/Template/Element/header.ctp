@@ -114,13 +114,15 @@
 
                 <div class="top-bar-right">
                     <ul class="menu">
-                        <li>
-                            <?= $this->Html->link(
-                                '<i class="fi-torso"></i> ' . ($this->getRequest()->getSession()->read('company'))->name,
-                                ['plugin' => false, 'controller' => 'Companies', 'action' => 'setDefault'],
-                                ['escape' => false]
-                            ) ?>
-                        </li>
+                        <?php if ($this->request->getSession()->read('Auth.User')) : ?>
+                            <li>
+                                <?= $this->Html->link(
+                                    '<i class="fi-torso"></i> ' . ($this->getRequest()->getSession()->read('company'))->name,
+                                    ['plugin' => false, 'controller' => 'Companies', 'action' => 'setDefault'],
+                                    ['escape' => false]
+                                ) ?>
+                            </li>
+                        <?php endif;?>
                         <li>
                             <?= $this->User->logout(
                                 '<span id="username">'

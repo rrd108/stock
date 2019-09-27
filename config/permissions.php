@@ -1,10 +1,21 @@
 <?php
 return [
-    'Users.SimpleRbac.permissions' => [
+    'CakeDC/Auth.permissions' => [
         [
             'role' => '*',
-            'controller' => 'Pages',
-            'action' => ['display'],
+            'plugin' => 'CakeDC/Users',
+            'controller' => 'Users',
+            'action' => ['profile', 'logout'],
         ],
+        [
+            'role' => '*',
+            'controller' => 'Stats',
+            'action' => ['index'],
+        ],
+        [
+            'role' => '*',
+            'controller' => 'Companies',
+            'action' => ['setDefault'],
+        ]
     ]
 ];

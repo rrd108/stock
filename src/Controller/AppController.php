@@ -51,14 +51,16 @@ class AppController extends Controller
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
+
         $this->loadComponent('CakeDC/Users.UsersAuth');
     }
 
     public function beforeFilter(Event $event)
     {
         if (!$this->getRequest()->getSession()->read('company')
+            && $this->Auth->user('id')
             && ($this->name != 'Companies' || $this->request->getParam('action') != 'setDefault')) {
-            $this->redirect(['controller' => 'Companies', 'action' => 'setDefault']);
+            $this->redirect(['plugin' => false, 'controller' => 'Companies', 'action' => 'setDefault']);
         }
     }
 }
