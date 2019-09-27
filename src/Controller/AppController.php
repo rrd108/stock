@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Core\Configure;
 use Cake\Event\Event;
 
 /**
@@ -53,6 +54,10 @@ class AppController extends Controller
         //$this->loadComponent('Security');
 
         $this->loadComponent('CakeDC/Users.UsersAuth');
+
+        // session is not available in models
+        Configure::write('company_id', $this->getRequest()->getSession()->read('company')->id);
+
     }
 
     public function beforeFilter(Event $event)
