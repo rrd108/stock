@@ -39,6 +39,14 @@ class InvoicesTable extends Table
         $this->setDisplayField('number');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior(
+            'Datalist.Datalist',
+            [
+                'Partners' => 'name',
+                'Products' => 'name'
+            ]
+        );
+
         $this->belongsTo('Storages', [
             'foreignKey' => 'storage_id',
             'joinType' => 'INNER'

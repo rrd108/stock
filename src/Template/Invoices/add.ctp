@@ -13,6 +13,10 @@
         <div class="row">
             <div class="column small-6">
                 <?= $this->Form->control(
+                    'partner_id',
+                    ['type' => 'datalistJs', 'options' => $partners]
+                    ) ?>
+            </div>
             <div class="column small-6">
                 <?= $this->Form->control('date', ['type' => 'text']) ?>
             </div>
