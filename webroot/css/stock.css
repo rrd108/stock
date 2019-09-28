@@ -16,3 +16,10 @@ ul.dropdown li {
     color: #fff;
     transition: background .5s, color .5s;
 }
+
+input.quantity {
+    width: 4rem;
+}
+input.price {
+    width: 6rem;
+}

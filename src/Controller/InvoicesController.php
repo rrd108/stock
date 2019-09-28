@@ -56,6 +56,7 @@ class InvoicesController extends AppController
     {
         $invoice = $this->Invoices->newEntity();
         if ($this->request->is('post')) {
+debug($this->request->getData());die;
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
             if ($this->Invoices->save($invoice)) {
                 $this->Flash->success(__('The invoice has been saved.'));
@@ -67,7 +68,8 @@ class InvoicesController extends AppController
         $storages = $this->Invoices->Storages->find('list', ['limit' => 200]);
         $invoicetypes = $this->Invoices->Invoicetypes->find('list', ['limit' => 200]);
         $partners = $this->Invoices->Partners->find('list', ['limit' => 200]);
-        $this->set(compact('invoice', 'storages', 'invoicetypes', 'partners'));
+        $products = $this->Invoices->Items->Products->find('list')->order('name');
+        $this->set(compact('invoice', 'storages', 'invoicetypes', 'partners', 'products'));
     }
 
     /**
