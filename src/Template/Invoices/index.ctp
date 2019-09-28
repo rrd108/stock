@@ -1,24 +1,12 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="small-3 medium-2 large-2 columns" id="actions-sidebar">
-    <ul class="menu vertical">
-        <li class="menu-text"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Invoice'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Storages'), ['controller' => 'Storages', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Storage'), ['controller' => 'Storages', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Invoicetypes'), ['controller' => 'Invoicetypes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Invoicetype'), ['controller' => 'Invoicetypes', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Partners'), ['controller' => 'Partners', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Partner'), ['controller' => 'Partners', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Items'), ['controller' => 'Items', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Item'), ['controller' => 'Items', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="invoices index small-9 medium-10 large-10 columns content">
-    <h3><?= __('Invoices') ?></h3>
+<div class="invoices index small-12 columns content">
+    <div class="row">
+        <div class="column small-6">
+            <h3><?= __('Invoices') ?></h3>
+        </div>
+        <div class="column small-6 text-right">
+            <?= $this->Html->link('<i class="fi-plus" title="' . __('New') . '"> ' . __('New Invoice') . '</i>', ['action' => 'add'], ['class' => 'button', 'escape' => false]) ?>
+        </div>
+    </div>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
