@@ -14,18 +14,18 @@ return [
         ],
         [
             'role' => '*',
-            'controller' => 'Invoices',
+            'controller' => '*',
             'action' => ['index'],
+        ],
+        [
+            'role' => '*',
+            'controller' => 'Invoices',
+            'action' => ['import'],
         ],
         [
             'role' => '*',
             'controller' => 'Products',
-            'action' => ['index'],
-        ],
-        [
-            'role' => '*',
-            'controller' => 'Stats',
-            'action' => ['index'],
+            'action' => ['stock'],
         ],
     ]
 ];
