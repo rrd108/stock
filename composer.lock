@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12e297c8883441bbc39ba78c55220e4a",
+    "content-hash": "5442b19d6b5125e45e1541b4bbe13067",
     "packages": [
         {
             "name": "aura/intl",
@@ -1041,16 +1041,16 @@
         },
         {
             "name": "rrd108/cakephp-menulink",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rrd108/cakephp-menulink.git",
-                "reference": "4b3a1fe792a26732c570de581cf12faaa2486a17"
+                "reference": "1f1e22f9c0078645186853712acc354e77f0abbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rrd108/cakephp-menulink/zipball/4b3a1fe792a26732c570de581cf12faaa2486a17",
-                "reference": "4b3a1fe792a26732c570de581cf12faaa2486a17",
+                "url": "https://api.github.com/repos/rrd108/cakephp-menulink/zipball/1f1e22f9c0078645186853712acc354e77f0abbe",
+                "reference": "1f1e22f9c0078645186853712acc354e77f0abbe",
                 "shasum": ""
             },
             "require": {
@@ -1070,7 +1070,7 @@
                 "MIT"
             ],
             "description": "MenuLink plugin for CakePHP",
-            "time": "2019-02-06T16:21:50+00:00"
+            "time": "2019-09-28T17:22:44+00:00"
         },
         {
             "name": "symfony/config",
