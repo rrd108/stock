@@ -1,6 +1,9 @@
 <?php
 namespace App\Model\Table;
 
+use ArrayObject;
+use Cake\Core\Configure;
+use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -108,5 +111,10 @@ class PartnersTable extends Table
         $rules->add($rules->existsIn(['group_id'], 'Groups'));
 
         return $rules;
+    }
+
+    public function beforeFind(Event $event, Query $query, ArrayObject $options, $primary)
+    {
+        $query->where(['Partners.company_id' => Configure::read('company_id')]);
     }
 }

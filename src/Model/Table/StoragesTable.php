@@ -1,6 +1,9 @@
 <?php
 namespace App\Model\Table;
 
+use ArrayObject;
+use Cake\Core\Configure;
+use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -78,5 +81,10 @@ class StoragesTable extends Table
         $rules->add($rules->existsIn(['company_id'], 'Companies'));
 
         return $rules;
+    }
+
+    public function beforeFind(Event $event, Query $query, ArrayObject $options, $primary)
+    {
+        $query->where(['Storages.company_id' => Configure::read('company_id')]);
     }
 }
