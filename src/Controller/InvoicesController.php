@@ -68,7 +68,7 @@ debug($this->request->getData());die;
         $storages = $this->Invoices->Storages->find('list', ['limit' => 200]);
         $invoicetypes = $this->Invoices->Invoicetypes->find('list', ['limit' => 200]);
         $partners = $this->Invoices->Partners->find('list', ['limit' => 200]);
-        $products = $this->Invoices->Items->Products->find('list')->order('name');
+        $products = $this->Invoices->Items->Products->find('all')->contain('items')->order('name');
         $this->set(compact('invoice', 'storages', 'invoicetypes', 'partners', 'products'));
     }
 

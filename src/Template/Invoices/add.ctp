@@ -54,7 +54,11 @@
                     <td>
                         <?= $this->Form->control(
                             'items[0].product_id',
-                            ['label' => false, 'type' => 'datalistJs', 'options' => $products]
+                            [
+                                'label' => false,
+                                'type' => 'datalistJs',
+                                'options' => $products->combine('id', 'name')
+                            ]
                             ) ?>
                     </td>
                     <td><?= $this->Form->control('items[0].quantity', ['label' => false, 'class' => 'quantity']) ?></td>
