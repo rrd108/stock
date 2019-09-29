@@ -24,6 +24,7 @@ class PartnersFixture extends TestFixture
         'address' => ['type' => 'string', 'length' => 45, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'phone' => ['type' => 'string', 'length' => 45, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'email' => ['type' => 'string', 'length' => 45, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'taxnumber' => ['type' => 'string', 'length' => 45, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
             'fk_partners_groups1_idx' => ['type' => 'index', 'columns' => ['group_id'], 'length' => []],
             'fk_partners_companies1_idx' => ['type' => 'index', 'columns' => ['company_id'], 'length' => []],
@@ -56,7 +57,8 @@ class PartnersFixture extends TestFixture
                 'city' => 'Lorem ipsum dolor sit amet',
                 'address' => 'Lorem ipsum dolor sit amet',
                 'phone' => 'Lorem ipsum dolor sit amet',
-                'email' => 'Lorem ipsum dolor sit amet'
+                'email' => 'Lorem ipsum dolor sit amet',
+                'taxnumber' => 'Lorem ipsum dolor sit amet'
             ],
         ];
         parent::init();

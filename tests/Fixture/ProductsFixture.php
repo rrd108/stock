@@ -19,9 +19,7 @@ class ProductsFixture extends TestFixture
         'company_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'name' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'size' => ['type' => 'string', 'length' => 45, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'cost' => ['type' => 'decimal', 'length' => 10, 'precision' => 2, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => ''],
-        'currency' => ['type' => 'string', 'length' => 45, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'vat' => ['type' => 'decimal', 'length' => 4, 'precision' => 2, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => ''],
+        'vat' => ['type' => 'decimal', 'length' => 8, 'precision' => 6, 'unsigned' => true, 'null' => true, 'default' => null, 'comment' => ''],
         '_indexes' => [
             'fk_products_companies1_idx' => ['type' => 'index', 'columns' => ['company_id'], 'length' => []],
         ],
@@ -46,11 +44,16 @@ class ProductsFixture extends TestFixture
             [
                 'id' => 1,
                 'company_id' => 1,
-                'name' => 'Lorem ipsum dolor sit amet',
-                'size' => 'Lorem ipsum dolor sit amet',
-                'cost' => 1.5,
-                'currency' => 'Lorem ipsum dolor sit amet',
-                'vat' => 1.5
+                'name' => 'Product 1',
+                'size' => 'S',
+                'vat' => 27
+            ],
+            [
+                'id' => 2,
+                'company_id' => 1,
+                'name' => 'Product 2',
+                'size' => 'L',
+                'vat' => 27
             ],
         ];
         parent::init();

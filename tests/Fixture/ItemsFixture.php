@@ -48,9 +48,25 @@ class ItemsFixture extends TestFixture
                 'id' => 1,
                 'invoice_id' => 1,
                 'product_id' => 1,
-                'quantity' => 1.5,
-                'price' => 1.5,
-                'currency' => 'Lorem ipsum dolor sit amet'
+                'quantity' => 3,
+                'price' => 100,
+                'currency' => 'HUF'
+            ],
+            [
+                'id' => 2,
+                'invoice_id' => 1,
+                'product_id' => 2,
+                'quantity' => 10,
+                'price' => 115,
+                'currency' => 'HUF'
+            ],
+            [
+                'id' => 3,
+                'invoice_id' => 1,
+                'product_id' => 1,
+                'quantity' => 8,
+                'price' => 75,
+                'currency' => 'HUF'
             ],
         ];
         parent::init();

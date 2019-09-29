@@ -21,7 +21,7 @@ class InvoicesFixture extends TestFixture
         'partner_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'date' => ['type' => 'date', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'sale' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => '1', 'comment' => '', 'precision' => null],
-        'number' => ['type' => 'string', 'length' => 25, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'number' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
             'fk_invoices_partners1_idx' => ['type' => 'index', 'columns' => ['partner_id'], 'length' => []],
             'fk_invoices_invoicetypes1_idx' => ['type' => 'index', 'columns' => ['invoicetype_id'], 'length' => []],
@@ -52,9 +52,9 @@ class InvoicesFixture extends TestFixture
                 'storage_id' => 1,
                 'invoicetype_id' => 1,
                 'partner_id' => 1,
-                'date' => '2019-09-22',
-                'sale' => 1,
-                'number' => 'Lorem ipsum dolor sit a'
+                'date' => '2019-09-29',
+                'sale' => 0,            // purchase
+                'number' => 'INV/1'
             ],
         ];
         parent::init();

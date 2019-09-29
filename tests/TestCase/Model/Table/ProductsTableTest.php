@@ -2,6 +2,7 @@
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\ProductsTable;
+use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
@@ -24,8 +25,8 @@ class ProductsTableTest extends TestCase
      */
     public $fixtures = [
         'app.Products',
-        'app.Companies',
-        'app.Items'
+        'app.Items',
+        'app.Invoices'
     ];
 
     /**
@@ -38,6 +39,8 @@ class ProductsTableTest extends TestCase
         parent::setUp();
         $config = TableRegistry::getTableLocator()->exists('Products') ? [] : ['className' => ProductsTable::class];
         $this->Products = TableRegistry::getTableLocator()->get('Products', $config);
+
+        Configure::write('company_id', 1);
     }
 
     /**
@@ -48,37 +51,29 @@ class ProductsTableTest extends TestCase
     public function tearDown()
     {
         unset($this->Products);
-
         parent::tearDown();
     }
 
-    /**
-     * Test initialize method
-     *
-     * @return void
-     */
-    public function testInitialize()
+    public function testFindLastPurchasePrice()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $actual = $this->Products->find('lastPurchasePrice', ['currency' => 'HUF']);
+
+        $expected = [
+            1 => 75,
+            2 => 115
+        ];
+        $this->assertEquals($expected, $actual->combine('id', 'lastPurschasePrice')->toArray());
     }
 
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
+    public function testFindAvaragePurchasePrice()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $actual = $this->Products->find('avaragePurchasePrice', ['currency' => 'HUF']);
+
+        $expected = [
+            1 => (100+75)/2,
+            2 => 115
+        ];
+        $this->assertEquals($expected, $actual->combine('id', 'avaragePurschasePrice')->toArray());
     }
 
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
 }

@@ -115,4 +115,51 @@ class ProductsTable extends Table
                 return collection($product->items)->sumOf('quantity');
             })*/;
     }
+
+    public function findPurchasePrice(Query $query, array $options)
+    {
+        // TODO get last and avarage in one result
+    }
+
+    public function findLastPurchasePrice(Query $query, array $options)
+    {
+        $latestItems = $this->getAssociation('Items')->find();
+        $latestItems = $latestItems->select(['maxId' => $latestItems->func()->max('Items.id')])
+            ->group('Items.product_id');
+
+        return $query->select(
+            [
+                'currency' => 'Items.currency',
+                'lastPurchasePrice' => 'Items.price',
+            ])
+            ->enableAutoFields(true)
+            ->matching(
+                'Items.Invoices',
+                function ($q) use ($options) {
+                    return $q->where(
+                    [
+                        'Items.currency' => $options['currency'],
+                        'Invoices.sale' => false,
+                    ]
+                );
+                }
+            )->where(['Items.id IN' => $latestItems]);
+    }
+
+    public function findAvaragePurchasePrice(Query $query, array $options)
+    {
+        return $query->select(['avaragePurchasePrice' => $query->func()->avg('Items.price')])
+            ->enableAutoFields(true)
+            ->matching(
+                'Items.Invoices',
+                function ($q) use ($options) {
+                    return $q->where(
+                    [
+                        'Items.currency' => $options['currency'],
+                        'Invoices.sale' => false,
+                    ]
+                );
+                }
+            )->group('Items.product_id');
+    }
 }
