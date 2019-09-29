@@ -40,6 +40,34 @@
                                     'escape' => false
                                 ]
                             ) ?>
+                            <ul class="nested vertical menu">
+                                <li>
+                                    <?= $this->MenuLink->menuLink(
+                                        '<i class="fi-book"> ' . __('Invoices') . '</i>',
+                                        [
+                                            'plugin' => false,
+                                            'prefix' => false,
+                                            'controller' => 'invoices',
+                                            'action' => 'index'
+                                        ],
+                                        [
+                                            'escape' => false
+                                        ]
+                                    ) ?>
+                                </li>
+                                <li>
+                                    <?= $this->MenuLink->menuLink(
+                                        '<i class="fi-plus"> ' . __('New Invoice') . '</i>',
+                                        [
+                                            'plugin' => false,
+                                            'prefix' => false,
+                                            'controller' => 'invoices',
+                                            'action' => 'add'
+                                        ],
+                                        ['escape' => false]
+                                    ) ?>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <?= $this->MenuLink->menuLink(
