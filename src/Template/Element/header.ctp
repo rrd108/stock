@@ -18,6 +18,7 @@
                                 '<i class="fi-home"> ' . __('Home') . '</i>',
                                 [
                                     'plugin' => false,
+                                    'prefix' => false,
                                     'controller' => 'Stats',
                                     'action' => 'index'
                                 ],
@@ -31,6 +32,7 @@
                                 '<i class="fi-book"> ' . __('Invoices') . '</i>',
                                 [
                                     'plugin' => false,
+                                    'prefix' => false,
                                     'controller' => 'invoices',
                                     'action' => 'index'
                                 ],
@@ -44,6 +46,7 @@
                                 '<i class="fi-list-thumbnails"> ' . __('Stock') . '</i>',
                                 [
                                     'plugin' => false,
+                                    'prefix' => false,
                                     'controller' => 'products',
                                     'action' => 'stock'
                                 ],
@@ -57,6 +60,7 @@
                                 '<i class="fi-upload"> ' . __('Import') . '</i>',
                                 [
                                     'plugin' => false,
+                                    'prefix' => false,
                                     'controller' => 'invoices',
                                     'action' => 'import'
                                 ],
@@ -68,40 +72,42 @@
                         <li>
                             <?= $this->MenuLink->menuLink(
                                 '<i class="fi-widget"> ' . __('Main data') . '</i>',
-                                ['plugin' => false],
+                                ['plugin' => false, 'prefix' => false,],
                                 ['escape' => false]
                             ) ?>
                             <ul class="nested vertical menu">
                                 <li><?= $this->MenuLink->menuLink(
                                         '<i class="fi-torso-business"> ' . __('Companies') . '</i>',
-                                        ['plugin' => false, 'controller' => 'companies', 'action' => 'index'],
+                                        ['plugin' => false, 'prefix' => false, 'controller' => 'companies', 'action' => 'index'],
                                         ['escape' => false]
                                     ) ?></li>
                                 <li><?= $this->MenuLink->menuLink(
                                         '<i class="fi-contrast"> ' . __('Storages') . '</i>',
-                                        ['plugin' => false, 'controller' => 'storages', 'action' => 'index'],
-                                        ['escape' => false]
-                                    ) ?></li>
-                                <li><?= $this->MenuLink->menuLink(
-                                        '<i class="fi-puzzle"> ' . __('Groups') . '</i>',
-                                        ['plugin' => false, 'controller' => 'groups', 'action' => 'index'],
+                                        ['plugin' => false, 'prefix' => false, 'controller' => 'storages', 'action' => 'index'],
                                         ['escape' => false]
                                     ) ?></li>
                                 <li><?= $this->MenuLink->menuLink(
                                         '<i class="fi-torsos"> ' . __('Partners') . '</i>',
-                                        ['plugin' => false, 'controller' => 'partners', 'action' => 'index'],
-                                        ['escape' => false]
-                                    ) ?></li>
-                                <li><?= $this->MenuLink->menuLink(
-                                        '<i class="fi-shield"> ' . __('Invoice types') . '</i>',
-                                        ['plugin' => false, 'controller' => 'invoicetypes', 'action' => 'index'],
+                                        ['plugin' => false, 'prefix' => false, 'controller' => 'partners', 'action' => 'index'],
                                         ['escape' => false]
                                     ) ?></li>
                                 <li><?= $this->MenuLink->menuLink(
                                         '<i class="fi-foot"> ' . __('Products') . '</i>',
-                                        ['plugin' => false, 'controller' => 'products', 'action' => 'index'],
+                                        ['plugin' => false, 'prefix' => false, 'controller' => 'products', 'action' => 'index'],
                                         ['escape' => false]
                                     ) ?></li>
+                                <?php if ($this->request->getSession()->read('Auth.User.role') == 'superuser') : ?>
+                                    <li><?= $this->MenuLink->menuLink(
+                                            '<i class="fi-puzzle"> ' . __('Groups') . '</i>',
+                                            ['plugin' => false, 'prefix' => 'admin', 'controller' => 'groups', 'action' => 'index'],
+                                            ['escape' => false]
+                                        ) ?></li>
+                                    <li><?= $this->MenuLink->menuLink(
+                                            '<i class="fi-shield"> ' . __('Invoice types') . '</i>',
+                                            ['plugin' => false, 'prefix' => 'admin', 'controller' => 'invoicetypes', 'action' => 'index'],
+                                            ['escape' => false]
+                                        ) ?></li>
+                                <?php endif; ?>
                             </ul>
                         </li>
                     </ul>
@@ -114,7 +120,7 @@
                             <li>
                                 <?= $this->Html->link(
                                     '<i class="fi-torso"></i> ' . ($this->getRequest()->getSession()->read('company'))->name,
-                                    ['plugin' => false, 'controller' => 'Companies', 'action' => 'setDefault'],
+                                    ['plugin' => false, 'prefix' => false, 'controller' => 'Companies', 'action' => 'setDefault'],
                                     ['escape' => false]
                                 ) ?>
                             </li>
