@@ -56,7 +56,7 @@ class InvoicesController extends AppController
     {
         $invoice = $this->Invoices->newEntity();
         if ($this->request->is('post')) {
-debug($this->request->getData());die;
+            debug($this->request->getData());die;
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
             if ($this->Invoices->save($invoice)) {
                 $this->Flash->success(__('The invoice has been saved.'));

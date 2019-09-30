@@ -1,4 +1,11 @@
-<?= $this->Html->script('stock.add.min', ['block' => true]) ?>
+<?= $this->Html->scriptStart(['block' => true]) ?>
+    var products = [];
+    <?php foreach($products as $product) : ?>
+        products[<?= $product->id ?>] = ["<?= implode('","', $product->toArray()) ?>"];
+    <?php endforeach; ?>
+<?= $this->Html->scriptEnd() ?>
+
+    <?= $this->Html->script('stock.add.min', ['block' => true]) ?>
 <div class="invoices form small-12 columns content">
     <?= $this->Form->create($invoice) ?>
     <fieldset>
