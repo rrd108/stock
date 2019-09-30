@@ -68,7 +68,8 @@ debug($this->request->getData());die;
         $storages = $this->Invoices->Storages->find('list', ['limit' => 200]);
         $invoicetypes = $this->Invoices->Invoicetypes->find('list', ['limit' => 200]);
         $partners = $this->Invoices->Partners->find('list', ['limit' => 200]);
-        $products = $this->Invoices->Items->Products->find('avaragePurchasePrice', ['currency' => 'HUF'])
+        // TODO handling currencies
+        $products = $this->Invoices->Items->Products->find('purchasePrice', ['currency' => 'HUF'])
             ->order('name');
         $this->set(compact('invoice', 'storages', 'invoicetypes', 'partners', 'products'));
     }

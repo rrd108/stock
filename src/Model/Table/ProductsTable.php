@@ -118,7 +118,31 @@ class ProductsTable extends Table
 
     public function findPurchasePrice(Query $query, array $options)
     {
-        // TODO get last and avarage in one result
+        // cleanCopy() should be called for the first subquery to avoid query overwrite
+        $avaragePurchasePrice = $query->cleanCopy()->find('avaragePurchasePrice', $options);
+        $lastPurchasePrice = $query->find('lastPurchasePrice', $options);
+
+        return $this->find()
+            ->select([
+                'Products.id',
+                'Products.name',
+                'Products.size',
+                'Products.vat',
+                'avaragePurchasePrice' => 'Avarage.avaragePurchasePrice',
+                'lastPurchasePrice' => 'Last.lastPurchasePrice'
+                ])
+            ->join([
+                    'table' => $avaragePurchasePrice,
+                    'type' => 'left',
+                    'alias' => 'Avarage',
+                    'conditions' => 'Avarage.Products__id = Products.id'
+                ])
+            ->join([
+                    'table' => $lastPurchasePrice,
+                    'type' => 'left',
+                    'alias' => 'Last',
+                    'conditions' => 'Last.Products__id = Products.id'
+                ]);
     }
 
     public function findLastPurchasePrice(Query $query, array $options)
@@ -131,7 +155,8 @@ class ProductsTable extends Table
             [
                 'currency' => 'Items.currency',
                 'lastPurchasePrice' => 'Items.price',
-            ])
+            ]
+        )
             ->enableAutoFields(true)
             ->matching(
                 'Items.Invoices',
@@ -161,5 +186,12 @@ class ProductsTable extends Table
                 );
                 }
             )->group('Items.product_id');
+    }
+
+    public function findSellingPrice()
+    {
+        // TODO baseSellingPrice for this partner based on partner's group percentage
+        // TODO lastSellingPrice for the same partner
+        // TODO lastSellingPrice for any other partner
     }
 }

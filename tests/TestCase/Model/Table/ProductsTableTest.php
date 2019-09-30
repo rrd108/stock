@@ -76,4 +76,20 @@ class ProductsTableTest extends TestCase
         $this->assertEquals($expected, $actual->combine('id', 'avaragePurschasePrice')->toArray());
     }
 
+    public function testFindPurchasePrice()
+    {
+        $actual = $this->Products->find('purchasePrice', ['currency' => 'HUF']);
+
+        $expected = [
+            1 => '87.5 :: 75',
+            2 => '115.0 :: 115'
+        ];
+
+        $this->assertEquals(
+            $expected,
+            $actual->combine('id', function ($entity) {
+                return $entity->avaragePurchasePrice . ' :: ' . $entity->lastPurchasePrice;
+            })->toArray()
+        );
+    }
 }
