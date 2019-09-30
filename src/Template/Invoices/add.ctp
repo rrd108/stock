@@ -49,11 +49,13 @@
                 <tr>
                     <th class="text-center" scope="col"><?= __('Product') ?></th>
                     <th class="text-center" scope="col"><?= __('Quantity') ?></th>
+                    <th class="text-center" scope="col"><?= __('Purchase price') ?></th>
+                    <th class="text-center" scope="col"><?= __('Selling price') ?></th>
                     <th class="text-center" scope="col"><?= __('Price') ?></th>
                     <th class="text-center" scope="col"><?= __('Amount') ?></th>
                     <th class="text-center" scope="col"><?= __('VAT') ?></th>
                     <th class="text-center" scope="col"><?= __('VAT') ?></th>
-                    <th class="text-center" scope="col"><?= __('Amount') ?></th>
+                    <th class="text-center" scope="col"><?= __('Gross Amount') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -69,21 +71,9 @@
                             ) ?>
                     </td>
                     <td><?= $this->Form->control('items[0].quantity', ['label' => false, 'class' => 'quantity']) ?></td>
+                    <td>0</td>
+                    <td>0</td>
                     <td><?= $this->Form->control('items[0].price', ['label' => false, 'class' => 'price']) ?></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>
-                        <?= $this->Form->control(
-                            'items[1].product_id',
-                            ['label' => false, 'type' => 'datalistJs', 'options' => $products]
-                            ) ?>
-                    </td>
-                    <td><?= $this->Form->control('items[1].quantity', ['label' => false, 'class' => 'quantity']) ?></td>
-                    <td><?= $this->Form->control('items[1].price', ['label' => false, 'class' => 'price']) ?></td>
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>
@@ -92,6 +82,8 @@
             </tbody>
             <tfoot>
                 <tr>
+                    <td><?= __('Total') ?></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
