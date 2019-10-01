@@ -10,7 +10,7 @@ $(function () {
         let lastPurschasePrice = products[productId][5];
         $(this).parent().parent().next().html(
             number_format(avaragePurchasePrice)
-            + '<br>'
+            + ' / '
             + number_format(lastPurschasePrice)
         );
 
@@ -45,6 +45,22 @@ $(function () {
             number_format(netAmount + vatAmount)
         );
 
+        addNewRow($(this).closest('tbody'));
+
     });
 
+    let addNewRow = function (tbody) {
+
+        let tr = tbody.children('tr:first');
+        let rowCount = tbody.children('tr').length;
+        // replase items number
+        tr = tr.prop('outerHTML').replace(/items\-0/g, 'items-' + rowCount)
+            .replace(/items\[0\]/g, 'items[' + rowCount + ']')
+            // delete input values space is needed to keep data-value properties
+            .replace(/ value="[!"]*"/, ' value=""')
+            // remove text from tds
+            .replace(/td class="text-right">[0-9\.,\/ %]*?<\/td/g, 'td class="text-right"></td');
+        // insert row
+        tbody.append(tr);
+    }
 });
