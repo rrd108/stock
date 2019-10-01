@@ -1,6 +1,6 @@
 <?= $this->Html->scriptStart(['block' => true]) ?>
     var products = [];
-    <?php foreach($products as $product) : ?>
+    <?php foreach ($products as $product) : ?>
         products[<?= $product->id ?>] = ["<?= implode('","', $product->toArray()) ?>"];
     <?php endforeach; ?>
 <?= $this->Html->scriptEnd() ?>
@@ -48,6 +48,7 @@
             <thead>
                 <tr>
                     <th class="text-center" scope="col"><?= __('Product') ?></th>
+                    <th class="text-center" scope="col"><?= __('Stock') ?></th>
                     <th class="text-center" scope="col"><?= __('Quantity') ?></th>
                     <th class="text-center" scope="col"><?= __('Purchase price') ?></th>
                     <th class="text-center" scope="col"><?= __('Selling price') ?></th>
@@ -70,8 +71,9 @@
                             ]
                             ) ?>
                     </td>
-                    <td><?= $this->Form->control('items[0].quantity', ['label' => false, 'class' => 'quantity']) ?></td>
                     <td>0</td>
+                    <td><?= $this->Form->control('items[0].quantity', ['label' => false, 'class' => 'quantity']) ?></td>
+                    <td class="text-right">0</td>
                     <td>0</td>
                     <td><?= $this->Form->control('items[0].price', ['label' => false, 'class' => 'price']) ?></td>
                     <td>0</td>
@@ -83,6 +85,7 @@
             <tfoot>
                 <tr>
                     <td><?= __('Total') ?></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
