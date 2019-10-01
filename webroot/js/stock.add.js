@@ -51,6 +51,19 @@ $(function () {
 
     let addNewRow = function (tbody) {
 
+        // calculate totals
+        $('tfoot tr').children().each(function (i, element) {
+            let total = 0;
+            if (i == 6 || i == 8 || i == 9) {
+                $(element).closest('table').find('tbody tr td:nth-child(' + (i + 1) + ')')
+                    .each(function (j, el) {
+                        total += str2Num($(el).text())
+                    });
+                $(element).text(number_format(total));
+            }
+        });
+
+        // insert new row
         let tr = tbody.children('tr:first');
         let rowCount = tbody.children('tr').length;
         // replase items number
@@ -62,5 +75,8 @@ $(function () {
             .replace(/td class="text-right">[0-9\.,\/ %]*?<\/td/g, 'td class="text-right"></td');
         // insert row
         tbody.append(tr);
+
+        // put focus on new line product datalist
+        tbody.find('datalist:last').prev().focus();
     }
 });

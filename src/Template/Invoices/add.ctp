@@ -87,24 +87,21 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td><?= __('Total') ?></td>
+                    <td>
+                        <?= $this->Form->button(__('Submit'), ['class' => 'button']) ?>
+                        <?= $this->Form->end() ?>
+                    </td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td class="text-right">0</td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td class="text-right">0</td>
+                    <td class="text-right">0</td>
                 </tr>
             </tfoot>
         </table>
     </fieldset>
-
-    <div class="column small-3">
-        <?= $this->Form->button(__('Submit'), ['class' => 'button']) ?>
-        <?= $this->Form->end() ?>
-    </div>
-
 </div>
