@@ -65,9 +65,9 @@ class InvoicesController extends AppController
             }
             $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
         }
-        $storages = $this->Invoices->Storages->find('list', ['limit' => 200]);
-        $invoicetypes = $this->Invoices->Invoicetypes->find('list', ['limit' => 200]);
-        $partners = $this->Invoices->Partners->find('list', ['limit' => 200]);
+        $storages = $this->Invoices->Storages->find('list', ['limit' => 200])->order('name');
+        $invoicetypes = $this->Invoices->Invoicetypes->find('list', ['limit' => 200])->order('name');
+        $partners = $this->Invoices->Partners->find()->contain('Groups')->order('Partners.name');
         // TODO handling currencies
         $products = $this->Invoices->Items->Products->find('purchasePrice', ['currency' => 'HUF'])
             ->order('name');

@@ -11,8 +11,8 @@ function number_format(number, decimals, dec_point, thousands_sep) {        //jQ
 function str2Num(str, options) {
     //string to number: str2Num(50,000.5 {dec_point: '.', thousands_sep : ','});
     options = options ? options : {
-        dec_point: '.',  //decimals' separator
-        thousands_sep: ' ',  //thousands separator - this is not a space! (CakePHP number::format)
+        dec_point: ',',  //decimals' separator
+        thousands_sep: '.',  //thousands separator - this is not a space! (CakePHP number::format)
     };
     var num = str.split(options.thousands_sep).join('').split(options.dec_point).join('.').replace(/\s/, '');
     return parseFloat(num);

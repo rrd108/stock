@@ -3,6 +3,10 @@
     <?php foreach ($products as $product) : ?>
         products[<?= $product->id ?>] = ["<?= implode('","', $product->toArray()) ?>"];
     <?php endforeach; ?>
+    var partners = [];
+    <?php foreach ($partners as $partner) : ?>
+        partners[<?= $partner->id ?>] = "<?= $partner->group->percentage ?>";
+    <?php endforeach; ?>
 <?= $this->Html->scriptEnd() ?>
 
     <?= $this->Html->script('stock.add.min', ['block' => true]) ?>
@@ -22,7 +26,7 @@
             <div class="column small-6">
                 <?= $this->Form->control(
                     'partner_id',
-                    ['type' => 'datalistJs', 'options' => $partners]
+                    ['type' => 'datalistJs', 'options' => $partners->combine('id', 'name')]
                     ) ?>
             </div>
             <div class="column small-6">
@@ -43,7 +47,6 @@
     </fieldset>
 
     <fieldset>
-        <legend><?= __('Items') ?></legend>
         <table cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
@@ -71,15 +74,15 @@
                             ]
                             ) ?>
                     </td>
-                    <td>0</td>
-                    <td><?= $this->Form->control('items[0].quantity', ['label' => false, 'class' => 'quantity']) ?></td>
                     <td class="text-right">0</td>
-                    <td>0</td>
-                    <td><?= $this->Form->control('items[0].price', ['label' => false, 'class' => 'price']) ?></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td class="text-right"><?= $this->Form->control('items[0].quantity', ['label' => false, 'class' => 'quantity']) ?></td>
+                    <td class="text-right">0</td>
+                    <td class="text-right">0</td>
+                    <td><?= $this->Form->control('items[0].price', ['label' => false, 'class' => 'price text-right']) ?></td>
+                    <td class="text-right">0</td>
+                    <td class="text-right">0</td>
+                    <td class="text-right">0</td>
+                    <td class="text-right">0</td>
                 </tr>
             </tbody>
             <tfoot>

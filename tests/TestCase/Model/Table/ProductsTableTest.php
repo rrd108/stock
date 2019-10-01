@@ -92,4 +92,5 @@ class ProductsTableTest extends TestCase
             })->toArray()
         );
     }
+
 }

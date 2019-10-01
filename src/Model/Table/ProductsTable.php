@@ -187,11 +187,4 @@ class ProductsTable extends Table
                 }
             )->group('Items.product_id');
     }
-
-    public function findSellingPrice()
-    {
-        // TODO baseSellingPrice for this partner based on partner's group percentage
-        // TODO lastSellingPrice for the same partner
-        // TODO lastSellingPrice for any other partner
-    }
 }
