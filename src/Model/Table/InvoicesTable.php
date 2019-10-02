@@ -92,7 +92,7 @@ class InvoicesTable extends Table
         $validator
             ->scalar('number')
             ->maxLength('number', 255)
-            ->allowEmptyString('number');
+            ->notEmptyString('number');
 
         return $validator;
     }
