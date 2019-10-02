@@ -1,3 +1,7 @@
+input[type=text]:focus, select:focus {
+    background: #def;
+}
+
 main.row {
     max-width: 95rem;;
 }
