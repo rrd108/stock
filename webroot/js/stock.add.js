@@ -2,6 +2,8 @@ $(function () {
 
     let productId;
 
+    $('#storage-id').focus();
+
     $('#__partner-id').blur(function () {
         $('#items').prop('disabled', false);
         if (!partners[$('#partner-id').val()]) {
