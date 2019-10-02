@@ -2,6 +2,9 @@ $(function () {
 
     let productId;
 
+    $('#__partner-id').blur(function () {
+        $('#items').prop('disabled', false);
+    });
     $(document).on('focus', 'input.quantity', function () {
 
         // display purchase prices
