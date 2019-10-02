@@ -72,15 +72,6 @@ class ProductsTable extends Table
             ->allowEmptyString('size');
 
         $validator
-            ->decimal('cost')
-            ->allowEmptyString('cost');
-
-        $validator
-            ->scalar('currency')
-            ->maxLength('currency', 45)
-            ->allowEmptyString('currency');
-
-        $validator
             ->decimal('vat')
             ->allowEmptyString('vat');
 
@@ -153,7 +144,7 @@ class ProductsTable extends Table
 
         return $query->select(
             [
-                'currency' => 'Items.currency',
+                'currency' => 'Invoices.currency',
                 'lastPurchasePrice' => 'Items.price',
             ]
         )
@@ -163,7 +154,7 @@ class ProductsTable extends Table
                 function ($q) use ($options) {
                     return $q->where(
                     [
-                        'Items.currency' => $options['currency'],
+                        'Invoices.currency' => $options['currency'],
                         'Invoices.sale' => false,
                     ]
                 );
@@ -180,7 +171,7 @@ class ProductsTable extends Table
                 function ($q) use ($options) {
                     return $q->where(
                     [
-                        'Items.currency' => $options['currency'],
+                        'Invoices.currency' => $options['currency'],
                         'Invoices.sale' => false,
                     ]
                 );

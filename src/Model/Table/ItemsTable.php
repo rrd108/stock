@@ -67,11 +67,6 @@ class ItemsTable extends Table
             ->decimal('price')
             ->allowEmptyString('price');
 
-        $validator
-            ->scalar('currency')
-            ->maxLength('currency', 45)
-            ->allowEmptyString('currency');
-
         return $validator;
     }
 

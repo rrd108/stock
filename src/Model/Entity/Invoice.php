@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property int $invoicetype_id
  * @property int $partner_id
  * @property \Cake\I18n\FrozenDate|null $date
+ * @property string $currency
  * @property bool|null $sale
  * @property string|null $number
  *
@@ -35,6 +36,7 @@ class Invoice extends Entity
         'invoicetype_id' => true,
         'partner_id' => true,
         'date' => true,
+        'currency' => true,
         'sale' => true,
         'number' => true,
         'storage' => true,

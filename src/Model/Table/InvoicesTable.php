@@ -81,12 +81,17 @@ class InvoicesTable extends Table
             ->allowEmptyDate('date');
 
         $validator
+            ->scalar('currency')
+            ->maxLength('currency', 45)
+            ->notEmptyString('currency');
+
+        $validator
             ->boolean('sale')
             ->allowEmptyString('sale');
 
         $validator
             ->scalar('number')
-            ->maxLength('number', 25)
+            ->maxLength('number', 255)
             ->allowEmptyString('number');
 
         return $validator;
