@@ -9,7 +9,9 @@
     <?php endforeach; ?>
 <?= $this->Html->scriptEnd() ?>
 
-    <?= $this->Html->script('stock.add.min', ['block' => true]) ?>
+<?= $this->Html->script('vendor/jquery.hotkeys.min', ['block' => true]) ?>
+<?= $this->Html->script('stock.add', ['block' => true]) ?>
+
 <div class="invoices form small-12 columns content">
     <?= $this->Form->create($invoice) ?>
     <fieldset>
@@ -88,7 +90,7 @@
             <tfoot>
                 <tr>
                     <td>
-                        <?= $this->Form->button(__('Submit'), ['class' => 'button']) ?>
+                        <?= $this->Form->button(__('Submit'), ['class' => 'button', 'id' => 'saveInvoice']) ?>
                         <?= $this->Form->end() ?>
                     </td>
                     <td></td>

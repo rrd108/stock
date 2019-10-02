@@ -56,13 +56,14 @@ class InvoicesController extends AppController
     {
         $invoice = $this->Invoices->newEntity();
         if ($this->request->is('post')) {
-            debug($this->request->getData());die;
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
             if ($this->Invoices->save($invoice)) {
                 $this->Flash->success(__('The invoice has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
+            // TODO on error reload all data into the form
+            $this->set(compact('invoice'));
             $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
         }
         $storages = $this->Invoices->Storages->find('list', ['limit' => 200])->order('name');

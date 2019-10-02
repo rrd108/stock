@@ -81,9 +81,7 @@ class InvoicesTable extends Table
             ->allowEmptyDate('date');
 
         $validator
-            ->scalar('currency')
-            ->maxLength('currency', 45)
-            ->notEmptyString('currency');
+            ->inList('currency', ['HUF', 'EUR']);
 
         $validator
             ->boolean('sale')

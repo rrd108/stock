@@ -35,6 +35,10 @@
             <td><?= h($invoice->date) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Currency') ?></th>
+            <td><?= h($invoice->currency) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Sale') ?></th>
             <td><?= $invoice->sale ? __('Yes') : __('No'); ?></td>
         </tr>
@@ -47,43 +51,40 @@
                     <th class="text-center" scope="col"><?= __('Product') ?></th>
                     <th class="text-center" scope="col"><?= __('Quantity') ?></th>
                     <th class="text-center" scope="col"><?= __('Price') ?></th>
-                    <th class="text-center" scope="col"><?= __('Currency') ?></th>
                     <th class="text-center" scope="col"><?= __('Amount') ?></th>
                     <th class="text-center" scope="col"><?= __('VAT') ?></th>
                     <th class="text-center" scope="col"><?= __('VAT') ?></th>
-                    <th class="text-center" scope="col"><?= __('Amount') ?></th>
+                    <th class="text-center" scope="col"><?= __('Gross Amount') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($invoice->items as $item): ?>
                 <tr>
                     <td><?= h($item->product->name) ?></td>
-                    <td class="text-center"><?= h($item->quantity) ?></td>
+                    <td class="text-right"><?= h($item->quantity) ?></td>
                     <td class="text-right"><?= $this->Number->format($item->price) ?></td>
-                    <td><?= h($item->currency) ?></td>
-                    <td class="text-right"><?= $this->Number->format($item->price * $item->quantity, ['precision' => 0]) ?></td>
-                    <td class="text-center"><?= h($item->product->vat) ?>%</td>
-                    <td class="text-right"><?= $this->Number->format($item->product->vat * $item->price * $item->quantity / 100, ['precision' => 0]) ?></td>
-                    <td class="text-right"><?= $this->Number->format($item->price * $item->quantity * (1 + $item->product->vat / 100), ['precision' => 0]) ?></td>
+                    <td class="text-right"><?= $this->Number->format($item->price * $item->quantity, ['precision' => 2]) ?></td>
+                    <td class="text-right"><?= h($item->product->vat) ?>%</td>
+                    <td class="text-right"><?= $this->Number->format($item->product->vat * $item->price * $item->quantity / 100, ['precision' => 2]) ?></td>
+                    <td class="text-right"><?= $this->Number->format($item->price * $item->quantity * (1 + $item->product->vat / 100), ['precision' => 2]) ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
             <tfoot>
                 <tr>
                     <td><?= __('Total') ?></td>
-                    <td><?= collection($invoice->items)->sumOf('quantity') ?></td>
+                    <td class="text-right"><?= collection($invoice->items)->sumOf('quantity') ?></td>
                     <td></td>
-                    <td></td>
-                    <td><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
+                    <td class="text-right"><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
                             return $item->price * $item->quantity;
-                        }), ['precision' => 0]) ?></td>
+                        }), ['precision' => 2]) ?></td>
                     <td></td>
-                    <td><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
+                    <td class="text-right"><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
                             return $item->price * $item->quantity * $item->product->vat / 100;
-                        }), ['precision' => 0]) ?></td>
-                    <td><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
+                        }), ['precision' => 2]) ?></td>
+                    <td class="text-right"><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
                         return $item->price * $item->quantity * (1 + $item->product->vat / 100);
-                    }), ['precision' => 0]) ?></td>
+                    }), ['precision' => 2]) ?></td>
                 </tr>
             </tfoot>
         </table>

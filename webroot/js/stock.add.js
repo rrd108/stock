@@ -4,6 +4,12 @@ $(function () {
 
     $('#storage-id').focus();
 
+    //shortcuts
+    $('input').bind('keydown', 'ctrl+s', function (event) {
+        $('#saveInvoice').click();
+        event.preventDefault();
+    });
+
     $('#__partner-id').blur(function () {
         $('#items').prop('disabled', false);
         if (!partners[$('#partner-id').val()]) {
@@ -11,6 +17,16 @@ $(function () {
             $('#sale').prop('checked', false);
         }
     });
+
+    $('form').submit(function () {
+        if (emptyLastRow()) {
+            $('table tbody tr:last').remove();
+        }
+    });
+
+    emptyLastRow = function () {
+        return !$('table tbody tr:last').find('input[type=hidden]').val();
+    }
 
     $(document).on('focus', 'input.quantity', function () {
 
@@ -29,9 +45,12 @@ $(function () {
         $(this).parent().parent().next().next().html(
             number_format(lastPurschasePrice * (1 + partners[$('#partner-id').val()] / 100))
         );
-        $(this).parent().parent().next().next().next().find('input').val(
-            number_format(lastPurschasePrice * (1 + partners[$('#partner-id').val()] / 100))
-        );
+
+        if (!$(this).parent().parent().next().next().next().find('input').val() > 0) {
+            $(this).parent().parent().next().next().next().find('input').val(
+                number_format(lastPurschasePrice * (1 + partners[$('#partner-id').val()] / 100))
+            );
+        }
 
         // vat %
         $(this).parent().parent().next().next().next().next().next().text(
@@ -42,7 +61,7 @@ $(function () {
 
     $(document).on('blur', 'input.price', function () {
 
-        let netAmount = str2Num($('input.quantity').val()) * str2Num($(this).val());
+        let netAmount = str2Num($(this).closest('tr').find('input.quantity').val()) * str2Num($(this).val());
         $(this).parent().parent().next().text(
             number_format(netAmount)
         );
@@ -75,17 +94,19 @@ $(function () {
         });
 
         // insert new row
-        let tr = tbody.children('tr:first');
-        let rowCount = tbody.children('tr').length;
-        // replase items number
-        tr = tr.prop('outerHTML').replace(/items\-0/g, 'items-' + rowCount)
-            .replace(/items\[0\]/g, 'items[' + rowCount + ']')
-            // delete input values space is needed to keep data-value properties
-            .replace(/ value="[!"]*"/, ' value=""')
-            // remove text from tds
-            .replace(/td class="text-right">[0-9\.,\/ %]*?<\/td/g, 'td class="text-right"></td');
-        // insert row
-        tbody.append(tr);
+        if (!emptyLastRow()) {
+            let tr = tbody.children('tr:first');
+            let rowCount = tbody.children('tr').length;
+            // replace items number
+            tr = tr.prop('outerHTML').replace(/items\-0/g, 'items-' + rowCount)
+                .replace(/items\[0\]/g, 'items[' + rowCount + ']')
+                // delete input values space is needed to keep data-value properties
+                .replace(/ value="[!"]*"/, ' value=""')
+                // remove text from tds
+                .replace(/td class="text-right">[0-9\.,\/ %]*?<\/td/g, 'td class="text-right"></td');
+            // insert row
+            tbody.append(tr);
+        }
 
         // put focus on new line product datalist
         tbody.find('datalist:last').prev().focus();

@@ -1,6 +1,8 @@
 <?php
 namespace App\Model\Table;
 
+use ArrayObject;
+use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -61,11 +63,11 @@ class ItemsTable extends Table
 
         $validator
             ->decimal('quantity')
-            ->allowEmptyString('quantity');
+            ->notEmptyString('quantity');
 
         $validator
-            ->decimal('price')
-            ->allowEmptyString('price');
+            ->add('price', 'money')
+            ->notEmptyString('price');
 
         return $validator;
     }
@@ -83,5 +85,12 @@ class ItemsTable extends Table
         $rules->add($rules->existsIn(['product_id'], 'Products'));
 
         return $rules;
+    }
+
+    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    {
+        // TODO this is an ugly solutio for saving localized numbers
+        $data['price'] = str_replace(' ', '', $data['price']);
+        $data['price'] = str_replace(',', '.', $data['price']);
     }
 }
