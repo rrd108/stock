@@ -35,7 +35,7 @@
         </div>
         <div class="row">
             <div class="column small-6">
-                <?= $this->Form->control('number') ?>
+                <?= $this->Form->control('number', ['value' => time()]) ?>
             </div>
             <div class="column small-3">
                 <?= $this->Form->control('currency') ?>
