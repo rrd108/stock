@@ -16,10 +16,10 @@
         <legend><?= __('Add Invoice') ?></legend>
         <div class="row">
             <div class="column small-6">
-                <?= $this->Form->control('storage_id', ['options' => $storages]) ?>
+                <?= $this->Form->control('storage_id', ['options' => $storages, 'empty' => __('--- choose ---')]) ?>
             </div>
             <div class="column small-6">
-                <?= $this->Form->control('invoicetype_id', ['options' => $invoicetypes]) ?>
+                <?= $this->Form->control('invoicetype_id', ['options' => $invoicetypes, 'empty' => __('--- choose ---')]) ?>
             </div>
         </div>
         <div class="row">
