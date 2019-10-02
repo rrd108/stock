@@ -4,7 +4,12 @@ $(function () {
 
     $('#__partner-id').blur(function () {
         $('#items').prop('disabled', false);
+        if (!partners[$('#partner-id').val()]) {
+            // this is a purchase
+            $('#sale').prop('checked', false);
+        }
     });
+
     $(document).on('focus', 'input.quantity', function () {
 
         // display purchase prices
@@ -18,6 +23,7 @@ $(function () {
         );
 
         // display selling price
+        // TODO get it from groups_products
         $(this).parent().parent().next().next().html(
             number_format(lastPurschasePrice * (1 + partners[$('#partner-id').val()] / 100))
         );
