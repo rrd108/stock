@@ -46,7 +46,7 @@
         </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset id="items" disabled>
         <table cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
