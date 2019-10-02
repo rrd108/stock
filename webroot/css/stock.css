@@ -31,3 +31,12 @@ input.quantity {
 input.price {
     width: 6rem;
 }
+
+tbody tr.in i.fi-arrow-right {
+    color: #cc4b37;
+    font-size: 2em;
+}
+tbody tr.out i.fi-arrow-left {
+    color: #1f962d;
+    font-size: 2em;
+}

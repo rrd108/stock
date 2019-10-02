@@ -10,32 +10,27 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+                <th scope="col"><?= $this->Paginator->sort('sale') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('number') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('date') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('partner_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('storage_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('invoicetype_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('partner_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('date') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('sale') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('number') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($invoices as $invoice): ?>
-            <tr>
-                <td><?= $this->Number->format($invoice->id) ?></td>
-                <td><?= $invoice->has('storage') ? $this->Html->link($invoice->storage->name, ['controller' => 'Storages', 'action' => 'view', $invoice->storage->id]) : '' ?></td>
-                <td><?= $invoice->has('invoicetype') ? $this->Html->link($invoice->invoicetype->name, ['controller' => 'Invoicetypes', 'action' => 'view', $invoice->invoicetype->id]) : '' ?></td>
-                <td><?= $invoice->has('partner') ? $this->Html->link($invoice->partner->name, ['controller' => 'Partners', 'action' => 'view', $invoice->partner->id]) : '' ?></td>
-                <td><?= h($invoice->date) ?></td>
-                <td><?= h($invoice->sale) ?></td>
-                <td><?= h($invoice->number) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link('<i class="fi-eye" title="' . __('View') . '"></i>', ['action' => 'view', $invoice->id], ['escape' => false]) ?>
-                    <?= $this->Html->link('<i class="fi-pencil" title="' . __('Edit') . '"></i>', ['action' => 'edit', $invoice->id], ['escape' => false]) ?>
-                    <?= $this->Form->postLink('<i class="fi-x" title="' . __('Delete') . '"></i>', ['action' => 'delete', $invoice->id],
-                    ['escape' => false, 'confirm' => __('Are you sure you want to delete # {0}?', $invoice->id)]) ?>
+            <tr class="<?= $invoice->sale ? 'out' : 'in' ?>">
+                <td>
+                    <?= $this->Html->link($invoice->sale ? '<i class="fi-arrow-left"></i>' : '<i class="fi-arrow-right"></i>', ['action' => 'view', $invoice->id], ['escape' => false]) ?>
                 </td>
+                <td><?= $this->Number->format($invoice->id) ?></td>
+                <td><?= str_replace('|', '<br>', h($invoice->number)) ?></td>
+                <td><?= h($invoice->date) ?></td>
+                <td><?= '<i class="fi-torsos"> ' . $invoice->partner->name . '</i>' ?></td>
+                <td><?= '<i class="fi-contrast"> ' .  $invoice->storage->name . '</i>' ?></td>
+                <td><?= '<i class="fi-book"> ' . $invoice->invoicetype->name . '</i>' ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
