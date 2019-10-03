@@ -40,12 +40,23 @@ tbody tr.out i.fi-arrow-left {
 div.sale label {
     font-size: 2em;
     color: #fff;
+    cursor: pointer;
 }
 div.sale.in label {
     background: #bc50b1;
 }
+div.sale.in label:before {
+    margin-left: .3em;
+    font-family: "foundation-icons";
+    content: "\f10b";
+}
 div.sale.out label {
     background: #50bc5b;
+}
+div.sale.out label:before {
+    margin-left: .3em;
+    font-family: "foundation-icons";
+    content: "\f10a";
 }
 div.sale input {
     width: 0;

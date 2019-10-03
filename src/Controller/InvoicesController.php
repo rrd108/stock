@@ -69,10 +69,11 @@ class InvoicesController extends AppController
         $storages = $this->Invoices->Storages->find('list', ['limit' => 200])->order('name');
         $invoicetypes = $this->Invoices->Invoicetypes->find('list', ['limit' => 200])->order('name');
         $partners = $this->Invoices->Partners->find()->contain('Groups')->order('Partners.name');
+        $groups = $this->Invoices->Partners->Groups->find()->where(['percentage']);
         // TODO handling currencies
         $products = $this->Invoices->Items->Products->find('purchasePrice', ['currency' => 'HUF'])
             ->order('name');
-        $this->set(compact('invoice', 'storages', 'invoicetypes', 'partners', 'products'));
+        $this->set(compact('invoice', 'storages', 'invoicetypes', 'partners', 'groups', 'products'));
     }
 
     /**

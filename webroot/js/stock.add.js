@@ -4,6 +4,8 @@ $(function () {
 
     $('#storage-id').focus();
 
+    $('.group').hide();
+
     $('#__partner-id').blur(function () {
         $('#items').prop('disabled', false);
         if (!partners[$('#partner-id').val()]) {
@@ -12,19 +14,21 @@ $(function () {
     });
 
     $('#sale').change(function () {
-        // hide or show stock, purchase price, selling price
+        // hide or show stock, purchase price, selling price and selling prices for different groups
         if (this.checked) {
             $(this).parent().parent().parent().addClass('out').removeClass('in');
             $(this).parent().find('span').text(StockTexts.hu.sale);
             $('td:nth-child(2), th:nth-child(2)').show();
             $('td:nth-child(4), th:nth-child(4)').show();
             $('td:nth-child(5), th:nth-child(5)').show();
+            $('.group').hide();
         } else {
             $(this).parent().parent().parent().addClass('in').removeClass('out');
             $(this).parent().find('span').text(StockTexts.hu.purchase);
             $('td:nth-child(2), th:nth-child(2)').hide();
             $('td:nth-child(4), th:nth-child(4)').hide();
             $('td:nth-child(5), th:nth-child(5)').hide();
+            $('.group').show();
         }
     });
 
@@ -69,9 +73,10 @@ $(function () {
 
     });
 
-    $(document).on('blur', 'input.price', function () {
+    $(document).on('blur', 'input.net.price', function () {
 
-        let netAmount = str2Num($(this).closest('tr').find('input.quantity').val()) * str2Num($(this).val());
+        let netPrice = str2Num($(this).val());
+        let netAmount = str2Num($(this).closest('tr').find('input.quantity').val()) * netPrice;
         $(this).parent().parent().next().text(
             number_format(netAmount)
         );
@@ -84,6 +89,12 @@ $(function () {
         $(this).parent().parent().next().next().next().next().text(
             number_format(netAmount + vatAmount)
         );
+
+        $(this).parent().parent().parent().find('.group input').each(function () {
+            $(this).val(
+                number_format(netPrice * ($(this).data('percentage') / 100 + 1))
+            );
+        });
 
         addNewRow($(this).closest('tbody'));
 
