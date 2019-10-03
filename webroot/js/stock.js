@@ -1,4 +1,11 @@
-$(document).foundation()
+$(document).foundation();
+
+const StockTexts = {
+    'hu': {
+        'sale': 'Elad?s',
+        'purchase': 'Beszerz?s'
+    }
+};
 
 function number_format(number, decimals, dec_point, thousands_sep) {        //jQueryvel is használjuk
     var n = number, c = isNaN(decimals = Math.abs(decimals)) ? 2 : decimals;

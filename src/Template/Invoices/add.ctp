@@ -42,8 +42,8 @@
             <div class="column small-3">
                 <?= $this->Form->control('currency') ?>
             </div>
-            <div class="column small-3">
-                <?= $this->Form->control('sale') ?>
+            <div class="column small-3 sale out">
+                <?= $this->Form->control('sale', ['label' => '<span>' . __('Sale') . '</span>', 'escape' => false]) ?>
             </div>
         </div>
     </fieldset>

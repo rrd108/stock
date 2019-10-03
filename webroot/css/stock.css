@@ -25,18 +25,36 @@ ul.dropdown li {
     transition: background .5s, color .5s;
 }
 
+/* invoice index */
+tbody tr.in i.fi-arrow-right {
+    color: #bc50b1;
+    font-size: 2em;
+}
+tbody tr.out i.fi-arrow-left {
+    color: #50bc5b;
+    font-size: 2em;
+}
+/* invoice index end */
+
+/* invoice add */
+div.sale label {
+    font-size: 2em;
+    color: #fff;
+}
+div.sale.in label {
+    background: #bc50b1;
+}
+div.sale.out label {
+    background: #50bc5b;
+}
+div.sale input {
+    width: 0;
+    height: 0;
+}
 input.quantity {
     width: 4rem;
 }
 input.price {
     width: 6rem;
 }
-
-tbody tr.in i.fi-arrow-right {
-    color: #cc4b37;
-    font-size: 2em;
-}
-tbody tr.out i.fi-arrow-left {
-    color: #1f962d;
-    font-size: 2em;
-}
+/* invoice add end */

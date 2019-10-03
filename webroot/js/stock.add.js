@@ -4,17 +4,27 @@ $(function () {
 
     $('#storage-id').focus();
 
-    //shortcuts
-    $('input').bind('keydown', 'ctrl+s', function (event) {
-        $('#saveInvoice').click();
-        event.preventDefault();
-    });
-
     $('#__partner-id').blur(function () {
         $('#items').prop('disabled', false);
         if (!partners[$('#partner-id').val()]) {
-            // this is a purchase
-            $('#sale').prop('checked', false);
+            $('#sale').prop('checked', false).change().prop('disabled', true);
+        }
+    });
+
+    $('#sale').change(function () {
+        // hide or show stock, purchase price, selling price
+        if (this.checked) {
+            $(this).parent().parent().parent().addClass('out').removeClass('in');
+            $(this).parent().find('span').text(StockTexts.hu.sale);
+            $('td:nth-child(2), th:nth-child(2)').show();
+            $('td:nth-child(4), th:nth-child(4)').show();
+            $('td:nth-child(5), th:nth-child(5)').show();
+        } else {
+            $(this).parent().parent().parent().addClass('in').removeClass('out');
+            $(this).parent().find('span').text(StockTexts.hu.purchase);
+            $('td:nth-child(2), th:nth-child(2)').hide();
+            $('td:nth-child(4), th:nth-child(4)').hide();
+            $('td:nth-child(5), th:nth-child(5)').hide();
         }
     });
 
@@ -24,7 +34,7 @@ $(function () {
         }
     });
 
-    isEmptyLastRow = function () {
+    let isEmptyLastRow = function () {
         return !$('table tbody tr:last').find('input[type=hidden]').val();
     }
 
