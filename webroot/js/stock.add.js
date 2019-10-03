@@ -19,12 +19,12 @@ $(function () {
     });
 
     $('form').submit(function () {
-        if (emptyLastRow()) {
+        if (isEmptyLastRow()) {
             $('table tbody tr:last').remove();
         }
     });
 
-    emptyLastRow = function () {
+    isEmptyLastRow = function () {
         return !$('table tbody tr:last').find('input[type=hidden]').val();
     }
 
@@ -94,7 +94,7 @@ $(function () {
         });
 
         // insert new row
-        if (!emptyLastRow()) {
+        if (!isEmptyLastRow()) {
             let tr = tbody.children('tr:first');
             let rowCount = tbody.children('tr').length;
             // replace items number
