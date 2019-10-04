@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Groups Model
  *
  * @property \App\Model\Table\PartnersTable&\Cake\ORM\Association\HasMany $Partners
+ * @property &\Cake\ORM\Association\BelongsToMany $Products
  *
  * @method \App\Model\Entity\Group get($primaryKey, $options = [])
  * @method \App\Model\Entity\Group newEntity($data = null, array $options = [])
@@ -38,6 +39,11 @@ class GroupsTable extends Table
 
         $this->hasMany('Partners', [
             'foreignKey' => 'group_id'
+        ]);
+        $this->belongsToMany('Products', [
+            'foreignKey' => 'group_id',
+            'targetForeignKey' => 'product_id',
+            'joinTable' => 'groups_products'
         ]);
     }
 

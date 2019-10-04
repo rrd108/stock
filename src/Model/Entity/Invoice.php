@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenDate|null $date
  * @property string $currency
  * @property bool|null $sale
- * @property string|null $number
+ * @property string $number
  *
  * @property \App\Model\Entity\Storage $storage
  * @property \App\Model\Entity\Invoicetype $invoicetype

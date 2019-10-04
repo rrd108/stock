@@ -4,18 +4,17 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Item Entity
+ * GroupsProduct Entity
  *
  * @property int $id
- * @property int $invoice_id
  * @property int $product_id
- * @property float|null $quantity
- * @property float|null $price
+ * @property int $group_id
+ * @property float|null $percentage
  *
- * @property \App\Model\Entity\Invoice $invoice
  * @property \App\Model\Entity\Product $product
+ * @property \App\Model\Entity\Group $group
  */
-class Item extends Entity
+class GroupsProduct extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -27,11 +26,10 @@ class Item extends Entity
      * @var array
      */
     protected $_accessible = [
-        'invoice_id' => true,
         'product_id' => true,
-        'quantity' => true,
-        'price' => true,
-        'invoice' => true,
-        'product' => true
+        'group_id' => true,
+        'percentage' => true,
+        'product' => true,
+        'group' => true
     ];
 }

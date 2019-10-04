@@ -14,6 +14,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\CompaniesTable&\Cake\ORM\Association\BelongsTo $Companies
  * @property \App\Model\Table\ItemsTable&\Cake\ORM\Association\HasMany $Items
+ * @property &\Cake\ORM\Association\BelongsToMany $Groups
  *
  * @method \App\Model\Entity\Product get($primaryKey, $options = [])
  * @method \App\Model\Entity\Product newEntity($data = null, array $options = [])
@@ -46,6 +47,11 @@ class ProductsTable extends Table
         ]);
         $this->hasMany('Items', [
             'foreignKey' => 'product_id'
+        ]);
+        $this->belongsToMany('Groups', [
+            'foreignKey' => 'product_id',
+            'targetForeignKey' => 'group_id',
+            'joinTable' => 'groups_products'
         ]);
     }
 

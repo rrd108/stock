@@ -11,6 +11,7 @@ use Cake\ORM\Entity;
  * @property float|null $percentage
  *
  * @property \App\Model\Entity\Partner[] $partners
+ * @property \App\Model\Entity\Product[] $products
  */
 class Group extends Entity
 {
@@ -26,6 +27,7 @@ class Group extends Entity
     protected $_accessible = [
         'name' => true,
         'percentage' => true,
-        'partners' => true
+        'partners' => true,
+        'products' => true
     ];
 }

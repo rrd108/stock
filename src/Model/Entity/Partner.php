@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property string|null $address
  * @property string|null $phone
  * @property string|null $email
+ * @property string|null $taxnumber
  *
  * @property \App\Model\Entity\Company $company
  * @property \App\Model\Entity\Group $group
@@ -40,6 +41,7 @@ class Partner extends Entity
         'address' => true,
         'phone' => true,
         'email' => true,
+        'taxnumber' => true,
         'company' => true,
         'group' => true,
         'invoices' => true

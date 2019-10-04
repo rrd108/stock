@@ -10,12 +10,11 @@ use Cake\ORM\Entity;
  * @property int $company_id
  * @property string|null $name
  * @property string|null $size
- * @property float|null $cost
- * @property string|null $currency
  * @property float|null $vat
  *
  * @property \App\Model\Entity\Company $company
  * @property \App\Model\Entity\Item[] $items
+ * @property \App\Model\Entity\Group[] $groups
  */
 class Product extends Entity
 {
@@ -32,10 +31,9 @@ class Product extends Entity
         'company_id' => true,
         'name' => true,
         'size' => true,
-        'cost' => true,
-        'currency' => true,
         'vat' => true,
         'company' => true,
-        'items' => true
+        'items' => true,
+        'groups' => true
     ];
 }
