@@ -15,7 +15,7 @@
 <div class="invoices form small-12 columns content">
     <?= $this->Form->create($invoice) ?>
     <fieldset>
-        <legend><?= __('Add Invoice') ?></legend>
+        <h3><i class="fi-plus"></i> <?= __('Add Invoice') ?></h3>
         <div class="row">
             <div class="column small-6">
                 <?= $this->Form->control('storage_id', ['options' => $storages, 'empty' => __('--- choose ---')]) ?>
