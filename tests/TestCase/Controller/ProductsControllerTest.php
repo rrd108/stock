@@ -22,7 +22,9 @@ class ProductsControllerTest extends TestCase
     public $fixtures = [
         'app.Products',
         'app.Companies',
-        'app.Items'
+        'app.Items',
+        'app.Groups',
+        'app.GroupsProducts'
     ];
 
     /**
