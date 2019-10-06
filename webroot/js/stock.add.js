@@ -125,6 +125,8 @@ $(function () {
                 .replace(/td class="text-right">[0-9\.,\/ %]*?<\/td/g, 'td class="text-right"></td');
             // insert row
             tbody.append(tr);
+        } else {
+            $('table tbody tr:last').remove();
         }
 
         // put focus on new line product datalist
