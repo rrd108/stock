@@ -56,10 +56,27 @@ class InvoicesController extends AppController
     {
         $invoice = $this->Invoices->newEntity();
         if ($this->request->is('post')) {
-            $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
+            $data = $this->request->getData();
+            $invoice = $this->Invoices->patchEntity($invoice, $data);
             if ($this->Invoices->save($invoice)) {
                 $this->Flash->success(__('The invoice has been saved.'));
-
+                // TODO do this on JS side
+                if (!$data['sale']) {
+                    foreach ($data['items'] as $item) {
+                        foreach ($item['selling_price'] as $sPrice) {
+                            $sellingPrice = $this->Invoices->Items->Products->GroupsProducts->newEntity();
+                            $sellingPrice = $this->Invoices->Items->Products->GroupsProducts->patchEntity(
+                                $sellingPrice,
+                                [
+                                    'product_id' => $item['product_id'],
+                                    'group_id' => $sPrice['group_id'],
+                                    'percentage' => $sPrice['percentage']
+                                ]
+                            );
+                            $this->Invoices->Items->Products->GroupsProducts->save($sellingPrice);
+                        }
+                    }
+                }
                 return $this->redirect(['action' => 'index']);
             }
             // TODO on error reload all data into the form

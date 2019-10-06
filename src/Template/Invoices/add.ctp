@@ -90,12 +90,19 @@
                     <td class="text-right">0</td>
                     <?php foreach ($groups as $i => $group) : ?>
                         <td class="text-right group">
-                            <?= $this->Form->control('items.0.products.groups.' . $i . '._joinData.percentage',
+                            <?= $this->Form->control(
+                                'items.0.selling_price.' . $i . '.group_id',
+                            ['type' => 'hidden', 'value' => $group->id]
+                            ) ?>
+                            <?= $this->Form->control(
+                                'items.0.selling_price.' . $i . '.percentage',
                             [
                                 'label' => false,
+                                'type' => 'text',
                                 'class' => 'price',
-                                'data-percentage="' . $group->percentage . '"'
-                            ]) ?>
+                                'data-percentage' => $group->percentage
+                            ]
+                            ) ?>
                         </td>
                     <?php endforeach; ?>
                 </tr>

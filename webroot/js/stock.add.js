@@ -90,7 +90,7 @@ $(function () {
             number_format(netAmount + vatAmount)
         );
 
-        $(this).parent().parent().parent().find('.group input').each(function () {
+        $(this).parent().parent().parent().find('.group input.price').each(function () {
             $(this).val(
                 number_format(netPrice * ($(this).data('percentage') / 100 + 1))
             );

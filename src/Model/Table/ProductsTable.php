@@ -48,6 +48,7 @@ class ProductsTable extends Table
         $this->hasMany('Items', [
             'foreignKey' => 'product_id'
         ]);
+        $this->hasMany('GroupsProducts', ['foreignKey' => 'product_id']);
         $this->belongsToMany('Groups', [
             'foreignKey' => 'product_id',
             'targetForeignKey' => 'group_id',
