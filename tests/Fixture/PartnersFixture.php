@@ -52,7 +52,7 @@ class PartnersFixture extends TestFixture
                 'id' => 1,
                 'company_id' => 1,
                 'group_id' => 1,
-                'name' => 'Lorem ipsum dolor sit amet',
+                'name' => 'Partner #1',
                 'zip' => 'Lorem ipsum dolor sit amet',
                 'city' => 'Lorem ipsum dolor sit amet',
                 'address' => 'Lorem ipsum dolor sit amet',

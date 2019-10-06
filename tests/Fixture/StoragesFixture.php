@@ -42,7 +42,7 @@ class StoragesFixture extends TestFixture
             [
                 'id' => 1,
                 'company_id' => 1,
-                'name' => 'Lorem ipsum dolor sit amet'
+                'name' => 'Storage 1'
             ],
         ];
         parent::init();

@@ -37,7 +37,7 @@ class CompaniesFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'name' => 'Lorem ipsum dolor sit amet',
+                'name' => 'Company #1',
                 'taxnumber' => 'Lorem ipsum dolor sit amet'
             ],
         ];
