@@ -1,20 +1,17 @@
 <div class="invoices view small-12 columns content">
+    <h3><?= $invoice->storage->company->name ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('Company') ?></th>
-            <td><?= $this->Html->link($invoice->storage->company->name, ['controller' => 'companies', 'action' => 'view', $invoice->storage->company->id]) ?></td>
-        </tr>
-        <tr>
+            <th scope="row"><?= __('Partner') ?></th>
+            <td><?= $invoice->has('partner') ? $this->Html->link($invoice->partner->name, ['controller' => 'Partners', 'action' => 'view', $invoice->partner->id]) : '' ?></td>
             <th scope="row"><?= __('Storage') ?></th>
             <td><?= $invoice->has('storage') ? $this->Html->link($invoice->storage->name, ['controller' => 'Storages', 'action' => 'view', $invoice->storage->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Invoicetype') ?></th>
             <td><?= $invoice->has('invoicetype') ? $this->Html->link($invoice->invoicetype->name, ['controller' => 'Invoicetypes', 'action' => 'view', $invoice->invoicetype->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Partner') ?></th>
-            <td><?= $invoice->has('partner') ? $this->Html->link($invoice->partner->name, ['controller' => 'Partners', 'action' => 'view', $invoice->partner->id]) : '' ?></td>
+            <th scope="row"><?= __('Date') ?></th>
+            <td><?= h($invoice->date) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Number') ?></th>
@@ -29,18 +26,14 @@
                         <?php endif; ?>
                 <?php endif; ?>
             </td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Date') ?></th>
-            <td><?= h($invoice->date) ?></td>
+            <th scope="row"><?= __('Type') ?></th>
+            <td><?= $invoice->sale ? __('Sale') : __('Purchase'); ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Currency') ?></th>
             <td><?= h($invoice->currency) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Sale') ?></th>
-            <td><?= $invoice->sale ? __('Yes') : __('No'); ?></td>
+            <th scope="row"></th>
+            <td></td>
         </tr>
     </table>
     <div class="related">
