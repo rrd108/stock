@@ -51,7 +51,7 @@
     <fieldset id="items" disabled>
         <table cellpadding="0" cellspacing="0">
             <thead>
-                <tr>
+                <tr class="out">
                     <th class="text-center" scope="col"><?= __('Product') ?></th>
                     <th class="text-center" scope="col"><?= __('Stock') ?></th>
                     <th class="text-center" scope="col"><?= __('Quantity') ?></th>
@@ -83,6 +83,7 @@
                     <td class="text-right"><?= $this->Form->control('items.0.quantity', ['label' => false, 'class' => 'quantity']) ?></td>
                     <td class="text-right">0</td>
                     <td class="text-right">0</td>
+                    <?php // read last price from DB if it is different than the default ?>
                     <td><?= $this->Form->control('items.0.price', ['label' => false, 'class' => 'net price text-right']) ?></td>
                     <td class="text-right">0</td>
                     <td class="text-right">0</td>
@@ -95,7 +96,7 @@
                             ['type' => 'hidden', 'value' => $group->id]
                             ) ?>
                             <?= $this->Form->control(
-                                'items.0.selling_price.' . $i . '.percentage',
+                                'items.0.selling_price.' . $i . '.price',
                             [
                                 'label' => false,
                                 'type' => 'text',

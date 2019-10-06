@@ -9,13 +9,14 @@ $(function () {
     $('#__partner-id').blur(function () {
         $('#items').prop('disabled', false);
         if (!partners[$('#partner-id').val()]) {
-            $('#sale').prop('checked', false).change().prop('disabled', true);
+            $('#sale').prop('checked', false).change();
         }
     });
 
     $('#sale').change(function () {
         // hide or show stock, purchase price, selling price and selling prices for different groups
         if (this.checked) {
+            $('table thead tr').removeClass('in').addClass('out');
             $(this).parent().parent().parent().addClass('out').removeClass('in');
             $(this).parent().find('span').text(StockTexts.hu.sale);
             $('td:nth-child(2), th:nth-child(2)').show();
@@ -23,6 +24,7 @@ $(function () {
             $('td:nth-child(5), th:nth-child(5)').show();
             $('.group').hide();
         } else {
+            $('table thead tr').removeClass('out').addClass('in');
             $(this).parent().parent().parent().addClass('in').removeClass('out');
             $(this).parent().find('span').text(StockTexts.hu.purchase);
             $('td:nth-child(2), th:nth-child(2)').hide();
@@ -55,7 +57,7 @@ $(function () {
         );
 
         // display selling price
-        // TODO get it from groups_products
+        // TODO get it from groups_products if it dirrefrent fom the default
         $(this).parent().parent().next().next().html(
             number_format(lastPurschasePrice * (1 + partners[$('#partner-id').val()] / 100))
         );
@@ -91,6 +93,7 @@ $(function () {
         );
 
         $(this).parent().parent().parent().find('.group input.price').each(function () {
+            // TODO read last price from DB
             $(this).val(
                 number_format(netPrice * ($(this).data('percentage') / 100 + 1))
             );

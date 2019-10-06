@@ -60,7 +60,9 @@ class InvoicesController extends AppController
             $invoice = $this->Invoices->patchEntity($invoice, $data);
             if ($this->Invoices->save($invoice)) {
                 $this->Flash->success(__('The invoice has been saved.'));
-                // TODO do this on JS side
+
+                // new selling prices should be saved
+                // TODO if they are not equal with defaults
                 if (!$data['sale']) {
                     foreach ($data['items'] as $item) {
                         foreach ($item['selling_price'] as $sPrice) {
@@ -70,7 +72,7 @@ class InvoicesController extends AppController
                                 [
                                     'product_id' => $item['product_id'],
                                     'group_id' => $sPrice['group_id'],
-                                    'percentage' => $sPrice['percentage']
+                                    'price' => $sPrice['price']
                                 ]
                             );
                             $this->Invoices->Items->Products->GroupsProducts->save($sellingPrice);

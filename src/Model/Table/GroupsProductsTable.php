@@ -40,6 +40,8 @@ class GroupsProductsTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('Timestamp');
+
         $this->belongsTo('Products', [
             'foreignKey' => 'product_id',
             'joinType' => 'INNER'
@@ -63,8 +65,8 @@ class GroupsProductsTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->add('percentage', 'money')
-            ->notEmptyString('percentage');
+            ->add('price', 'money')
+            ->notEmptyString('price');
 
         return $validator;
     }
@@ -87,6 +89,6 @@ class GroupsProductsTable extends Table
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
     {
         // TODO this is an ugly solution for saving localized numbers
-        $data['percentage'] = LocalizedNumber2Number::change($data['percentage']);
+        $data['price'] = LocalizedNumber2Number::change($data['price']);
     }
 }

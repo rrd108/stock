@@ -28,7 +28,7 @@ class GroupsProduct extends Entity
     protected $_accessible = [
         'product_id' => true,
         'group_id' => true,
-        'percentage' => true,
+        'price' => true,
         'product' => true,
         'group' => true
     ];
