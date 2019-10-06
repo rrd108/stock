@@ -39,19 +39,20 @@ tbody tr.out i.fi-arrow-left {
 /* invoice add */
 div.sale label {
     font-size: 2em;
-    color: #fff;
     cursor: pointer;
 }
-div.sale.in label {
+div.sale.in label, thead tr.in {
     background: #bc50b1;
+    color: #fff;
 }
 div.sale.in label:before {
     margin-left: .3em;
     font-family: "foundation-icons";
     content: "\f10b";
 }
-div.sale.out label {
+div.sale.out label, thead tr.out {
     background: #50bc5b;
+    color: #fff;
 }
 div.sale.out label:before {
     margin-left: .3em;

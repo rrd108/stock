@@ -40,7 +40,7 @@
         <?php if (!empty($invoice->items)): ?>
         <table cellpadding="0" cellspacing="0">
             <thead>
-                <tr>
+                <tr class="<?= $invoice->sale ? 'out' : 'in' ?>">
                     <th class="text-center" scope="col"><?= __('Product') ?></th>
                     <th class="text-center" scope="col"><?= __('Quantity') ?></th>
                     <th class="text-center" scope="col"><?= __('Price') ?></th>
