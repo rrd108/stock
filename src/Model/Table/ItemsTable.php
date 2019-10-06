@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Table;
 
+use App\Lib\LocalizedNumber2Number;
 use ArrayObject;
 use Cake\Event\Event;
 use Cake\ORM\Query;
@@ -89,8 +90,7 @@ class ItemsTable extends Table
 
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
     {
-        // TODO this is an ugly solutio for saving localized numbers
-        $data['price'] = str_replace(' ', '', $data['price']);
-        $data['price'] = str_replace(',', '.', $data['price']);
+        // TODO this is an ugly solution for saving localized numbers
+        $data['price'] = LocalizedNumber2Number::change($data['price']);
     }
 }

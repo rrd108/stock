@@ -1,6 +1,9 @@
 <?php
 namespace App\Model\Table;
 
+use App\Lib\LocalizedNumber2Number;
+use ArrayObject;
+use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -60,9 +63,8 @@ class GroupsProductsTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->decimal('percentage')
-            ->greaterThanOrEqual('percentage', 0)
-            ->allowEmptyString('percentage');
+            ->add('percentage', 'money')
+            ->notEmptyString('percentage');
 
         return $validator;
     }
@@ -80,5 +82,11 @@ class GroupsProductsTable extends Table
         $rules->add($rules->existsIn(['group_id'], 'Groups'));
 
         return $rules;
+    }
+
+    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    {
+        // TODO this is an ugly solution for saving localized numbers
+        $data['percentage'] = LocalizedNumber2Number::change($data['percentage']);
     }
 }
