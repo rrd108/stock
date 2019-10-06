@@ -110,7 +110,8 @@
             <tfoot>
                 <tr>
                     <td>
-                        <?= $this->Form->button(__('Submit'), ['class' => 'button', 'id' => 'saveInvoice']) ?>
+                        <?= $this->Form->button('<i class="fi-plus"> ' . __('New Row') . '</i>', ['class' => 'button', 'id' => 'addNewRow', 'type' => 'button']) ?>
+                        <?= $this->Form->button('<i class="fi-check"> ' . __('Save Invoice') . '</i>', ['class' => 'button', 'id' => 'saveInvoice']) ?>
                         <?= $this->Form->end() ?>
                     </td>
                     <td></td>

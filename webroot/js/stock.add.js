@@ -95,12 +95,10 @@ $(function () {
                 number_format(netPrice * ($(this).data('percentage') / 100 + 1))
             );
         });
-
-        addNewRow($(this).closest('tbody'));
-
     });
 
-    let addNewRow = function (tbody) {
+    $('#addNewRow').click(function () {
+        let tbody = $(this).parents('table').find('tbody');
 
         // calculate totals
         $('tfoot tr').children().each(function (i, element) {
@@ -131,5 +129,5 @@ $(function () {
 
         // put focus on new line product datalist
         tbody.find('datalist:last').prev().focus();
-    }
+    });
 });
