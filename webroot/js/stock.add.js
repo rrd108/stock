@@ -50,6 +50,8 @@ $(function () {
         productId = $(this).parent().parent().prev().prev().find('input[type=hidden]').val();
         let avaragePurchasePrice = products[productId][4];
         let lastPurschasePrice = products[productId][5];
+        // we ca not have html here because of the way we remove last empty line
+        // TODO have 2 spans here for the prices
         $(this).parent().parent().next().html(
             number_format(avaragePurchasePrice)
             + ' / '
@@ -57,7 +59,7 @@ $(function () {
         );
 
         // display selling price
-        // TODO get it from groups_products if it dirrefrent fom the default
+        // TODO get it from groups_products if it dirrefrent fom the default and have 2 spans here
         $(this).parent().parent().next().next().html(
             number_format(lastPurschasePrice * (1 + partners[$('#partner-id').val()] / 100))
         );
