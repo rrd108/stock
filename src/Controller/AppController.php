@@ -53,19 +53,18 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
 
-        $this->loadComponent('CakeDC/Users.UsersAuth');
+        //$this->loadComponent('CakeDC/Users.UsersAuth');
 
         // session is not available in models
         Configure::write('company_id', $this->getRequest()->getSession()->read('company')->id);
-
     }
 
-    public function beforeFilter(Event $event)
+    /*public function beforeFilter(Event $event)
     {
         if (!$this->getRequest()->getSession()->read('company')
             && $this->Auth->user('id')
             && ($this->name != 'Companies' || $this->request->getParam('action') != 'setDefault')) {
             $this->redirect(['plugin' => false, 'controller' => 'Companies', 'action' => 'setDefault']);
         }
-    }
+    }*/
 }

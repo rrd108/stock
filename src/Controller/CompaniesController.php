@@ -28,8 +28,8 @@ class CompaniesController extends AppController
     public function setDefault()
     {
         if (!$this->request->getData('company')) {
-            $companies = $this->Companies->find('list')
-                ->where(['id IN' => $this->Auth->user('additional_data')]);
+            $companies = $this->Companies->find('list');
+                //->where(['id IN' => $this->Auth->user('additional_data')]);
             $this->set(compact('companies'));
             return;
         }
