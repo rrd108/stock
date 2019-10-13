@@ -3,7 +3,7 @@ input[type=text]:focus, select:focus {
 }
 
 main.row {
-    max-width: 95rem;;
+    max-width: max-content;
 }
 
 .top-bar ul, .top-bar {
@@ -70,3 +70,18 @@ input.price {
     width: 6rem;
 }
 /* invoice add end */
+
+
+/*login*/
+.login {
+    margin-top: 5em;
+    width: 25em;
+    border: thin solid #aaa;
+    padding: 2em;
+    box-shadow: 5px 10px 8px #aaa;
+}
+.login img {
+    height: 5em;
+    margin-bottom: 1rem;
+}
+/*login end*/
