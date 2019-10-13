@@ -23,7 +23,7 @@ class InvoicesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Storages', 'Invoicetypes', 'Partners'],
+            'contain' => ['Storages', 'Invoicetypes', 'Partners', 'Items'],
             'order' => ['date' => 'DESC', 'id' => 'DESC']
         ];
         $invoices = $this->paginate($this->Invoices);

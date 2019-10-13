@@ -17,6 +17,7 @@
                 <th scope="col"><?= $this->Paginator->sort('partner_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('storage_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('invoicetype_id') ?></th>
+                <th scope="col"><?= __('Amount') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,14 @@
                 <td><?= '<i class="fi-torsos"> ' . $invoice->partner->name . '</i>' ?></td>
                 <td><?= '<i class="fi-contrast"> ' .  $invoice->storage->name . '</i>' ?></td>
                 <td><?= '<i class="fi-book"> ' . $invoice->invoicetype->name . '</i>' ?></td>
+                <td>
+                    <?= $this->Number->format(
+                        collection($invoice->items)->sumOf(function ($item) {
+                            return $item->quantity * $item->price;
+                        }),
+                        ['precision' => 2]) ?>
+                     <?= $invoice->currency ?>
+                </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
