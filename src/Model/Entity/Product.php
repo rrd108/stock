@@ -30,6 +30,7 @@ class Product extends Entity
     protected $_accessible = [
         'company_id' => true,
         'name' => true,
+        'code' => true,
         'size' => true,
         'vat' => true,
         'company' => true,

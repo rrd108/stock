@@ -21,9 +21,8 @@
         <?php
             echo $this->Form->control('company_id', ['options' => $companies, 'value' => $this->getRequest()->getSession()->read('company')->id]);
             echo $this->Form->control('name');
+            echo $this->Form->control('code');
             echo $this->Form->control('size');
-            echo $this->Form->control('cost');
-            echo $this->Form->control('currency');
             echo $this->Form->control('vat');
         ?>
     </fieldset>
