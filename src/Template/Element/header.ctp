@@ -162,15 +162,6 @@
                                 . ' ' . '<i class="fi-power"></i>',
                                 ['escape' => false, 'prefix' => false]
                                         ) ?>
-                            <?= $this->Html->link(
-                                '<span id="username">'
-                                    . $this->request->getSession()->read('Auth.User.username') .
-                                '</span>'
-                                . ' ' . __('Logout')
-                                . ' ' . '<i class="fi-power"></i>',
-                                ['prefix' => false, 'plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'logout'],
-                                ['escape' => false]
-                                        ) ?>
                         </li>
                     </ul>
                 </div>
