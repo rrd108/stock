@@ -59,12 +59,12 @@ class AppController extends Controller
         Configure::write('company_id', $this->getRequest()->getSession()->read('company')->id);
     }
 
-    /*public function beforeFilter(Event $event)
+    public function beforeFilter(Event $event)
     {
         if (!$this->getRequest()->getSession()->read('company')
             && $this->Auth->user('id')
             && ($this->name != 'Companies' || $this->request->getParam('action') != 'setDefault')) {
             $this->redirect(['plugin' => false, 'controller' => 'Companies', 'action' => 'setDefault']);
         }
-    }*/
+    }
 }
