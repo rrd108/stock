@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2019-09-29 14:48+0000\n"
+"POT-Creation-Date: 2019-10-13 13:30+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -32,86 +32,32 @@ msgstr ""
 msgid "The cake d c users phinxlog could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/CompaniesController.php:54
-#: Controller/CompaniesController.php:78
-msgid "The company has been saved."
-msgstr ""
-
-#: Controller/CompaniesController.php:58
-#: Controller/CompaniesController.php:82
-msgid "The company could not be saved. Please, try again."
-msgstr ""
-
-#: Controller/CompaniesController.php:99
-msgid "The company has been deleted."
-msgstr ""
-
-#: Controller/CompaniesController.php:101
-msgid "The company could not be deleted. Please, try again."
-msgstr ""
-
-#: Controller/GroupsController.php:54
-#: Controller/GroupsController.php:78
-msgid "The group has been saved."
-msgstr ""
-
-#: Controller/GroupsController.php:58
-#: Controller/GroupsController.php:82
-msgid "The group could not be saved. Please, try again."
-msgstr ""
-
-#: Controller/GroupsController.php:99
-msgid "The group has been deleted."
-msgstr ""
-
-#: Controller/GroupsController.php:101
-msgid "The group could not be deleted. Please, try again."
-msgstr ""
-
 #: Controller/InvoicesController.php:62
-#: Controller/InvoicesController.php:90
-#: Controller/InvoicesController.php:257
+#: Controller/InvoicesController.php:113
+#: Controller/InvoicesController.php:280
 msgid "The invoice has been saved."
 msgstr ""
 
-#: Controller/InvoicesController.php:66
-#: Controller/InvoicesController.php:94
-#: Controller/InvoicesController.php:261
+#: Controller/InvoicesController.php:86
+#: Controller/InvoicesController.php:117
+#: Controller/InvoicesController.php:284
 msgid "The invoice could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/InvoicesController.php:114
+#: Controller/InvoicesController.php:137
 msgid "The invoice has been deleted."
 msgstr ""
 
-#: Controller/InvoicesController.php:116
+#: Controller/InvoicesController.php:139
 msgid "The invoice could not be deleted. Please, try again."
 msgstr ""
 
-#: Controller/InvoicesController.php:147
+#: Controller/InvoicesController.php:170
 msgid "Billingo client creation error"
 msgstr ""
 
-#: Controller/InvoicesController.php:215
+#: Controller/InvoicesController.php:238
 msgid "Unrecognized file type: {0}"
-msgstr ""
-
-#: Controller/InvoicetypesController.php:54
-#: Controller/InvoicetypesController.php:78
-msgid "The invoicetype has been saved."
-msgstr ""
-
-#: Controller/InvoicetypesController.php:58
-#: Controller/InvoicetypesController.php:82
-msgid "The invoicetype could not be saved. Please, try again."
-msgstr ""
-
-#: Controller/InvoicetypesController.php:99
-msgid "The invoicetype has been deleted."
-msgstr ""
-
-#: Controller/InvoicetypesController.php:101
-msgid "The invoicetype could not be deleted. Please, try again."
 msgstr ""
 
 #: Controller/ItemsController.php:57
@@ -222,6 +168,78 @@ msgstr ""
 msgid "The user could not be deleted. Please, try again."
 msgstr ""
 
+#: Controller/Admin/CompaniesController.php:54
+#: Controller/Admin/CompaniesController.php:78
+msgid "The company has been saved."
+msgstr ""
+
+#: Controller/Admin/CompaniesController.php:58
+#: Controller/Admin/CompaniesController.php:82
+msgid "The company could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/CompaniesController.php:99
+msgid "The company has been deleted."
+msgstr ""
+
+#: Controller/Admin/CompaniesController.php:101
+msgid "The company could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/Admin/GroupsController.php:54
+#: Controller/Admin/GroupsController.php:78
+msgid "The group has been saved."
+msgstr ""
+
+#: Controller/Admin/GroupsController.php:58
+#: Controller/Admin/GroupsController.php:82
+msgid "The group could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/GroupsController.php:99
+msgid "The group has been deleted."
+msgstr ""
+
+#: Controller/Admin/GroupsController.php:101
+msgid "The group could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/Admin/InvoicetypesController.php:54
+#: Controller/Admin/InvoicetypesController.php:78
+msgid "The invoicetype has been saved."
+msgstr ""
+
+#: Controller/Admin/InvoicetypesController.php:58
+#: Controller/Admin/InvoicetypesController.php:82
+msgid "The invoicetype could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/Admin/InvoicetypesController.php:99
+msgid "The invoicetype has been deleted."
+msgstr ""
+
+#: Controller/Admin/InvoicetypesController.php:101
+msgid "The invoicetype could not be deleted. Please, try again."
+msgstr ""
+
+#: Template/Admin/Companies/add.ctp:9
+#: Template/Admin/Companies/edit.ctp:9
+#: Template/Admin/Companies/index.ctp:8
+#: Template/Admin/Companies/index.ctp:22
+#: Template/Admin/Companies/view.ctp:8
+#: Template/Admin/Companies/view.ctp:41
+#: Template/Admin/Groups/add.ctp:9
+#: Template/Admin/Groups/edit.ctp:9
+#: Template/Admin/Groups/index.ctp:8
+#: Template/Admin/Groups/index.ctp:22
+#: Template/Admin/Groups/view.ctp:8
+#: Template/Admin/Groups/view.ctp:46
+#: Template/Admin/Invoicetypes/add.ctp:9
+#: Template/Admin/Invoicetypes/edit.ctp:9
+#: Template/Admin/Invoicetypes/index.ctp:8
+#: Template/Admin/Invoicetypes/index.ctp:21
+#: Template/Admin/Invoicetypes/view.ctp:8
+#: Template/Admin/Invoicetypes/view.ctp:38
 #: Template/Bake/Element/form.ctp:30
 #: Template/Bake/Template/index.ctp:42
 #: Template/Bake/Template/index.ctp:68
@@ -232,31 +250,9 @@ msgstr ""
 #: Template/CakeDCUsersPhinxlog/index.ctp:8
 #: Template/CakeDCUsersPhinxlog/index.ctp:22
 #: Template/CakeDCUsersPhinxlog/view.ctp:8
-#: Template/Companies/add.ctp:9
-#: Template/Companies/edit.ctp:9
 #: Template/Companies/index.ctp:8
 #: Template/Companies/index.ctp:22
-#: Template/Companies/view.ctp:8
-#: Template/Companies/view.ctp:41
-#: Template/Groups/add.ctp:9
-#: Template/Groups/edit.ctp:9
-#: Template/Groups/index.ctp:8
-#: Template/Groups/index.ctp:22
-#: Template/Groups/view.ctp:8
-#: Template/Groups/view.ctp:46
 #: Template/Invoices/edit.ctp:9
-#: Template/Invoices/index.ctp:20
-#: Template/Invoicetypes/add.ctp:9
-#: Template/Invoicetypes/edit.ctp:9
-#: Template/Invoicetypes/index.ctp:8
-#: Template/Invoicetypes/index.ctp:21
-#: Template/Invoicetypes/view.ctp:8
-#: Template/Invoicetypes/view.ctp:38
-#: Template/Items/add.ctp:9
-#: Template/Items/edit.ctp:9
-#: Template/Items/index.ctp:8
-#: Template/Items/index.ctp:27
-#: Template/Items/view.ctp:8
 #: Template/Partners/add.ctp:9
 #: Template/Partners/edit.ctp:9
 #: Template/Partners/index.ctp:8
@@ -290,24 +286,92 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#: Template/Admin/Companies/add.ctp:10
+#: Template/Admin/Companies/edit.ctp:16
+#: Template/Admin/Companies/view.ctp:11
+#: Template/Partners/add.ctp:11
+#: Template/Partners/edit.ctp:17
+#: Template/Partners/index.ctp:10
+#: Template/Partners/view.ctp:13
+#: Template/Products/add.ctp:11
+#: Template/Products/edit.ctp:17
+#: Template/Products/index.ctp:11
+#: Template/Products/view.ctp:13
+#: Template/Storages/add.ctp:11
+#: Template/Storages/edit.ctp:17
+#: Template/Storages/index.ctp:10
+#: Template/Storages/view.ctp:13
+msgid "List Companies"
+msgstr ""
+
+#: Template/Admin/Companies/add.ctp:11
+#: Template/Admin/Companies/edit.ctp:17
+#: Template/Admin/Companies/index.ctp:10
+#: Template/Admin/Companies/view.ctp:13
+#: Template/Companies/index.ctp:10
+#: Template/Invoices/edit.ctp:17
+#: Template/Storages/add.ctp:10
+#: Template/Storages/edit.ctp:16
+#: Template/Storages/view.ctp:11
+msgid "List Storages"
+msgstr ""
+
+#: Template/Admin/Companies/add.ctp:12
+#: Template/Admin/Companies/edit.ctp:18
+#: Template/Admin/Companies/index.ctp:11
+#: Template/Admin/Companies/view.ctp:14
+#: Template/Companies/index.ctp:11
+#: Template/Invoices/edit.ctp:18
+#: Template/Storages/index.ctp:9
+#: Template/Storages/view.ctp:12
+msgid "New Storage"
+msgstr ""
+
+#: Template/Admin/Companies/add.ctp:18
+msgid "Add Company"
+msgstr ""
+
+#: Template/Admin/Companies/add.ctp:24
+#: Template/Admin/Companies/edit.ctp:30
+#: Template/Admin/Groups/add.ctp:24
+#: Template/Admin/Groups/edit.ctp:30
+#: Template/Admin/Invoicetypes/add.ctp:23
+#: Template/Admin/Invoicetypes/edit.ctp:29
+#: Template/Bake/Element/form.ctp:102
+#: Template/CakeDCUsersPhinxlog/add.ctp:24
+#: Template/CakeDCUsersPhinxlog/edit.ctp:30
+#: Template/Companies/set_default.ctp:14
+#: Template/Invoices/edit.ctp:40
+#: Template/Invoices/import.ctp:110
+#: Template/Partners/add.ctp:34
+#: Template/Partners/edit.ctp:40
+#: Template/Products/add.ctp:30
+#: Template/Products/edit.ctp:36
+#: Template/SocialAccounts/add.ctp:34
+#: Template/SocialAccounts/edit.ctp:40
+#: Template/Storages/add.ctp:26
+#: Template/Storages/edit.ctp:32
+#: Template/Users/add.ctp:38
+#: Template/Users/edit.ctp:44
+msgid "Submit"
+msgstr ""
+
+#: Template/Admin/Companies/edit.ctp:11
+#: Template/Admin/Companies/index.ctp:34
+#: Template/Admin/Companies/view.ctp:51
+#: Template/Admin/Groups/edit.ctp:11
+#: Template/Admin/Groups/index.ctp:34
+#: Template/Admin/Groups/view.ctp:61
+#: Template/Admin/Invoicetypes/edit.ctp:11
+#: Template/Admin/Invoicetypes/index.ctp:32
+#: Template/Admin/Invoicetypes/view.ctp:49
 #: Template/Bake/Element/form.ctp:33
 #: Template/Bake/Template/index.ctp:105
 #: Template/Bake/Template/view.ctp:170
 #: Template/CakeDCUsersPhinxlog/edit.ctp:11
 #: Template/CakeDCUsersPhinxlog/index.ctp:36
-#: Template/Companies/edit.ctp:11
 #: Template/Companies/index.ctp:34
-#: Template/Companies/view.ctp:51
-#: Template/Groups/edit.ctp:11
-#: Template/Groups/index.ctp:34
-#: Template/Groups/view.ctp:61
 #: Template/Invoices/edit.ctp:11
-#: Template/Invoices/index.ctp:36
-#: Template/Invoicetypes/edit.ctp:11
-#: Template/Invoicetypes/index.ctp:32
-#: Template/Invoicetypes/view.ctp:49
-#: Template/Items/edit.ctp:11
-#: Template/Items/index.ctp:42
 #: Template/Partners/edit.ctp:11
 #: Template/Partners/index.ctp:50
 #: Template/Partners/view.ctp:81
@@ -326,6 +390,18 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+#: Template/Admin/Companies/edit.ctp:13
+#: Template/Admin/Companies/index.ctp:35
+#: Template/Admin/Companies/view.ctp:10
+#: Template/Admin/Companies/view.ctp:51
+#: Template/Admin/Groups/edit.ctp:13
+#: Template/Admin/Groups/index.ctp:35
+#: Template/Admin/Groups/view.ctp:10
+#: Template/Admin/Groups/view.ctp:61
+#: Template/Admin/Invoicetypes/edit.ctp:13
+#: Template/Admin/Invoicetypes/index.ctp:33
+#: Template/Admin/Invoicetypes/view.ctp:10
+#: Template/Admin/Invoicetypes/view.ctp:49
 #: Template/Bake/Element/form.ctp:35
 #: Template/Bake/Template/index.ctp:106
 #: Template/Bake/Template/view.ctp:65
@@ -333,23 +409,8 @@ msgstr ""
 #: Template/CakeDCUsersPhinxlog/edit.ctp:13
 #: Template/CakeDCUsersPhinxlog/index.ctp:37
 #: Template/CakeDCUsersPhinxlog/view.ctp:10
-#: Template/Companies/edit.ctp:13
 #: Template/Companies/index.ctp:35
-#: Template/Companies/view.ctp:10
-#: Template/Companies/view.ctp:51
-#: Template/Groups/edit.ctp:13
-#: Template/Groups/index.ctp:35
-#: Template/Groups/view.ctp:10
-#: Template/Groups/view.ctp:61
 #: Template/Invoices/edit.ctp:13
-#: Template/Invoices/index.ctp:37
-#: Template/Invoicetypes/edit.ctp:13
-#: Template/Invoicetypes/index.ctp:33
-#: Template/Invoicetypes/view.ctp:10
-#: Template/Invoicetypes/view.ctp:49
-#: Template/Items/edit.ctp:13
-#: Template/Items/index.ctp:43
-#: Template/Items/view.ctp:10
 #: Template/Partners/edit.ctp:13
 #: Template/Partners/index.ctp:51
 #: Template/Partners/view.ctp:10
@@ -373,6 +434,374 @@ msgstr ""
 msgid "Are you sure you want to delete # {0}?"
 msgstr ""
 
+#: Template/Admin/Companies/edit.ctp:24
+#: Template/Admin/Companies/view.ctp:9
+msgid "Edit Company"
+msgstr ""
+
+#: Template/Admin/Companies/index.ctp:9
+#: Template/Admin/Companies/view.ctp:12
+#: Template/Companies/index.ctp:9
+#: Template/Partners/add.ctp:12
+#: Template/Partners/edit.ctp:18
+#: Template/Partners/index.ctp:11
+#: Template/Partners/view.ctp:14
+#: Template/Products/add.ctp:12
+#: Template/Products/edit.ctp:18
+#: Template/Products/index.ctp:12
+#: Template/Products/view.ctp:14
+#: Template/Storages/add.ctp:12
+#: Template/Storages/edit.ctp:18
+#: Template/Storages/index.ctp:11
+#: Template/Storages/view.ctp:14
+msgid "New Company"
+msgstr ""
+
+#: Template/Admin/Companies/index.ctp:15
+#: Template/Companies/index.ctp:15
+#: Template/Element/header.ctp:108
+msgid "Companies"
+msgstr ""
+
+#: Template/Admin/Companies/index.ctp:32
+#: Template/Admin/Companies/view.ctp:49
+#: Template/Admin/Groups/index.ctp:32
+#: Template/Admin/Groups/view.ctp:59
+#: Template/Admin/Invoicetypes/index.ctp:30
+#: Template/Admin/Invoicetypes/view.ctp:47
+#: Template/Bake/Template/index.ctp:103
+#: Template/Bake/Template/view.ctp:168
+#: Template/CakeDCUsersPhinxlog/index.ctp:34
+#: Template/Companies/index.ctp:32
+#: Template/Partners/index.ctp:48
+#: Template/Partners/view.ctp:79
+#: Template/Products/index.ctp:37
+#: Template/Products/stock.ctp:27
+#: Template/Products/view.ctp:77
+#: Template/SocialAccounts/index.ctp:52
+#: Template/Storages/index.ctp:34
+#: Template/Storages/view.ctp:59
+#: Template/Users/index.ctp:62
+#: Template/Users/view.ctp:137
+msgid "View"
+msgstr ""
+
+#: Template/Admin/Companies/index.ctp:33
+#: Template/Admin/Companies/view.ctp:50
+#: Template/Admin/Groups/index.ctp:33
+#: Template/Admin/Groups/view.ctp:60
+#: Template/Admin/Invoicetypes/index.ctp:31
+#: Template/Admin/Invoicetypes/view.ctp:48
+#: Template/Bake/Template/index.ctp:104
+#: Template/Bake/Template/view.ctp:169
+#: Template/CakeDCUsersPhinxlog/index.ctp:35
+#: Template/Companies/index.ctp:33
+#: Template/Partners/index.ctp:49
+#: Template/Partners/view.ctp:80
+#: Template/Products/index.ctp:38
+#: Template/Products/stock.ctp:28
+#: Template/Products/view.ctp:78
+#: Template/SocialAccounts/index.ctp:53
+#: Template/Storages/index.ctp:35
+#: Template/Storages/view.ctp:60
+#: Template/Users/index.ctp:63
+#: Template/Users/view.ctp:138
+msgid "Edit"
+msgstr ""
+
+#: Template/Admin/Companies/index.ctp:43
+#: Template/Admin/Groups/index.ctp:43
+#: Template/Admin/Invoicetypes/index.ctp:41
+#: Template/Bake/Template/index.ctp:114
+#: Template/CakeDCUsersPhinxlog/index.ctp:45
+#: Template/Companies/index.ctp:43
+#: Template/Invoices/index.ctp:49
+#: Template/Partners/index.ctp:59
+#: Template/Products/index.ctp:48
+#: Template/SocialAccounts/index.ctp:63
+#: Template/Storages/index.ctp:45
+#: Template/Users/index.ctp:73
+msgid "first"
+msgstr ""
+
+#: Template/Admin/Companies/index.ctp:44
+#: Template/Admin/Groups/index.ctp:44
+#: Template/Admin/Invoicetypes/index.ctp:42
+#: Template/Bake/Template/index.ctp:115
+#: Template/CakeDCUsersPhinxlog/index.ctp:46
+#: Template/Companies/index.ctp:44
+#: Template/Invoices/index.ctp:50
+#: Template/Partners/index.ctp:60
+#: Template/Products/index.ctp:49
+#: Template/SocialAccounts/index.ctp:64
+#: Template/Storages/index.ctp:46
+#: Template/Users/index.ctp:74
+msgid "previous"
+msgstr ""
+
+#: Template/Admin/Companies/index.ctp:46
+#: Template/Admin/Groups/index.ctp:46
+#: Template/Admin/Invoicetypes/index.ctp:44
+#: Template/Bake/Template/index.ctp:117
+#: Template/CakeDCUsersPhinxlog/index.ctp:48
+#: Template/Companies/index.ctp:46
+#: Template/Invoices/index.ctp:52
+#: Template/Partners/index.ctp:62
+#: Template/Products/index.ctp:51
+#: Template/SocialAccounts/index.ctp:66
+#: Template/Storages/index.ctp:48
+#: Template/Users/index.ctp:76
+msgid "next"
+msgstr ""
+
+#: Template/Admin/Companies/index.ctp:47
+#: Template/Admin/Groups/index.ctp:47
+#: Template/Admin/Invoicetypes/index.ctp:45
+#: Template/Bake/Template/index.ctp:118
+#: Template/CakeDCUsersPhinxlog/index.ctp:49
+#: Template/Companies/index.ctp:47
+#: Template/Invoices/index.ctp:53
+#: Template/Partners/index.ctp:63
+#: Template/Products/index.ctp:52
+#: Template/SocialAccounts/index.ctp:67
+#: Template/Storages/index.ctp:49
+#: Template/Users/index.ctp:77
+msgid "last"
+msgstr ""
+
+#: Template/Admin/Companies/index.ctp:49
+#: Template/Admin/Groups/index.ctp:49
+#: Template/Admin/Invoicetypes/index.ctp:47
+#: Template/Bake/Template/index.ctp:120
+#: Template/CakeDCUsersPhinxlog/index.ctp:51
+#: Template/Companies/index.ctp:49
+#: Template/Invoices/index.ctp:55
+#: Template/Partners/index.ctp:65
+#: Template/Products/index.ctp:54
+#: Template/SocialAccounts/index.ctp:69
+#: Template/Storages/index.ctp:51
+#: Template/Users/index.ctp:79
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr ""
+
+#: Template/Admin/Companies/view.ctp:10
+msgid "Delete Company"
+msgstr ""
+
+#: Template/Admin/Companies/view.ctp:21
+#: Template/Admin/Companies/view.ctp:40
+#: Template/Admin/Groups/view.ctp:21
+#: Template/Admin/Groups/view.ctp:40
+#: Template/Admin/Invoicetypes/view.ctp:21
+#: Template/Partners/view.ctp:33
+#: Template/Products/view.ctp:27
+#: Template/Storages/view.ctp:27
+#: Template/Storages/view.ctp:42
+msgid "Name"
+msgstr ""
+
+#: Template/Admin/Companies/view.ctp:25
+msgid "Taxnumber"
+msgstr ""
+
+#: Template/Admin/Companies/view.ctp:29
+#: Template/Admin/Companies/view.ctp:38
+#: Template/Admin/Groups/view.ctp:25
+#: Template/Admin/Groups/view.ctp:38
+#: Template/Admin/Invoicetypes/view.ctp:25
+#: Template/Admin/Invoicetypes/view.ctp:34
+#: Template/Partners/view.ctp:57
+#: Template/Partners/view.ctp:66
+#: Template/Products/view.ctp:39
+#: Template/Products/view.ctp:56
+#: Template/SocialAccounts/view.ctp:21
+#: Template/Storages/view.ctp:31
+#: Template/Storages/view.ctp:40
+#: Template/Users/view.ctp:21
+#: Template/Users/view.ctp:102
+msgid "Id"
+msgstr ""
+
+#: Template/Admin/Companies/view.ctp:34
+msgid "Related Storages"
+msgstr ""
+
+#: Template/Admin/Companies/view.ctp:39
+msgid "Company Id"
+msgstr ""
+
+#: Template/Admin/Groups/add.ctp:10
+#: Template/Admin/Groups/edit.ctp:16
+#: Template/Admin/Groups/view.ctp:11
+#: Template/Partners/add.ctp:13
+#: Template/Partners/edit.ctp:19
+#: Template/Partners/index.ctp:12
+#: Template/Partners/view.ctp:15
+msgid "List Groups"
+msgstr ""
+
+#: Template/Admin/Groups/add.ctp:11
+#: Template/Admin/Groups/edit.ctp:17
+#: Template/Admin/Groups/index.ctp:10
+#: Template/Admin/Groups/view.ctp:13
+#: Template/Invoices/edit.ctp:21
+#: Template/Partners/add.ctp:10
+#: Template/Partners/edit.ctp:16
+#: Template/Partners/view.ctp:11
+msgid "List Partners"
+msgstr ""
+
+#: Template/Admin/Groups/add.ctp:12
+#: Template/Admin/Groups/edit.ctp:18
+#: Template/Admin/Groups/index.ctp:11
+#: Template/Admin/Groups/view.ctp:14
+#: Template/Invoices/edit.ctp:22
+#: Template/Partners/index.ctp:9
+#: Template/Partners/view.ctp:12
+msgid "New Partner"
+msgstr ""
+
+#: Template/Admin/Groups/add.ctp:18
+msgid "Add Group"
+msgstr ""
+
+#: Template/Admin/Groups/edit.ctp:24
+#: Template/Admin/Groups/view.ctp:9
+msgid "Edit Group"
+msgstr ""
+
+#: Template/Admin/Groups/index.ctp:9
+#: Template/Admin/Groups/view.ctp:12
+#: Template/Partners/add.ctp:14
+#: Template/Partners/edit.ctp:20
+#: Template/Partners/index.ctp:13
+#: Template/Partners/view.ctp:16
+msgid "New Group"
+msgstr ""
+
+#: Template/Admin/Groups/index.ctp:15
+#: Template/Element/header.ctp:129
+msgid "Groups"
+msgstr ""
+
+#: Template/Admin/Groups/view.ctp:10
+msgid "Delete Group"
+msgstr ""
+
+#: Template/Admin/Groups/view.ctp:29
+msgid "Percentage"
+msgstr ""
+
+#: Template/Admin/Groups/view.ctp:34
+msgid "Related Partners"
+msgstr ""
+
+#: Template/Admin/Groups/view.ctp:39
+msgid "Group Id"
+msgstr ""
+
+#: Template/Admin/Groups/view.ctp:41
+#: Template/Partners/view.ctp:37
+msgid "Zip"
+msgstr ""
+
+#: Template/Admin/Groups/view.ctp:42
+#: Template/Partners/view.ctp:41
+msgid "City"
+msgstr ""
+
+#: Template/Admin/Groups/view.ctp:43
+#: Template/Partners/view.ctp:45
+msgid "Address"
+msgstr ""
+
+#: Template/Admin/Groups/view.ctp:44
+#: Template/Partners/view.ctp:49
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:28
+msgid "Phone"
+msgstr ""
+
+#: Template/Admin/Groups/view.ctp:45
+#: Template/Partners/view.ctp:53
+#: Template/Users/view.ctp:29
+msgid "Email"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/add.ctp:10
+#: Template/Admin/Invoicetypes/edit.ctp:16
+#: Template/Admin/Invoicetypes/view.ctp:11
+#: Template/Invoices/edit.ctp:19
+msgid "List Invoicetypes"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/add.ctp:11
+#: Template/Admin/Invoicetypes/edit.ctp:17
+#: Template/Admin/Invoicetypes/index.ctp:10
+#: Template/Admin/Invoicetypes/view.ctp:13
+#: Template/Invoices/edit.ctp:16
+#: Template/Partners/add.ctp:15
+#: Template/Partners/edit.ctp:21
+#: Template/Partners/index.ctp:14
+#: Template/Partners/view.ctp:17
+msgid "List Invoices"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/add.ctp:12
+#: Template/Admin/Invoicetypes/edit.ctp:18
+#: Template/Admin/Invoicetypes/index.ctp:11
+#: Template/Admin/Invoicetypes/view.ctp:14
+#: Template/Element/header.ctp:60
+#: Template/Invoices/index.ctp:7
+#: Template/Partners/add.ctp:16
+#: Template/Partners/edit.ctp:22
+#: Template/Partners/index.ctp:15
+#: Template/Partners/view.ctp:18
+msgid "New Invoice"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/add.ctp:18
+msgid "Add Invoicetype"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/edit.ctp:24
+#: Template/Admin/Invoicetypes/view.ctp:9
+msgid "Edit Invoicetype"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/index.ctp:9
+#: Template/Admin/Invoicetypes/view.ctp:12
+#: Template/Invoices/edit.ctp:20
+msgid "New Invoicetype"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/index.ctp:15
+msgid "Invoicetypes"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/view.ctp:10
+msgid "Delete Invoicetype"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/view.ctp:30
+#: Template/Partners/view.ctp:62
+msgid "Related Invoices"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/view.ctp:35
+#: Template/Partners/view.ctp:67
+msgid "Invoicetype Id"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/view.ctp:36
+#: Template/Partners/view.ctp:68
+msgid "Partner Id"
+msgstr ""
+
+#: Template/Admin/Invoicetypes/view.ctp:37
+#: Template/Partners/view.ctp:69
+msgid "Invoiced"
+msgstr ""
+
 #: Template/Bake/Element/form.ctp:39
 #: Template/Bake/Template/view.ctp:66
 msgid "List <%= $pluralHumanName %>"
@@ -393,34 +822,6 @@ msgstr ""
 msgid "<%= Inflector::humanize($action) %> <%= $singularHumanName %>"
 msgstr ""
 
-#: Template/Bake/Element/form.ctp:102
-#: Template/CakeDCUsersPhinxlog/add.ctp:24
-#: Template/CakeDCUsersPhinxlog/edit.ctp:30
-#: Template/Companies/add.ctp:24
-#: Template/Companies/edit.ctp:30
-#: Template/Companies/set_default.ctp:14
-#: Template/Groups/add.ctp:24
-#: Template/Groups/edit.ctp:30
-#: Template/Invoices/add.ctp:97
-#: Template/Invoices/edit.ctp:40
-#: Template/Invoices/import.ctp:110
-#: Template/Invoicetypes/add.ctp:23
-#: Template/Invoicetypes/edit.ctp:29
-#: Template/Items/add.ctp:29
-#: Template/Items/edit.ctp:35
-#: Template/Partners/add.ctp:34
-#: Template/Partners/edit.ctp:40
-#: Template/Products/add.ctp:30
-#: Template/Products/edit.ctp:36
-#: Template/SocialAccounts/add.ctp:34
-#: Template/SocialAccounts/edit.ctp:40
-#: Template/Storages/add.ctp:26
-#: Template/Storages/edit.ctp:32
-#: Template/Users/add.ctp:38
-#: Template/Users/edit.ctp:44
-msgid "Submit"
-msgstr ""
-
 #: Template/Bake/Template/index.ctp:43
 #: Template/Bake/Template/view.ctp:67
 msgid "New <%= $singularHumanName %>"
@@ -428,130 +829,6 @@ msgstr ""
 
 #: Template/Bake/Template/index.ctp:61
 msgid "<%= $pluralHumanName %>"
-msgstr ""
-
-#: Template/Bake/Template/index.ctp:103
-#: Template/Bake/Template/view.ctp:168
-#: Template/CakeDCUsersPhinxlog/index.ctp:34
-#: Template/Companies/index.ctp:32
-#: Template/Companies/view.ctp:49
-#: Template/Groups/index.ctp:32
-#: Template/Groups/view.ctp:59
-#: Template/Invoices/index.ctp:34
-#: Template/Invoicetypes/index.ctp:30
-#: Template/Invoicetypes/view.ctp:47
-#: Template/Items/index.ctp:40
-#: Template/Partners/index.ctp:48
-#: Template/Partners/view.ctp:79
-#: Template/Products/index.ctp:37
-#: Template/Products/stock.ctp:27
-#: Template/Products/view.ctp:77
-#: Template/SocialAccounts/index.ctp:52
-#: Template/Storages/index.ctp:34
-#: Template/Storages/view.ctp:59
-#: Template/Users/index.ctp:62
-#: Template/Users/view.ctp:137
-#: View/Helper/PaginatorHelper.php:1269
-msgid "View"
-msgstr ""
-
-#: Template/Bake/Template/index.ctp:104
-#: Template/Bake/Template/view.ctp:169
-#: Template/CakeDCUsersPhinxlog/index.ctp:35
-#: Template/Companies/index.ctp:33
-#: Template/Companies/view.ctp:50
-#: Template/Groups/index.ctp:33
-#: Template/Groups/view.ctp:60
-#: Template/Invoices/index.ctp:35
-#: Template/Invoicetypes/index.ctp:31
-#: Template/Invoicetypes/view.ctp:48
-#: Template/Items/index.ctp:41
-#: Template/Partners/index.ctp:49
-#: Template/Partners/view.ctp:80
-#: Template/Products/index.ctp:38
-#: Template/Products/stock.ctp:28
-#: Template/Products/view.ctp:78
-#: Template/SocialAccounts/index.ctp:53
-#: Template/Storages/index.ctp:35
-#: Template/Storages/view.ctp:60
-#: Template/Users/index.ctp:63
-#: Template/Users/view.ctp:138
-msgid "Edit"
-msgstr ""
-
-#: Template/Bake/Template/index.ctp:114
-#: Template/CakeDCUsersPhinxlog/index.ctp:45
-#: Template/Companies/index.ctp:43
-#: Template/Groups/index.ctp:43
-#: Template/Invoices/index.ctp:45
-#: Template/Invoicetypes/index.ctp:41
-#: Template/Items/index.ctp:51
-#: Template/Partners/index.ctp:59
-#: Template/Products/index.ctp:48
-#: Template/SocialAccounts/index.ctp:63
-#: Template/Storages/index.ctp:45
-#: Template/Users/index.ctp:73
-msgid "first"
-msgstr ""
-
-#: Template/Bake/Template/index.ctp:115
-#: Template/CakeDCUsersPhinxlog/index.ctp:46
-#: Template/Companies/index.ctp:44
-#: Template/Groups/index.ctp:44
-#: Template/Invoices/index.ctp:46
-#: Template/Invoicetypes/index.ctp:42
-#: Template/Items/index.ctp:52
-#: Template/Partners/index.ctp:60
-#: Template/Products/index.ctp:49
-#: Template/SocialAccounts/index.ctp:64
-#: Template/Storages/index.ctp:46
-#: Template/Users/index.ctp:74
-msgid "previous"
-msgstr ""
-
-#: Template/Bake/Template/index.ctp:117
-#: Template/CakeDCUsersPhinxlog/index.ctp:48
-#: Template/Companies/index.ctp:46
-#: Template/Groups/index.ctp:46
-#: Template/Invoices/index.ctp:48
-#: Template/Invoicetypes/index.ctp:44
-#: Template/Items/index.ctp:54
-#: Template/Partners/index.ctp:62
-#: Template/Products/index.ctp:51
-#: Template/SocialAccounts/index.ctp:66
-#: Template/Storages/index.ctp:48
-#: Template/Users/index.ctp:76
-msgid "next"
-msgstr ""
-
-#: Template/Bake/Template/index.ctp:118
-#: Template/CakeDCUsersPhinxlog/index.ctp:49
-#: Template/Companies/index.ctp:47
-#: Template/Groups/index.ctp:47
-#: Template/Invoices/index.ctp:49
-#: Template/Invoicetypes/index.ctp:45
-#: Template/Items/index.ctp:55
-#: Template/Partners/index.ctp:63
-#: Template/Products/index.ctp:52
-#: Template/SocialAccounts/index.ctp:67
-#: Template/Storages/index.ctp:49
-#: Template/Users/index.ctp:77
-msgid "last"
-msgstr ""
-
-#: Template/Bake/Template/index.ctp:120
-#: Template/CakeDCUsersPhinxlog/index.ctp:51
-#: Template/Companies/index.ctp:49
-#: Template/Groups/index.ctp:49
-#: Template/Invoices/index.ctp:51
-#: Template/Invoicetypes/index.ctp:47
-#: Template/Items/index.ctp:57
-#: Template/Partners/index.ctp:65
-#: Template/Products/index.ctp:54
-#: Template/SocialAccounts/index.ctp:69
-#: Template/Storages/index.ctp:51
-#: Template/Users/index.ctp:79
-msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
 msgstr ""
 
 #: Template/Bake/Template/view.ctp:64
@@ -584,7 +861,6 @@ msgstr ""
 
 #: Template/Bake/Template/view.ctp:132
 #: Template/CakeDCUsersPhinxlog/view.ctp:36
-#: Template/Invoices/view.ctp:39
 #: Template/SocialAccounts/view.ctp:70
 #: Template/Users/view.ctp:82
 #: Template/Users/view.ctp:86
@@ -594,7 +870,6 @@ msgstr ""
 
 #: Template/Bake/Template/view.ctp:132
 #: Template/CakeDCUsersPhinxlog/view.ctp:36
-#: Template/Invoices/view.ctp:39
 #: Template/SocialAccounts/view.ctp:70
 #: Template/Users/view.ctp:82
 #: Template/Users/view.ctp:86
@@ -654,78 +929,7 @@ msgstr ""
 msgid "Breakpoint"
 msgstr ""
 
-#: Template/Companies/add.ctp:10
-#: Template/Companies/edit.ctp:16
-#: Template/Companies/view.ctp:11
-#: Template/Partners/add.ctp:11
-#: Template/Partners/edit.ctp:17
-#: Template/Partners/index.ctp:10
-#: Template/Partners/view.ctp:13
-#: Template/Products/add.ctp:11
-#: Template/Products/edit.ctp:17
-#: Template/Products/index.ctp:11
-#: Template/Products/view.ctp:13
-#: Template/Storages/add.ctp:11
-#: Template/Storages/edit.ctp:17
-#: Template/Storages/index.ctp:10
-#: Template/Storages/view.ctp:13
-msgid "List Companies"
-msgstr ""
-
-#: Template/Companies/add.ctp:11
-#: Template/Companies/edit.ctp:17
-#: Template/Companies/index.ctp:10
-#: Template/Companies/view.ctp:13
-#: Template/Invoices/edit.ctp:17
-#: Template/Storages/add.ctp:10
-#: Template/Storages/edit.ctp:16
-#: Template/Storages/view.ctp:11
-msgid "List Storages"
-msgstr ""
-
-#: Template/Companies/add.ctp:12
-#: Template/Companies/edit.ctp:18
-#: Template/Companies/index.ctp:11
-#: Template/Companies/view.ctp:14
-#: Template/Invoices/edit.ctp:18
-#: Template/Storages/index.ctp:9
-#: Template/Storages/view.ctp:12
-msgid "New Storage"
-msgstr ""
-
-#: Template/Companies/add.ctp:18
-msgid "Add Company"
-msgstr ""
-
-#: Template/Companies/edit.ctp:24
-#: Template/Companies/view.ctp:9
-msgid "Edit Company"
-msgstr ""
-
-#: Template/Companies/index.ctp:9
-#: Template/Companies/view.ctp:12
-#: Template/Partners/add.ctp:12
-#: Template/Partners/edit.ctp:18
-#: Template/Partners/index.ctp:11
-#: Template/Partners/view.ctp:14
-#: Template/Products/add.ctp:12
-#: Template/Products/edit.ctp:18
-#: Template/Products/index.ctp:12
-#: Template/Products/view.ctp:14
-#: Template/Storages/add.ctp:12
-#: Template/Storages/edit.ctp:18
-#: Template/Storages/index.ctp:11
-#: Template/Storages/view.ctp:14
-msgid "New Company"
-msgstr ""
-
-#: Template/Companies/index.ctp:15
-#: Template/Element/header.ctp:76
-msgid "Companies"
-msgstr ""
-
 #: Template/Companies/set_default.ctp:4
-#: Template/Invoices/view.ctp:4
 #: Template/Partners/view.ctp:25
 #: Template/Products/view.ctp:23
 #: Template/Storages/view.ctp:23
@@ -733,6 +937,8 @@ msgid "Company"
 msgstr ""
 
 #: Template/Companies/set_default.ctp:10
+#: Template/Invoices/add.ctp:24
+#: Template/Invoices/add.ctp:28
 #: Template/Invoices/import.ctp:28
 #: Template/Invoices/import.ctp:37
 #: Template/Invoices/import.ctp:62
@@ -743,53 +949,6 @@ msgstr ""
 msgid "--- choose ---"
 msgstr ""
 
-#: Template/Companies/view.ctp:10
-msgid "Delete Company"
-msgstr ""
-
-#: Template/Companies/view.ctp:21
-#: Template/Companies/view.ctp:40
-#: Template/Groups/view.ctp:21
-#: Template/Groups/view.ctp:40
-#: Template/Invoicetypes/view.ctp:21
-#: Template/Partners/view.ctp:33
-#: Template/Products/view.ctp:27
-#: Template/Storages/view.ctp:27
-#: Template/Storages/view.ctp:42
-msgid "Name"
-msgstr ""
-
-#: Template/Companies/view.ctp:25
-msgid "Taxnumber"
-msgstr ""
-
-#: Template/Companies/view.ctp:29
-#: Template/Companies/view.ctp:38
-#: Template/Groups/view.ctp:25
-#: Template/Groups/view.ctp:38
-#: Template/Invoicetypes/view.ctp:25
-#: Template/Invoicetypes/view.ctp:34
-#: Template/Items/view.ctp:35
-#: Template/Partners/view.ctp:57
-#: Template/Partners/view.ctp:66
-#: Template/Products/view.ctp:39
-#: Template/Products/view.ctp:56
-#: Template/SocialAccounts/view.ctp:21
-#: Template/Storages/view.ctp:31
-#: Template/Storages/view.ctp:40
-#: Template/Users/view.ctp:21
-#: Template/Users/view.ctp:102
-msgid "Id"
-msgstr ""
-
-#: Template/Companies/view.ctp:34
-msgid "Related Storages"
-msgstr ""
-
-#: Template/Companies/view.ctp:39
-msgid "Company Id"
-msgstr ""
-
 #: Template/Element/header.ctp:5
 msgid "Menu"
 msgstr ""
@@ -798,230 +957,116 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: Template/Element/header.ctp:31
+#: Template/Element/header.ctp:32
+#: Template/Element/header.ctp:46
 #: Template/Invoices/index.ctp:4
 #: Template/Stats/index.ctp:5
 msgid "Invoices"
 msgstr ""
 
-#: Template/Element/header.ctp:44
+#: Template/Element/header.ctp:74
+#: Template/Invoices/add.ctp:60
 #: Template/Products/index.ctp:10
 msgid "Stock"
 msgstr ""
 
-#: Template/Element/header.ctp:57
+#: Template/Element/header.ctp:88
 #: Template/Invoices/import.ctp:2
 msgid "Import"
 msgstr ""
 
-#: Template/Element/header.ctp:70
+#: Template/Element/header.ctp:102
 msgid "Main data"
 msgstr ""
 
-#: Template/Element/header.ctp:81
+#: Template/Element/header.ctp:113
 #: Template/Storages/index.ctp:17
 msgid "Storages"
 msgstr ""
 
-#: Template/Element/header.ctp:86
-#: Template/Groups/index.ctp:15
-msgid "Groups"
-msgstr ""
-
-#: Template/Element/header.ctp:91
+#: Template/Element/header.ctp:118
 #: Template/Partners/index.ctp:19
 #: Template/Stats/index.ctp:4
 msgid "Partners"
 msgstr ""
 
-#: Template/Element/header.ctp:96
-msgid "Invoice types"
-msgstr ""
-
-#: Template/Element/header.ctp:101
+#: Template/Element/header.ctp:123
 #: Template/Products/index.ctp:18
 #: Template/Products/stock.ctp:2
 #: Template/Stats/index.ctp:6
 msgid "Products"
 msgstr ""
 
-#: Template/Element/header.ctp:127
-msgid "Logout"
+#: Template/Element/header.ctp:134
+msgid "Invoice types"
 msgstr ""
 
-#: Template/Groups/add.ctp:10
-#: Template/Groups/edit.ctp:16
-#: Template/Groups/view.ctp:11
-#: Template/Partners/add.ctp:13
-#: Template/Partners/edit.ctp:19
-#: Template/Partners/index.ctp:12
-#: Template/Partners/view.ctp:15
-msgid "List Groups"
-msgstr ""
-
-#: Template/Groups/add.ctp:11
-#: Template/Groups/edit.ctp:17
-#: Template/Groups/index.ctp:10
-#: Template/Groups/view.ctp:13
-#: Template/Invoices/edit.ctp:21
-#: Template/Partners/add.ctp:10
-#: Template/Partners/edit.ctp:16
-#: Template/Partners/view.ctp:11
-msgid "List Partners"
-msgstr ""
-
-#: Template/Groups/add.ctp:12
-#: Template/Groups/edit.ctp:18
-#: Template/Groups/index.ctp:11
-#: Template/Groups/view.ctp:14
-#: Template/Invoices/edit.ctp:22
-#: Template/Partners/index.ctp:9
-#: Template/Partners/view.ctp:12
-msgid "New Partner"
-msgstr ""
-
-#: Template/Groups/add.ctp:18
-msgid "Add Group"
-msgstr ""
-
-#: Template/Groups/edit.ctp:24
-#: Template/Groups/view.ctp:9
-msgid "Edit Group"
-msgstr ""
-
-#: Template/Groups/index.ctp:9
-#: Template/Groups/view.ctp:12
-#: Template/Partners/add.ctp:14
-#: Template/Partners/edit.ctp:20
-#: Template/Partners/index.ctp:13
-#: Template/Partners/view.ctp:16
-msgid "New Group"
-msgstr ""
-
-#: Template/Groups/view.ctp:10
-msgid "Delete Group"
-msgstr ""
-
-#: Template/Groups/view.ctp:29
-msgid "Percentage"
-msgstr ""
-
-#: Template/Groups/view.ctp:34
-msgid "Related Partners"
-msgstr ""
-
-#: Template/Groups/view.ctp:39
-msgid "Group Id"
-msgstr ""
-
-#: Template/Groups/view.ctp:41
-#: Template/Partners/view.ctp:37
-msgid "Zip"
-msgstr ""
-
-#: Template/Groups/view.ctp:42
-#: Template/Partners/view.ctp:41
-msgid "City"
-msgstr ""
-
-#: Template/Groups/view.ctp:43
-#: Template/Partners/view.ctp:45
-msgid "Address"
-msgstr ""
-
-#: Template/Groups/view.ctp:44
-#: Template/Partners/view.ctp:49
-#: Template/Plugin/CakeDC/Users/Users/register.ctp:28
-msgid "Phone"
-msgstr ""
-
-#: Template/Groups/view.ctp:45
-#: Template/Partners/view.ctp:53
-#: Template/Users/view.ctp:29
-msgid "Email"
-msgstr ""
-
-#: Template/Invoices/add.ctp:5
+#: Template/Invoices/add.ctp:18
 msgid "Add Invoice"
 msgstr ""
 
-#: Template/Invoices/add.ctp:39
-#: Template/Items/index.ctp:17
-msgid "Items"
+#: Template/Invoices/add.ctp:50
+#: Template/Invoices/view.ctp:30
+msgid "Sale"
 msgstr ""
 
-#: Template/Invoices/add.ctp:43
+#: Template/Invoices/add.ctp:59
 #: Template/Invoices/import.ctp:59
-#: Template/Invoices/view.ctp:47
-#: Template/Items/view.ctp:27
+#: Template/Invoices/view.ctp:44
 msgid "Product"
 msgstr ""
 
-#: Template/Invoices/add.ctp:44
+#: Template/Invoices/add.ctp:61
 #: Template/Invoices/import.ctp:85
-#: Template/Invoices/view.ctp:48
-#: Template/Items/view.ctp:39
+#: Template/Invoices/view.ctp:45
 #: Template/Products/stock.ctp:9
 #: Template/Products/view.ctp:61
 msgid "Quantity"
 msgstr ""
 
-#: Template/Invoices/add.ctp:45
+#: Template/Invoices/add.ctp:62
+msgid "Purchase price"
+msgstr ""
+
+#: Template/Invoices/add.ctp:63
+msgid "Selling price"
+msgstr ""
+
+#: Template/Invoices/add.ctp:64
 #: Template/Invoices/import.ctp:93
-#: Template/Invoices/view.ctp:49
-#: Template/Items/view.ctp:43
+#: Template/Invoices/view.ctp:46
 #: Template/Products/view.ctp:62
 msgid "Price"
 msgstr ""
 
-#: Template/Invoices/add.ctp:46
-#: Template/Invoices/add.ctp:49
-#: Template/Invoices/view.ctp:51
-#: Template/Invoices/view.ctp:54
+#: Template/Invoices/add.ctp:65
+#: Template/Invoices/index.ctp:20
+#: Template/Invoices/view.ctp:47
 msgid "Amount"
 msgstr ""
 
-#: Template/Invoices/add.ctp:47
-#: Template/Invoices/add.ctp:48
+#: Template/Invoices/add.ctp:66
+#: Template/Invoices/add.ctp:67
 #: Template/Invoices/import.ctp:76
-#: Template/Invoices/view.ctp:52
-#: Template/Invoices/view.ctp:53
+#: Template/Invoices/view.ctp:48
+#: Template/Invoices/view.ctp:49
 msgid "VAT"
 msgstr ""
 
-#: Template/Invoices/edit.ctp:16
-#: Template/Invoicetypes/add.ctp:11
-#: Template/Invoicetypes/edit.ctp:17
-#: Template/Invoicetypes/index.ctp:10
-#: Template/Invoicetypes/view.ctp:13
-#: Template/Items/add.ctp:11
-#: Template/Items/edit.ctp:17
-#: Template/Items/index.ctp:10
-#: Template/Items/view.ctp:13
-#: Template/Partners/add.ctp:15
-#: Template/Partners/edit.ctp:21
-#: Template/Partners/index.ctp:14
-#: Template/Partners/view.ctp:17
-msgid "List Invoices"
+#: Template/Invoices/add.ctp:68
+#: Template/Invoices/view.ctp:50
+msgid "Gross Amount"
 msgstr ""
 
-#: Template/Invoices/edit.ctp:19
-#: Template/Invoicetypes/add.ctp:10
-#: Template/Invoicetypes/edit.ctp:16
-#: Template/Invoicetypes/view.ctp:11
-msgid "List Invoicetypes"
+#: Template/Invoices/add.ctp:118
+msgid "New Row"
 msgstr ""
 
-#: Template/Invoices/edit.ctp:20
-#: Template/Invoicetypes/index.ctp:9
-#: Template/Invoicetypes/view.ctp:12
-msgid "New Invoicetype"
+#: Template/Invoices/add.ctp:119
+msgid "Save Invoice"
 msgstr ""
 
 #: Template/Invoices/edit.ctp:23
-#: Template/Items/add.ctp:10
-#: Template/Items/edit.ctp:16
-#: Template/Items/view.ctp:11
 #: Template/Products/add.ctp:13
 #: Template/Products/edit.ctp:19
 #: Template/Products/index.ctp:13
@@ -1030,8 +1075,6 @@ msgid "List Items"
 msgstr ""
 
 #: Template/Invoices/edit.ctp:24
-#: Template/Items/index.ctp:9
-#: Template/Items/view.ctp:12
 #: Template/Products/add.ctp:14
 #: Template/Products/edit.ctp:20
 #: Template/Products/index.ctp:14
@@ -1044,24 +1087,23 @@ msgid "Edit Invoice"
 msgstr ""
 
 #: Template/Invoices/import.ctp:25
-#: Template/Invoices/view.ctp:8
+#: Template/Invoices/view.ctp:7
 msgid "Storage"
 msgstr ""
 
 #: Template/Invoices/import.ctp:34
-#: Template/Invoices/view.ctp:16
+#: Template/Invoices/view.ctp:5
 msgid "Partner"
 msgstr ""
 
 #: Template/Invoices/import.ctp:43
-#: Template/Invoices/view.ctp:34
+#: Template/Invoices/view.ctp:13
 #: Template/Products/view.ctp:60
 msgid "Date"
 msgstr ""
 
 #: Template/Invoices/import.ctp:51
-#: Template/Invoices/view.ctp:50
-#: Template/Items/view.ctp:31
+#: Template/Invoices/view.ctp:33
 #: Template/Products/view.ctp:35
 #: Template/Products/view.ctp:63
 #: Template/Storages/view.ctp:45
@@ -1082,121 +1124,28 @@ msgstr ""
 msgid "New"
 msgstr ""
 
-#: Template/Invoices/index.ctp:7
-#: Template/Invoicetypes/add.ctp:12
-#: Template/Invoicetypes/edit.ctp:18
-#: Template/Invoicetypes/index.ctp:11
-#: Template/Invoicetypes/view.ctp:14
-#: Template/Items/add.ctp:12
-#: Template/Items/edit.ctp:18
-#: Template/Items/index.ctp:11
-#: Template/Items/view.ctp:14
-#: Template/Partners/add.ctp:16
-#: Template/Partners/edit.ctp:22
-#: Template/Partners/index.ctp:15
-#: Template/Partners/view.ctp:18
-msgid "New Invoice"
-msgstr ""
-
-#: Template/Invoices/view.ctp:12
+#: Template/Invoices/view.ctp:11
 msgid "Invoicetype"
 msgstr ""
 
-#: Template/Invoices/view.ctp:20
+#: Template/Invoices/view.ctp:17
 msgid "Number"
 msgstr ""
 
-#: Template/Invoices/view.ctp:28
+#: Template/Invoices/view.ctp:25
 msgid "Billingo"
 msgstr ""
 
-#: Template/Invoices/view.ctp:38
-msgid "Sale"
+#: Template/Invoices/view.ctp:29
+msgid "Type"
 msgstr ""
 
-#: Template/Invoices/view.ctp:73
+#: Template/Invoices/view.ctp:30
+msgid "Purchase"
+msgstr ""
+
+#: Template/Invoices/view.ctp:68
 msgid "Total"
-msgstr ""
-
-#: Template/Invoicetypes/add.ctp:18
-msgid "Add Invoicetype"
-msgstr ""
-
-#: Template/Invoicetypes/edit.ctp:24
-#: Template/Invoicetypes/view.ctp:9
-msgid "Edit Invoicetype"
-msgstr ""
-
-#: Template/Invoicetypes/index.ctp:15
-msgid "Invoicetypes"
-msgstr ""
-
-#: Template/Invoicetypes/view.ctp:10
-msgid "Delete Invoicetype"
-msgstr ""
-
-#: Template/Invoicetypes/view.ctp:30
-#: Template/Partners/view.ctp:62
-msgid "Related Invoices"
-msgstr ""
-
-#: Template/Invoicetypes/view.ctp:35
-#: Template/Partners/view.ctp:67
-msgid "Invoicetype Id"
-msgstr ""
-
-#: Template/Invoicetypes/view.ctp:36
-#: Template/Partners/view.ctp:68
-msgid "Partner Id"
-msgstr ""
-
-#: Template/Invoicetypes/view.ctp:37
-#: Template/Partners/view.ctp:69
-msgid "Invoiced"
-msgstr ""
-
-#: Template/Items/add.ctp:13
-#: Template/Items/edit.ctp:19
-#: Template/Items/index.ctp:12
-#: Template/Items/view.ctp:15
-#: Template/Products/add.ctp:10
-#: Template/Products/edit.ctp:16
-#: Template/Products/view.ctp:11
-#: Template/Storages/add.ctp:13
-#: Template/Storages/edit.ctp:19
-#: Template/Storages/index.ctp:12
-#: Template/Storages/view.ctp:15
-msgid "List Products"
-msgstr ""
-
-#: Template/Items/add.ctp:14
-#: Template/Items/edit.ctp:20
-#: Template/Items/index.ctp:13
-#: Template/Items/view.ctp:16
-#: Template/Products/index.ctp:9
-#: Template/Products/view.ctp:12
-#: Template/Storages/add.ctp:14
-#: Template/Storages/edit.ctp:20
-#: Template/Storages/index.ctp:13
-#: Template/Storages/view.ctp:16
-msgid "New Product"
-msgstr ""
-
-#: Template/Items/add.ctp:20
-msgid "Add Item"
-msgstr ""
-
-#: Template/Items/edit.ctp:26
-#: Template/Items/view.ctp:9
-msgid "Edit Item"
-msgstr ""
-
-#: Template/Items/view.ctp:10
-msgid "Delete Item"
-msgstr ""
-
-#: Template/Items/view.ctp:23
-msgid "Invoice"
 msgstr ""
 
 #: Template/Layout/error.ctp:35
@@ -1232,6 +1181,16 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
+#: Template/Products/add.ctp:10
+#: Template/Products/edit.ctp:16
+#: Template/Products/view.ctp:11
+#: Template/Storages/add.ctp:13
+#: Template/Storages/edit.ctp:19
+#: Template/Storages/index.ctp:12
+#: Template/Storages/view.ctp:15
+msgid "List Products"
+msgstr ""
+
 #: Template/Products/add.ctp:20
 msgid "Add Product"
 msgstr ""
@@ -1239,6 +1198,15 @@ msgstr ""
 #: Template/Products/edit.ctp:26
 #: Template/Products/view.ctp:9
 msgid "Edit Product"
+msgstr ""
+
+#: Template/Products/index.ctp:9
+#: Template/Products/view.ctp:12
+#: Template/Storages/add.ctp:14
+#: Template/Storages/edit.ctp:20
+#: Template/Storages/index.ctp:13
+#: Template/Storages/view.ctp:16
+msgid "New Product"
 msgstr ""
 
 #: Template/Products/stock.ctp:11
