@@ -8,7 +8,7 @@
         <div data-sticky-container>
             <div class="top-bar" id="navbar" data-sticky data-options="marginTop:0;" style="width:100%">
                 <div class="top-bar-left">
-                    <?php //if ($this->request->getSession()->read('Auth.User')) : ?>
+                    <?php if ($this->request->getSession()->read('Auth.User')) : ?>
                     <ul class="dropdown menu" data-dropdown-menu>
                         <li>
                             <?= $this->Html->image('logo.png') ?>
@@ -124,7 +124,7 @@
                                         ['plugin' => false, 'prefix' => false, 'controller' => 'products', 'action' => 'index'],
                                         ['escape' => false]
                                     ) ?></li>
-                                <?php //if ($this->request->getSession()->read('Auth.User.role') == 'superuser') : ?>
+                                <?php if ($this->request->getSession()->read('Auth.User.role') == 'superuser') : ?>
                                     <li><?= $this->MenuLink->menuLink(
                                             '<i class="fi-puzzle"> ' . __('Groups') . '</i>',
                                             ['plugin' => false, 'prefix' => 'admin', 'controller' => 'groups', 'action' => 'index'],
@@ -135,16 +135,16 @@
                                             ['plugin' => false, 'prefix' => 'admin', 'controller' => 'invoicetypes', 'action' => 'index'],
                                             ['escape' => false]
                                         ) ?></li>
-                                <?php //endif; ?>
+                                <?php endif; ?>
                             </ul>
                         </li>
                     </ul>
-                    <?php //endif; ?>
+                    <?php endif; ?>
                 </div>
 
                 <div class="top-bar-right">
                     <ul class="menu">
-                        <?php //if ($this->request->getSession()->read('Auth.User')) : ?>
+                        <?php if ($this->request->getSession()->read('Auth.User')) : ?>
                             <li>
                                 <?= $this->Html->link(
                                     '<i class="fi-torso"></i> ' . ($this->getRequest()->getSession()->read('company'))->name,
@@ -152,25 +152,16 @@
                                     ['escape' => false]
                                 ) ?>
                             </li>
-                        <?php //endif;?>
+                        <?php endif;?>
                         <li>
-                            <?php /*$this->User->logout(
+                            <?= $this->User->logout(
                                 '<span id="username">'
                                     . $this->request->getSession()->read('Auth.User.username') .
                                 '</span>'
                                 . ' ' . __('Logout')
                                 . ' ' . '<i class="fi-power"></i>',
                                 ['escape' => false, 'prefix' => false]
-                                        )*/ ?>
-                            <?php /* $this->Html->link(
-                                '<span id="username">'
-                                    . $this->request->getSession()->read('Auth.User.username') .
-                                '</span>'
-                                . ' ' . __('Logout')
-                                . ' ' . '<i class="fi-power"></i>',
-                                ['prefix' => false, 'plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'logout'],
-                                ['escape' => false]
-                                        ) */ ?>
+                                        ) ?>
                         </li>
                     </ul>
                 </div>

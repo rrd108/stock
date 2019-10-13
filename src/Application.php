@@ -54,12 +54,26 @@ class Application extends BaseApplication
         // Load more plugins here
         // Load a plugin with a vendor namespace by 'short name'
 
+        $this->addPlugin(\CakeDC\Users\Plugin::class);
         Configure::write('Users.config', ['users']);
-        //$this->addPlugin('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
-        Configure::write('Auth.authenticate.Form.fields.username', 'email');
 
         $this->addPlugin('MenuLink');
         $this->addPlugin('Datalist');
+    }
+
+    public function pluginBootstrap()
+    {
+        parent::pluginBootstrap();
+        Configure::write('Auth.authenticate', [
+            'all' => [
+                'finder' => 'auth',
+                'userModel' => Configure::read('Users.table')
+            ],
+            'Form'  => [
+                'fields' => ['username' => 'email']
+            ],
+            'CakeDC/Auth.RememberMe' => [],
+        ]);
     }
 
     /**
