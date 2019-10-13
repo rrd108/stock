@@ -59,7 +59,7 @@ class AppController extends Controller
         Configure::write('company_id', $this->getRequest()->getSession()->read('company')->id);
 
         Configure::write('CakePdf', [
-            'engine' => 'CakePdf.DomPdf',
+            'engine' => 'CakePdf.Mpdf',
             'margin' => [
                 'bottom' => 15,
                 'left' => 50,
