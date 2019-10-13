@@ -19,7 +19,7 @@
     <fieldset>
         <legend><?= __('Add Storage') ?></legend>
         <?php
-            echo $this->Form->control('company_id', ['options' => $companies]);
+            echo $this->Form->control('company_id', ['options' => $companies, 'value' => $this->getRequest()->getSession()->read('company')->id]);
             echo $this->Form->control('name');
         ?>
     </fieldset>
