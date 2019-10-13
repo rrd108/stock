@@ -1,0 +1,11 @@
+header {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a[href]:after {
+    content: "";
+}

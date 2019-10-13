@@ -14,6 +14,8 @@
     <?= $this->Html->css("https://fonts.googleapis.com/css?family=Quicksand") ?>
     <?= $this->Html->css('stock.min.css') ?>
 
+    <?= $this->Html->css('print', ['media' => 'print']) ?>
+
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 </head>
