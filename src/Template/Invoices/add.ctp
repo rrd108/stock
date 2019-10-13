@@ -18,7 +18,11 @@
         <h3><i class="fi-plus"></i> <?= __('Add Invoice') ?></h3>
         <div class="row">
             <div class="column small-6">
-                <?= $this->Form->control('storage_id', ['options' => $storages, 'empty' => __('--- choose ---')]) ?>
+                <?php if ($storages->count() === 1) : ?>
+                    <?= $this->Form->control('storage_id', ['options' => $storages]) ?>
+                <?php else : ?>
+                    <?= $this->Form->control('storage_id', ['options' => $storages, 'empty' => __('--- choose ---')]) ?>
+                <?php endif; ?>
             </div>
             <div class="column small-6">
                 <?= $this->Form->control('invoicetype_id', ['options' => $invoicetypes, 'empty' => __('--- choose ---')]) ?>
