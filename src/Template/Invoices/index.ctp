@@ -11,7 +11,6 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('sale') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('number') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('partner_id') ?></th>
@@ -26,10 +25,17 @@
                 <td>
                     <?= $this->Html->link($invoice->sale ? '<i class="fi-arrow-left"></i>' : '<i class="fi-arrow-right"></i>', ['action' => 'view', $invoice->id], ['escape' => false]) ?>
                 </td>
-                <td><?= $this->Number->format($invoice->id) ?></td>
-                <td><?= str_replace('|', '<br>', h($invoice->number)) ?></td>
+                <td>
+                    <?php if (strpos($invoice->number, '|')) : ?>
+                        <?php $num = explode('|', $invoice->number); ?>
+                        <?= $this->Html->link('<i class="fi-page-pdf"></i>', $num[2], ['escape' => false])
+                            . ' ' . $num[1] ?>
+                    <?php else : ?>
+                        <?= str_replace('|', '<br>', h($invoice->number)) ?>
+                    <?php endif; ?>
+                </td>
                 <td><?= h($invoice->date) ?></td>
-                <td><?= '<i class="fi-torsos"> ' . $invoice->partner->name . '</i>' ?></td>
+                <td><?= $this->Html->link('<i class="fi-torsos"> ' . $invoice->partner->name . '</i>', ['controller' => 'Partners', 'action' => 'view', $invoice->partner->id], ['escape' => false]) ?></td>
                 <td><?= '<i class="fi-contrast"> ' .  $invoice->storage->name . '</i>' ?></td>
                 <td><?= '<i class="fi-book"> ' . $invoice->invoicetype->name . '</i>' ?></td>
                 <td>

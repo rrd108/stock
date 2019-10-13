@@ -37,7 +37,7 @@ class PartnersController extends AppController
     public function view($id = null)
     {
         $partner = $this->Partners->get($id, [
-            'contain' => ['Companies', 'Groups', 'Invoices']
+            'contain' => ['Companies', 'Groups', 'Invoices.Invoicetypes', 'Invoices.Items']
         ]);
 
         $this->set('partner', $partner);
