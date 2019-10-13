@@ -38,7 +38,7 @@
                 <th scope="col"><?= __('Amount') ?></th>
             </tr>
             <?php foreach ($partner->invoices as $invoice): ?>
-            <tr>
+            <tr class="<?= $invoice->sale ? 'out' : 'in' ?>">
                 <td>
                     <?= $this->Html->link($invoice->sale ? '<i class="fi-arrow-left"></i>' : '<i class="fi-arrow-right"></i>', ['controller' => 'invoices', 'action' => 'view', $invoice->id], ['escape' => false]) ?>
                 </td>

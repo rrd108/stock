@@ -37,7 +37,7 @@ class ProductsController extends AppController
     public function view($id = null)
     {
         $product = $this->Products->get($id, [
-            'contain' => ['Companies', 'Items']
+            'contain' => ['Companies', 'Items.Invoices' => ['Partners', 'Storages']]
         ]);
 
         $this->set('product', $product);
