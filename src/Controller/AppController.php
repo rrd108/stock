@@ -57,6 +57,16 @@ class AppController extends Controller
 
         // session is not available in models
         Configure::write('company_id', $this->getRequest()->getSession()->read('company')->id);
+
+        Configure::write('CakePdf', [
+            'engine' => 'CakePdf.Mpdf',
+            'margin' => [
+                'bottom' => 15,
+                'left' => 50,
+                'right' => 30,
+                'top' => 45
+            ],
+        ]);
     }
 
     public function beforeFilter(Event $event)
