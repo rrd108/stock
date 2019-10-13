@@ -55,7 +55,7 @@ class Application extends BaseApplication
         // Load a plugin with a vendor namespace by 'short name'
 
         Configure::write('Users.config', ['users']);
-        //$this->addPlugin('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
+        $this->addPlugin('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
         Configure::write('Auth.authenticate.Form.fields.username', 'email');
 
         $this->addPlugin('MenuLink');
