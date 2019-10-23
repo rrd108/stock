@@ -32,8 +32,8 @@
         <tr>
             <th scope="row"><?= __('Currency') ?></th>
             <td><?= h($invoice->currency) ?></td>
-            <th scope="row"></th>
-            <td></td>
+            <th scope="row">PDF</th>
+            <td><?= $this->Html->link('<i class="fi-page-export-pdf"> PDF</i>', ['controller' => 'Invoices', 'action' => 'view', $invoice->id, '_ext' => 'pdf'], ['escape' => false]) ?></td>
         </tr>
     </table>
     <div class="related">
@@ -69,15 +69,15 @@
                     <td class="text-right"><?= collection($invoice->items)->sumOf('quantity') ?></td>
                     <td></td>
                     <td class="text-right"><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
-                            return $item->price * $item->quantity;
-                        }), ['precision' => 2]) ?></td>
+    return $item->price * $item->quantity;
+}), ['precision' => 2]) ?></td>
                     <td></td>
                     <td class="text-right"><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
-                            return $item->price * $item->quantity * $item->product->vat / 100;
-                        }), ['precision' => 2]) ?></td>
+    return $item->price * $item->quantity * $item->product->vat / 100;
+}), ['precision' => 2]) ?></td>
                     <td class="text-right"><?= $this->Number->format(collection($invoice->items)->sumOf(function ($item) {
-                        return $item->price * $item->quantity * (1 + $item->product->vat / 100);
-                    }), ['precision' => 2]) ?></td>
+    return $item->price * $item->quantity * (1 + $item->product->vat / 100);
+}), ['precision' => 2]) ?></td>
                 </tr>
             </tfoot>
         </table>
