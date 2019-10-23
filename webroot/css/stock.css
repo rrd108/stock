@@ -6,6 +6,18 @@ main.row {
     max-width: max-content;
 }
 
+dl {
+    display: flex;
+    flex-wrap: wrap;
+}
+dt {
+    width: 33%;
+}
+dd {
+  margin-left: auto;
+  width: 66%;
+}
+
 .top-bar ul, .top-bar {
     background-color: #fff
 }
@@ -41,7 +53,7 @@ div.sale label {
     font-size: 2em;
     cursor: pointer;
 }
-div.sale.in label, thead tr.in {
+dd.in, div.sale.in label, thead tr.in {
     background: #bc50b1;
     color: #fff;
 }
@@ -50,7 +62,7 @@ div.sale.in label:before {
     font-family: "foundation-icons";
     content: "\f10b";
 }
-div.sale.out label, thead tr.out {
+dd.out, div.sale.out label, thead tr.out {
     background: #50bc5b;
     color: #fff;
 }

@@ -110,4 +110,13 @@ class InvoicesTable extends Table
 
         return $rules;
     }
+
+    public function findWithTotal(Query $query, array $options)
+    {
+        return $query
+            ->select(['total' => $query->func()->sum('Items.price * Items.quantity')])
+            ->enableAutoFields(true)
+            ->innerJoinWith('Items')
+            ->group('Invoices.id');
+    }
 }

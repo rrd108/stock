@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Model\Entity\Invoice;
 
 class StatsController extends AppController
 {
@@ -11,10 +12,20 @@ class StatsController extends AppController
         $this->loadModel('Partners');
         $this->loadModel('Products');
 
+        $totals = [
+            'sells' => collection(
+                $this->Invoices->find('withTotal')
+                    ->where(['sale' => true])
+                )->sumOf('total'),
+            'purchases' => collection(
+                $this->Invoices->find('withTotal')
+                    ->where(['sale' => false])
+                )->sumOf('total')
+        ];
         $invoices = $this->Invoices->find()->count();
         $partners = $this->Partners->find()->count();
         $products = $this->Products->find()->count();
 
-        $this->set(compact('invoices', 'partners', 'products'));
+        $this->set(compact('invoices', 'partners', 'products', 'totals'));
     }
 }

@@ -23,9 +23,7 @@ class ItemsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.Items',
-        'app.Invoices',
-        'app.Products'
+        'app.Items'
     ];
 
     /**
@@ -48,37 +46,6 @@ class ItemsTableTest extends TestCase
     public function tearDown()
     {
         unset($this->Items);
-
         parent::tearDown();
-    }
-
-    /**
-     * Test initialize method
-     *
-     * @return void
-     */
-    public function testInitialize()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
     }
 }

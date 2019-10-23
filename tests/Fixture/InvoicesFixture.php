@@ -56,6 +56,15 @@ class InvoicesFixture extends TestFixture
                 'sale' => 0,            // purchase
                 'number' => 'INV/1'
             ],
+            [
+                'id' => 2,
+                'storage_id' => 1,
+                'invoicetype_id' => 1,
+                'partner_id' => 1,
+                'date' => '2019-09-29',
+                'sale' => 1,
+                'number' => 'INV/2'
+            ],
         ];
         parent::init();
     }

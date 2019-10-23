@@ -20,7 +20,6 @@ class ItemsFixture extends TestFixture
         'product_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'quantity' => ['type' => 'decimal', 'length' => 6, 'precision' => 2, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => ''],
         'price' => ['type' => 'decimal', 'length' => 8, 'precision' => 2, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => ''],
-        'currency' => ['type' => 'string', 'length' => 45, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
             'fk_moves_invoices1_idx' => ['type' => 'index', 'columns' => ['invoice_id'], 'length' => []],
             'fk_moves_products1_idx' => ['type' => 'index', 'columns' => ['product_id'], 'length' => []],
@@ -50,7 +49,6 @@ class ItemsFixture extends TestFixture
                 'product_id' => 1,
                 'quantity' => 3,
                 'price' => 100,
-                'currency' => 'HUF'
             ],
             [
                 'id' => 2,
@@ -58,15 +56,13 @@ class ItemsFixture extends TestFixture
                 'product_id' => 2,
                 'quantity' => 10,
                 'price' => 115,
-                'currency' => 'HUF'
             ],
             [
                 'id' => 3,
-                'invoice_id' => 1,
+                'invoice_id' => 2,
                 'product_id' => 1,
                 'quantity' => 8,
                 'price' => 75,
-                'currency' => 'HUF'
             ],
         ];
         parent::init();

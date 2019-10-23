@@ -50,37 +50,17 @@ class InvoicesTableTest extends TestCase
     public function tearDown()
     {
         unset($this->Invoices);
-
         parent::tearDown();
     }
 
-    /**
-     * Test initialize method
-     *
-     * @return void
-     */
-    public function testInitialize()
+    public function testFindWithTotal()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $actual = $this->Invoices->find('withTotal');
+        $expected = [
+            1 => 1450.0,
+            2 => 600.0
+        ];
+        $this->assertEquals($expected, $actual->combine('id', 'total')->toArray());
     }
 
-    /**
-     * Test validationDefault method
-     *
-     * @return void
-     */
-    public function testValidationDefault()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     */
-    public function testBuildRules()
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
 }
