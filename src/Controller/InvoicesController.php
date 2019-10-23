@@ -144,9 +144,11 @@ class InvoicesController extends AppController
 
     public function billingo(int $id)
     {
+        $company = $this->Invoices->Storages->Companies->get(Configure::read('company_id'));
+        $billing = json_decode($company->billing);
         $billingo = new Request([
-            'public_key' => Configure::read('Billingo.public_key'),
-            'private_key' => Configure::read('Billingo.private_key')
+            'public_key' => $billing->Billingo->public_key,
+            'private_key' => $billing->Billingo->private_key
         ]);
 
         $invoice = $this->Invoices->get($id, ['contain' => ['Partners', 'Items.Products']]);

@@ -19,6 +19,7 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('taxnumber') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('billing') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                 <td><?= $this->Number->format($company->id) ?></td>
                 <td><?= h($company->name) ?></td>
                 <td><?= h($company->taxnumber) ?></td>
+                <td><?= $this->Text->truncate($company->billing, 15) ?></td>
                 <td class="actions">
                     <?= $this->Html->link('<i class="fi-eye" title="' . __('View') . '"></i>', ['action' => 'view', $company->id], ['escape' => false]) ?>
                     <?= $this->Html->link('<i class="fi-pencil" title="' . __('Edit') . '"></i>', ['action' => 'edit', $company->id], ['escape' => false]) ?>
