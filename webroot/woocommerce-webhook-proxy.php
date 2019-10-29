@@ -113,13 +113,20 @@ Request :
 $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_URL, 'http://localhost/~rrd/stockR/api/invoices.json');
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('postvar1' => 'value1')));
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HEADER, true);
-
-// Receive server response ...
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+
+// set the addition headers
+curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
+curl_setopt($ch, CURLOPT_USERPWD, 'rrd@krisna.hu:511beb7ee950fc935f8f3ac3ca8d7a0b');
+
+// set debug
+curl_setopt($ch, CURLOPT_HTTPHEADER, array("Cookie: XDEBUG_SESSION=VSCODE"));
+
+// set POST variables
+$post = ['id' => '1400'];
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
 
 $response = curl_exec($ch);
 
