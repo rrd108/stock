@@ -79,6 +79,7 @@ class InvoicesController extends AppController
                         }
                     }
                 }
+                $this->set(['_serialize' => ['invoice']]);
                 return $this->redirect(['action' => 'index']);
             }
             // TODO on error reload all data into the form
