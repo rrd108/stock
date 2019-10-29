@@ -118,14 +118,14 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 
 // set the addition headers
-curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
-curl_setopt($ch, CURLOPT_USERPWD, 'rrd@krisna.hu:511beb7ee950fc935f8f3ac3ca8d7a0b');
+// curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);   // TODO authorization header is not set in this case
+curl_setopt($ch, CURLOPT_USERPWD, 'rrd@krisna.hu:$2y$10$5wpnW/cvYGaiM0kaHG8Sj.9lGduCTs32UaosWwvhsIQX0wqUFuE5C');
 
 // set debug
-curl_setopt($ch, CURLOPT_HTTPHEADER, array("Cookie: XDEBUG_SESSION=VSCODE"));
+curl_setopt($ch, CURLOPT_HTTPHEADER, ['Cookie: XDEBUG_SESSION=VSCODE']);
 
 // set POST variables
-$post = ['id' => '1400'];
+$post = ['id' => '1400', 'number' => '1400'];
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
 
 $response = curl_exec($ch);
@@ -137,4 +137,5 @@ $body = substr($response, $header_size);
 curl_close($ch);
 
 var_dump($header);
-var_dump($body);
+echo '<hr>';
+echo $body;

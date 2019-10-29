@@ -34,12 +34,12 @@ class Application extends BaseApplication
      */
     public function bootstrap()
     {
+         // Call parent to load bootstrap from files.
+        parent::bootstrap();
+
         $this->addPlugin('CakePdf', ['bootstrap' => true]);
 
         $this->addPlugin('Datalist');
-
-        // Call parent to load bootstrap from files.
-        parent::bootstrap();
 
         if (PHP_SAPI === 'cli') {
             $this->bootstrapCli();
@@ -66,6 +66,7 @@ class Application extends BaseApplication
     public function pluginBootstrap()
     {
         parent::pluginBootstrap();
+
         Configure::write('Auth.authenticate', [
             'all' => [
                 'finder' => 'auth',
@@ -74,18 +75,8 @@ class Application extends BaseApplication
             'Form'  => [
                 'fields' => ['username' => 'email']
             ],
-            'Digest' => [
-                    'fields' => ['username' => 'email', 'password' => 'secret'],        //api_token
-                    /*
-                    'realm' => The realm authentication is for. Defaults to the servername. env('SERVER_NAME')
-                    'nonce' =>  A nonce used for authentication. Defaults to uniqid().
-                    'qop' =>  Defaults to auth; no other values are supported at this time.
-                    'opaque' =>  A string that must be returned unchanged by clients. Defaults to md5($config['realm']).
-                    */
-            ],
             'CakeDC/Auth.RememberMe' => [],
         ]);
-        //Configure::write('Auth.storage', 'Memory');
     }
 
     /**

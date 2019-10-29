@@ -32,7 +32,7 @@ class AppUsersTable extends CakeDCUsersTable{
 
         // Make a password for digest auth.
         $entity->secret = DigestAuthenticate::password(
-            $entity->username,
+            $entity->email,
             $entity->password,
             env('SERVER_NAME')
         );
