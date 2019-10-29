@@ -1,10 +1,11 @@
 <?php
-
-
 namespace App\Model\Table;
-use CakeDC\Users\Model\Table\UsersTable as CakeDCUsersTable;
-use Cake\Validation\Validator;
+
+use Cake\Auth\DigestAuthenticate;
 use Cake\Core\Configure;
+use Cake\Event\Event;
+use Cake\Validation\Validator;
+use CakeDC\Users\Model\Table\UsersTable as CakeDCUsersTable;
 
 class AppUsersTable extends CakeDCUsersTable{
 
@@ -24,5 +25,18 @@ class AppUsersTable extends CakeDCUsersTable{
 		}
 		return $validator;
 	}
+
+	public function beforeSave(Event $event)
+    {
+        $entity = $event->getData('entity');
+
+        // Make a password for digest auth.
+        $entity->secret = DigestAuthenticate::password(
+            $entity->username,
+            $entity->password,
+            env('SERVER_NAME')
+        );
+        return true;
+    }
 
 }
