@@ -54,8 +54,6 @@ class AppController extends Controller
         //$this->loadComponent('Security');
 
         $this->loadComponent('CakeDC/Users.UsersAuth');
-        
-        $this->loadComponent('Authentication.Authentication');
 
         // session is not available in models
         Configure::write('company_id', $this->getRequest()->getSession()->read('company')->id);
