@@ -118,11 +118,13 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 
 // set the addition headers
-// curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);   // TODO authorization header is not set in this case
-curl_setopt($ch, CURLOPT_USERPWD, 'rrd@krisna.hu:$2y$10$5wpnW/cvYGaiM0kaHG8Sj.9lGduCTs32UaosWwvhsIQX0wqUFuE5C');
+curl_setopt($ch, CURLOPT_HTTPHEADER,
+    [
+        'Cookie: XDEBUG_SESSION=VSCODE',        // set debug
+        'ApiKey: $2y$10$5wpnW/cvYGaiM0kaHG8Sj.9lGduCTs32UaosWwvhsIQX0wqUFuE5C'
+    ]
+);
 
-// set debug
-curl_setopt($ch, CURLOPT_HTTPHEADER, ['Cookie: XDEBUG_SESSION=VSCODE']);
 
 // set POST variables
 $post = ['id' => '1400', 'number' => '1400'];
@@ -138,4 +140,4 @@ curl_close($ch);
 
 var_dump($header);
 echo '<hr>';
-echo $body;
+var_dump(json_decode($body));

@@ -67,6 +67,13 @@ class Application extends BaseApplication
     {
         parent::pluginBootstrap();
 
+        if (apache_request_headers()['ApiKey']) {
+            Configure::write('Auth', [
+                'unauthorizedRedirect' => false,
+                'storage' => 'Memory'
+            ]);
+        }
+
         Configure::write('Auth.authenticate', [
             'all' => [
                 'finder' => 'auth',
@@ -74,6 +81,11 @@ class Application extends BaseApplication
             ],
             'Form'  => [
                 'fields' => ['username' => 'email']
+            ],
+            'CakeDC/Auth.ApiKey' => [
+                'type' => 'header',
+                'require_ssl' => false,
+                'name' => 'ApiKey'
             ],
             'CakeDC/Auth.RememberMe' => [],
         ]);
