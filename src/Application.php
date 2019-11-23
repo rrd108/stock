@@ -67,7 +67,7 @@ class Application extends BaseApplication
     {
         parent::pluginBootstrap();
 
-        if (apache_request_headers()['ApiKey']) {
+        if (isset(apache_request_headers()['ApiKey'])) {
             Configure::write('Auth', [
                 'unauthorizedRedirect' => false,
                 'storage' => 'Memory'
