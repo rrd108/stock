@@ -1,35 +1,17 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="small-3 medium-2 large-2 columns" id="actions-sidebar">
-    <ul class="menu vertical">
-        <li class="menu-text"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Product'), ['action' => 'edit', $product->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Product'), ['action' => 'delete', $product->id], ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Products'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Product'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Companies'), ['controller' => 'Companies', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Company'), ['controller' => 'Companies', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Items'), ['controller' => 'Items', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Item'), ['controller' => 'Items', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="products view small-9 medium-10 large-10 columns content">
+<div class="products view small-12 columns content">
     <h3><?= h($product->name) ?></h3>
     <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Company') ?></th>
-            <td><?= $product->has('company') ? $this->Html->link($product->company->name, ['controller' => 'Companies', 'action' => 'view', $product->company->id]) : '' ?></td>
-            <th scope="row"><?= __('Vat') ?></th>
-            <td><?= $this->Number->format($product->vat) ?> %</td>
-        </tr>
         <tr>
             <th scope="row"><?= __('Name') ?></th>
             <td><?= h($product->name) ?></td>
             <th scope="row"><?= __('Size') ?></th>
             <td><?= h($product->size) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Code') ?></th>
+            <td><?= h($product->code) ?></td>
+            <th scope="row"><?= __('Vat') ?></th>
+            <td><?= $this->Number->format($product->vat) ?> %</td>
         </tr>
         <tr>
             <th scope="row"><?= __('Profit') ?></th>
@@ -39,7 +21,7 @@
                         return $item->invoice->sale ? $item->price * $item->quantity : -1 * $item->price * $item->quantity;
                     }), ['precision' => 2]) ?>
             </td>
-            <th scope="row"><?= __('Stock value') ?></th>
+            <th scope="row"><?= __('Stock value by last price') ?></th>
             <td class="text-right">
                 <?= $this->Number->format(
                     Collection($product->items)->sumOf(function ($item) use ($product) {
@@ -54,7 +36,7 @@
                         return $item->invoice->sale ? -1 * $item->quantity : $item->quantity;
                     }) ?>
             </td>
-            <th scope="row"><?= __('Stock value') ?></th>
+            <th scope="row"><?= __('Stock value by avarage price') ?></th>
             <td class="text-right">
                 <?= $this->Number->format(
                     Collection($product->items)->sumOf(function ($item) use ($product) {
