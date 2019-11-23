@@ -108,10 +108,10 @@ class ProductsTable extends Table
     {
         // TODO sum quantity +- by sale
         return $query
-            ->contain(['Companies', 'Items.Invoices'])
-            /*->sumOf(function ($product) {
-                return collection($product->items)->sumOf('quantity');
-            })*/;
+            ->select(['stock' => 'SUM(IF(Invoices.sale, -1 * Items.quantity, Items.quantity))'])
+            ->enableAutoFields(true)
+            ->group('Products.id')
+            ->innerJoinWith('Items.Invoices');
     }
 
     public function findPurchasePrice(Query $query, array $options)
