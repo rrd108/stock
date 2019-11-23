@@ -106,7 +106,6 @@ class ProductsTable extends Table
 
     public function findStock(Query $query, array $options)
     {
-        // TODO sum quantity +- by sale
         return $query
             ->select(['stock' => 'SUM(IF(Invoices.sale, -1 * Items.quantity, Items.quantity))'])
             ->enableAutoFields(true)
@@ -127,7 +126,7 @@ class ProductsTable extends Table
                 'Products.size',
                 'Products.vat',
                 'avaragePurchasePrice' => 'Avarage.avaragePurchasePrice',
-                'lastPurchasePrice' => 'Last.lastPurchasePrice'
+                'lastPurchasePrice' => 'LastP.lastPurchasePrice'
                 ])
             ->join([
                     'table' => $avaragePurchasePrice,
@@ -138,14 +137,25 @@ class ProductsTable extends Table
             ->join([
                     'table' => $lastPurchasePrice,
                     'type' => 'left',
-                    'alias' => 'Last',
-                    'conditions' => 'Last.Products__id = Products.id'
+                    'alias' => 'LastP',
+                    'conditions' => 'LastP.Products__id = Products.id'
                 ]);
     }
 
     public function findLastPurchasePrice(Query $query, array $options)
     {
-        $latestItems = $this->getAssociation('Items')->find();
+
+        // TODO BUG if the last movement was a sale than we do not get the last purchase price as
+        // $latesttems will find the sale only
+
+        //select invoices where sale = 0, get the price from their items
+        $invoiceIds = $this->getAssociation('Items')->getAssociation('Invoices')->find()
+            ->where(['Invoices.sale' => false])
+            ->extract('id')
+            ->toArray();
+
+        $latestItems = $this->getAssociation('Items')->find()
+            ->where(['Items.invoice_id IN' => $invoiceIds]);
         $latestItems = $latestItems->select(['maxId' => $latestItems->func()->max('Items.id')])
             ->group('Items.product_id');
 

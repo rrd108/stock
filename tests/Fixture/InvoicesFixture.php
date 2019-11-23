@@ -20,6 +20,7 @@ class InvoicesFixture extends TestFixture
         'invoicetype_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'partner_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'date' => ['type' => 'date', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'currency' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'sale' => ['type' => 'boolean', 'length' => null, 'null' => true, 'default' => '1', 'comment' => '', 'precision' => null],
         'number' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_hungarian_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         '_indexes' => [
@@ -53,6 +54,7 @@ class InvoicesFixture extends TestFixture
                 'invoicetype_id' => 1,
                 'partner_id' => 1,
                 'date' => '2019-09-29',
+                'currency' => 'HUF',
                 'sale' => 0,            // purchase
                 'number' => 'INV/1'
             ],
@@ -62,8 +64,19 @@ class InvoicesFixture extends TestFixture
                 'invoicetype_id' => 1,
                 'partner_id' => 1,
                 'date' => '2019-09-29',
+                'currency' => 'HUF',
                 'sale' => 1,
                 'number' => 'INV/2'
+            ],
+            [
+                'id' => 3,
+                'storage_id' => 1,
+                'invoicetype_id' => 1,
+                'partner_id' => 1,
+                'date' => '2019-09-30',
+                'currency' => 'HUF',
+                'sale' => 0,            // purchase
+                'number' => 'INV/3'
             ],
         ];
         parent::init();

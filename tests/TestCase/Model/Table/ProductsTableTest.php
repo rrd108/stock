@@ -59,21 +59,20 @@ class ProductsTableTest extends TestCase
         $actual = $this->Products->find('lastPurchasePrice', ['currency' => 'HUF']);
 
         $expected = [
-            1 => 75,
+            1 => 95,
             2 => 115
         ];
-        $this->assertEquals($expected, $actual->combine('id', 'lastPurschasePrice')->toArray());
+        $this->assertEquals($expected, $actual->combine('id', 'lastPurchasePrice')->toArray());
     }
 
     public function testFindAvaragePurchasePrice()
     {
         $actual = $this->Products->find('avaragePurchasePrice', ['currency' => 'HUF']);
-
         $expected = [
-            1 => (100+75)/2,
-            2 => 115
+            1 => (100+95)/2,
+            2 => 115.0
         ];
-        $this->assertEquals($expected, $actual->combine('id', 'avaragePurschasePrice')->toArray());
+        $this->assertEquals($expected, $actual->combine('id', 'avaragePurchasePrice')->toArray());
     }
 
     public function testFindPurchasePrice()
@@ -81,7 +80,7 @@ class ProductsTableTest extends TestCase
         $actual = $this->Products->find('purchasePrice', ['currency' => 'HUF']);
 
         $expected = [
-            1 => '87.5 :: 75',
+            1 => '97.5 :: 95',
             2 => '115.0 :: 115'
         ];
 

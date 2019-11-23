@@ -31,7 +31,37 @@
             <th scope="row"><?= __('Size') ?></th>
             <td><?= h($product->size) ?></td>
         </tr>
-        <?php // TODO stock ?>
+        <tr>
+            <th scope="row"><?= __('Profit') ?></th>
+            <td class="text-right">
+                <?= $this->Number->format(
+                    Collection($product->items)->sumOf(function ($item) {
+                        return $item->invoice->sale ? $item->price * $item->quantity : -1 * $item->price * $item->quantity;
+                    }), ['precision' => 2]) ?>
+            </td>
+            <th scope="row"><?= __('Stock value') ?></th>
+            <td class="text-right">
+                <?= $this->Number->format(
+                    Collection($product->items)->sumOf(function ($item) use ($product) {
+                        return $item->invoice->sale ? -1 * $item->quantity * $product->lastPurchasePrice : $item->quantity * $product->lastPurchasePrice;
+                    }), ['precision' => 2]) ?>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Stock') ?></th>
+            <td class="text-right">
+                <?= Collection($product->items)->sumOf(function ($item) {
+                        return $item->invoice->sale ? -1 * $item->quantity : $item->quantity;
+                    }) ?>
+            </td>
+            <th scope="row"><?= __('Stock value') ?></th>
+            <td class="text-right">
+                <?= $this->Number->format(
+                    Collection($product->items)->sumOf(function ($item) use ($product) {
+                        return $item->invoice->sale ? -1 * $item->quantity * $product->avaragePurchasePrice : $item->quantity * $product->avaragePurchasePrice;
+                    }), ['precision' => 2]) ?>
+            </td>
+        </tr>
     </table>
     <div class="related">
         <h4><?= __('Invoices') ?></h4>
@@ -45,6 +75,7 @@
                 <th scope="col"><?= __('Storage') ?></th>
                 <th scope="col"><?= __('Quantity') ?></th>
                 <th scope="col"><?= __('Price') ?></th>
+                <th scope="col"><?= __('Amount') ?></th>
             </tr>
             <?php foreach ($product->items as $item): ?>
             <tr class="<?= $item->invoice->sale ? 'out' : 'in' ?>">
@@ -63,8 +94,9 @@
                 <td><?= h($item->invoice->date) ?></td>
                 <td><?= h($item->invoice->partner->name) ?></td>
                 <td><?= h($item->invoice->storage->name) ?></td>
-                <td><?= h($item->quantity) ?></td>
+                <td class="text-right"><?= $item->invoice->sale ? h(-1 * $item->quantity) : h($item->quantity) ?></td>
                 <td><?= $this->Number->format($item->price, ['precision' => 2]) ?> <?= h($item->invoice->currency) ?></td>
+                <td><?= $this->Number->format($item->price * ($item->invoice->sale ? $item->quantity : -1 * $item->quantity), ['precision' => 2]) ?> <?= h($item->invoice->currency) ?></td>
             </tr>
             <?php endforeach; ?>
         </table>

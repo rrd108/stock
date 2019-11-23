@@ -60,9 +60,16 @@ class ItemsFixture extends TestFixture
             [
                 'id' => 3,
                 'invoice_id' => 2,
+                'product_id' => 2,
+                'quantity' => 8,
+                'price' => 555,
+            ],
+            [
+                'id' => 4,
+                'invoice_id' => 3,
                 'product_id' => 1,
                 'quantity' => 8,
-                'price' => 75,
+                'price' => 95,
             ],
         ];
         parent::init();
