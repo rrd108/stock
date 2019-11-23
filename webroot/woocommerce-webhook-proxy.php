@@ -118,16 +118,35 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 
 // set the addition headers
-curl_setopt($ch, CURLOPT_HTTPHEADER,
+curl_setopt(
+    $ch,
+    CURLOPT_HTTPHEADER,
     [
         'Cookie: XDEBUG_SESSION=VSCODE',        // set debug
         'ApiKey: $2y$10$5wpnW/cvYGaiM0kaHG8Sj.9lGduCTs32UaosWwvhsIQX0wqUFuE5C'
     ]
 );
 
+// set POST variables in a form that stockR needs them
+$items = [];
+foreach($_POST['line_items'] as $item) {
+    $items[] = [
+        'product_name' => $item['name'],        // or use stockRid
+        'quantity' => $item['quantity'],
+        'price' => $item['price'],
+    ];
+}
+$post = [
+    'storage_id' => 5,          // Lál -> Fő u 38
+    'invoicetype_id' => 5,      // Belső mozgás
+    'partner_id' => 11,         // Webshop
+    'date' => $_POST['date_created'] ? $_POST['date_created'] : date('Y-m-d'),
+    'number' => 'Woo/Order/' . $_POST['number'],
+    'currency' => $_POST['currency'],
+    'sale' => true,
+    'items' => $items
+];
 
-// set POST variables
-$post = ['id' => '1400', 'number' => '1400'];
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
 
 $response = curl_exec($ch);
