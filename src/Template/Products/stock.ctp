@@ -13,16 +13,16 @@
                 <th scope="col"><?= __('Value') ?></th>
             </tr>
             <tr>
-                <td class="text-right"><?= $this->Number->format($products->sumOf('stock')) ?></td>
+                <td class="text-right"><?= $this->Number->format($products->sumOf('stock')) ?> <?= __('pcs') ?></td>
                 <td class="text-right">
-                    <?= $this->Number->format($products->sumOf(function ($product) {
+                    <?= $this->Number->currency($products->sumOf(function ($product) {
                         return $product->stock * $product->avaragePurchasePrice;
-                    })) ?>
+                    }), null, ['precision' => $this->precision]) ?>
                 </td>
                 <td class="text-right">
-                    <?= $this->Number->format($products->sumOf(function ($product) {
+                    <?= $this->Number->currency($products->sumOf(function ($product) {
                         return $product->stock * $product->lastPurchasePrice;
-                    })) ?>
+                    }), null, ['precision' => $this->precision]) ?>
                 </td>
             </tr>
         </thead>
@@ -33,9 +33,9 @@
                 <td><?= h($product->code) ?></td>
                 <td><?= h($product->size) ?></td>
                 <td class="text-right"><?= $this->Number->format($product->stock) ?></td>
-                <td class="text-right"><?= $this->Number->format($product->avaragePurchasePrice) ?></td>
+                <td class="text-right"><?= $this->Number->format($product->avaragePurchasePrice, ['precision' => $this->precision]) ?></td>
                 <td class="text-right"><?= $this->Number->format($product->lastPurchasePrice) ?></td>
-                <td class="text-right"><?= $this->Number->format($product->stock * $product->avaragePurchasePrice) ?></td>
+                <td class="text-right"><?= $this->Number->format($product->stock * $product->avaragePurchasePrice, ['precision' => $this->precision]) ?></td>
                 <td class="text-right"><?= $this->Number->format($product->stock * $product->lastPurchasePrice) ?></td>
             </tr>
             <?php endforeach; ?>

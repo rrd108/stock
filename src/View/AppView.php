@@ -13,7 +13,10 @@
  */
 namespace App\View;
 
+use Cake\Core\Configure;
+use Cake\I18n\Number;
 use Cake\View\View;
+use NumberFormatter;
 
 /**
  * Application View
@@ -47,6 +50,7 @@ class AppView extends View
         $this->loadHelper('MenuLink.MenuLink');
         $this->loadHelper('CakeDC/Users.User');
 
-
+        Number::defaultCurrency($this->getRequest()->getSession()->read('company')->currency);
+        $this->precision = Configure::read('precisions.' . $this->getRequest()->getSession()->read('company')->currency);
     }
 }

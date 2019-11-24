@@ -34,10 +34,6 @@ class Application extends BaseApplication
      */
     public function bootstrap()
     {
-        $this->addPlugin('CakePdf', ['bootstrap' => true]);
-
-        $this->addPlugin('Datalist');
-
         // Call parent to load bootstrap from files.
         parent::bootstrap();
 
@@ -53,8 +49,14 @@ class Application extends BaseApplication
             $this->addPlugin(\DebugKit\Plugin::class);
         }
 
+        Configure::load('precisions', 'default', false);
+
         // Load more plugins here
         // Load a plugin with a vendor namespace by 'short name'
+
+        $this->addPlugin('CakePdf', ['bootstrap' => true]);
+
+        $this->addPlugin('Datalist');
 
         $this->addPlugin(\CakeDC\Users\Plugin::class);
         Configure::write('Users.config', ['users']);
