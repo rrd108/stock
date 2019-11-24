@@ -19,6 +19,7 @@
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('taxnumber');
+            echo $this->Form->control('currency');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit'), ['class' => 'button']) ?>

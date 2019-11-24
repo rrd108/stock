@@ -63,6 +63,11 @@ class CompaniesTable extends Table
             ->maxLength('taxnumber', 45)
             ->allowEmptyString('taxnumber');
 
+        $validator
+            ->scalar('currency')
+            ->maxLength('currency', 3)
+            ->notEmptyString('currency');
+
         return $validator;
     }
 }

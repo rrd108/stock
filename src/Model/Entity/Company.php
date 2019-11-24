@@ -26,6 +26,7 @@ class Company extends Entity
     protected $_accessible = [
         'name' => true,
         'taxnumber' => true,
+        'currency' => true,
         'storages' => true
     ];
 }

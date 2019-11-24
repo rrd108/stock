@@ -26,6 +26,10 @@
             <td><?= h($company->taxnumber) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Currency') ?></th>
+            <td><?= h($company->curency) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($company->id) ?></td>
         </tr>

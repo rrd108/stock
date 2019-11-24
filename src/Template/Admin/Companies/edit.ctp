@@ -25,6 +25,7 @@
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('taxnumber');
+            echo $this->Form->control('currency');
             echo $this->Form->control('billing');
         ?>
     </fieldset>
