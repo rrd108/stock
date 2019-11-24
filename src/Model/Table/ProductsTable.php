@@ -144,10 +144,6 @@ class ProductsTable extends Table
 
     public function findLastPurchasePrice(Query $query, array $options)
     {
-
-        // TODO BUG if the last movement was a sale than we do not get the last purchase price as
-        // $latesttems will find the sale only
-
         //select invoices where sale = 0, get the price from their items
         $invoiceIds = $this->getAssociation('Items')->getAssociation('Invoices')->find()
             ->where(['Invoices.sale' => false])
