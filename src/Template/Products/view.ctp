@@ -21,11 +21,11 @@
                         return $item->invoice->sale ? $item->price * $item->quantity : -1 * $item->price * $item->quantity;
                     }), ['precision' => 2]) ?>
             </td>
-            <th scope="row"><?= __('Stock value by last price') ?></th>
+            <th scope="row"><?= __('Stock value by avarage price') ?></th>
             <td class="text-right">
                 <?= $this->Number->format(
                     Collection($product->items)->sumOf(function ($item) use ($product) {
-                        return $item->invoice->sale ? -1 * $item->quantity * $product->lastPurchasePrice : $item->quantity * $product->lastPurchasePrice;
+                        return $item->invoice->sale ? -1 * $item->quantity * $product->avaragePurchasePrice : $item->quantity * $product->avaragePurchasePrice;
                     }), ['precision' => 2]) ?>
             </td>
         </tr>
@@ -36,11 +36,11 @@
                         return $item->invoice->sale ? -1 * $item->quantity : $item->quantity;
                     }) ?>
             </td>
-            <th scope="row"><?= __('Stock value by avarage price') ?></th>
+            <th scope="row"><?= __('Stock value by last price') ?></th>
             <td class="text-right">
                 <?= $this->Number->format(
                     Collection($product->items)->sumOf(function ($item) use ($product) {
-                        return $item->invoice->sale ? -1 * $item->quantity * $product->avaragePurchasePrice : $item->quantity * $product->avaragePurchasePrice;
+                        return $item->invoice->sale ? -1 * $item->quantity * $product->lastPurchasePrice : $item->quantity * $product->lastPurchasePrice;
                     }), ['precision' => 2]) ?>
             </td>
         </tr>
