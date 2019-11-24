@@ -20,7 +20,8 @@ class StatsController extends AppController
             'purchases' => collection(
                 $this->Invoices->find('withTotal')
                     ->where(['sale' => false])
-                )->sumOf('total')
+                )->sumOf('total'),
+            'stock' => $this->Products->find('stock')->sumOf('stock')
         ];
         $invoices = $this->Invoices->find()->count();
         $partners = $this->Partners->find()->count();
