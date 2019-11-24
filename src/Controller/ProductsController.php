@@ -117,7 +117,9 @@ class ProductsController extends AppController
 
     public function stock()
     {
-        $products = $this->Products->find('stock');
+        $products = $this->Products->find('purchasePrice', ['currency' => 'HUF'])
+            ->find('stock')
+            ->order('Products.name');
 
         $this->set(compact('products'));
     }

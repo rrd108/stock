@@ -3,29 +3,40 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('size') ?></th>
-                <th scope="col"><?= __('Quantity') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('cost') ?></th>
-                <th scope="col"><?= __('Income') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('currency') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" rowspan="2"><?= $this->Paginator->sort('name') ?></th>
+                <th scope="col" rowspan="2"><?= $this->Paginator->sort('code') ?></th>
+                <th scope="col" rowspan="2"><?= $this->Paginator->sort('size') ?></th>
+                <th scope="col"><?= __('Stock') ?></th>
+                <th scope="col" rowspan="2"><?= __('Avarage purchase price') ?></th>
+                <th scope="col" rowspan="2"><?= __('Last purchase price') ?></th>
+                <th scope="col"><?= __('Value') ?></th>
+                <th scope="col"><?= __('Value') ?></th>
+            </tr>
+            <tr>
+                <td class="text-right"><?= $this->Number->format($products->sumOf('stock')) ?></td>
+                <td class="text-right">
+                    <?= $this->Number->format($products->sumOf(function ($product) {
+                        return $product->stock * $product->avaragePurchasePrice;
+                    })) ?>
+                </td>
+                <td class="text-right">
+                    <?= $this->Number->format($products->sumOf(function ($product) {
+                        return $product->stock * $product->lastPurchasePrice;
+                    })) ?>
+                </td>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($products as $product): ?>
             <tr>
                 <td><?= $this->Html->link($product->name, ['action' => 'view', $product->id], ['escape' => false]) ?></td>
+                <td><?= h($product->code) ?></td>
                 <td><?= h($product->size) ?></td>
-                 <td><?= h($product->stock) ?></td>
-                <td><?= $this->Number->format($product->cost) ?></td>
-                <td></td>
-                <td><?= h($product->currency) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link('<i class="fi-pencil" title="' . __('Edit') . '"></i>', ['action' => 'edit', $product->id], ['escape' => false]) ?>
-                    <?= $this->Form->postLink('<i class="fi-x" title="' . __('Delete') . '"></i>', ['action' => 'delete', $product->id],
-                    ['escape' => false, 'confirm' => __('Are you sure you want to delete # {0}?', $product->id)]) ?>
-                </td>
+                <td class="text-right"><?= $this->Number->format($product->stock) ?></td>
+                <td class="text-right"><?= $this->Number->format($product->avaragePurchasePrice) ?></td>
+                <td class="text-right"><?= $this->Number->format($product->lastPurchasePrice) ?></td>
+                <td class="text-right"><?= $this->Number->format($product->stock * $product->avaragePurchasePrice) ?></td>
+                <td class="text-right"><?= $this->Number->format($product->stock * $product->lastPurchasePrice) ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
