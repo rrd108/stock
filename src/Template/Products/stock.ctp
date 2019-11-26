@@ -1,3 +1,4 @@
+<?= $this->Html->script('stock.stock', ['block' => true]) ?>
 <div class="small-12 columns content">
     <h3><?= __('Products') ?></h3>
     <table cellpadding="0" cellspacing="0">
@@ -16,29 +17,27 @@
                 <td class="text-right"><?= $this->Number->format($products->sumOf('stock')) ?> <?= __('pcs') ?></td>
                 <td class="text-right">
                     <?= $this->Number->currency($products->sumOf(function ($product) {
-                        return $product->stock * $product->avaragePurchasePrice;
-                    }), null, ['precision' => $this->precision]) ?>
+    return $product->stock * $product->avaragePurchasePrice;
+}), null, ['precision' => $this->precision]) ?>
                 </td>
                 <td class="text-right">
                     <?= $this->Number->currency($products->sumOf(function ($product) {
-                        return $product->stock * $product->lastPurchasePrice;
-                    }), null, ['precision' => $this->precision]) ?>
+    return $product->stock * $product->lastPurchasePrice;
+}), null, ['precision' => $this->precision]) ?>
                 </td>
             </tr>
         </thead>
-        <tbody>
-            <?php foreach ($products as $product): ?>
-            <tr>
-                <td><?= $this->Html->link($product->name, ['action' => 'view', $product->id], ['escape' => false]) ?></td>
-                <td><?= h($product->code) ?></td>
-                <td><?= h($product->size) ?></td>
-                <td class="text-right"><?= $this->Number->format($product->stock) ?></td>
-                <td class="text-right"><?= $this->Number->format($product->avaragePurchasePrice, ['precision' => $this->precision]) ?></td>
-                <td class="text-right"><?= $this->Number->format($product->lastPurchasePrice) ?></td>
-                <td class="text-right"><?= $this->Number->format($product->stock * $product->avaragePurchasePrice, ['precision' => $this->precision]) ?></td>
-                <td class="text-right"><?= $this->Number->format($product->stock * $product->lastPurchasePrice) ?></td>
+        <tbody class="p">
+            <tr v-for="product in products" :key="product.id" v-show="!product.hide">
+                <td><a :href="'view/' + product.id">{{product.name}}</a></td>
+                <td>{{product.code}}</td>
+                <td>{{product.size}}</td>
+                <td class="text-right">{{product.stock | toInt}}</td>
+                <td class="text-right">{{product.avaragePurchasePrice | toCurrency}}</td>
+                <td class="text-right">{{product.lastPurchasePrice | toCurrency}}</td>
+                <td class="text-right">{{product.stock * product.avaragePurchasePrice | toCurrency}}</td>
+                <td class="text-right">{{product.stock * product.lastPurchasePrice | toCurrency}}</td>
             </tr>
-            <?php endforeach; ?>
         </tbody>
     </table>
 </div>

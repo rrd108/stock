@@ -32,6 +32,7 @@
 <?= $this->Html->script('vendor/jquery.js') ?>
 <?= $this->Html->script('vendor/what-input.js') ?>
 <?= $this->Html->script('vendor/foundation.js') ?>
+<?= $this->Html->script('vendor/vue.min.js') ?>
 <?= $this->Html->script('stock.min') ?>
 <?= $this->fetch('script') ?>
 </body>

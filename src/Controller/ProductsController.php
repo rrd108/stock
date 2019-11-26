@@ -122,5 +122,6 @@ class ProductsController extends AppController
             ->order('Products.name');
 
         $this->set(compact('products'));
+        $this->set('_serialize', 'products');
     }
 }
