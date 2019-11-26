@@ -4,7 +4,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col" rowspan="2"><?= $this->Paginator->sort('name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('name') ?> ({{searchResultsCount}})</th>
                 <th scope="col" rowspan="2"><?= $this->Paginator->sort('code') ?></th>
                 <th scope="col" rowspan="2"><?= $this->Paginator->sort('size') ?></th>
                 <th scope="col"><?= __('Stock') ?></th>
@@ -14,6 +14,14 @@
                 <th scope="col"><?= __('Value') ?></th>
             </tr>
             <tr>
+                <td>
+                    <?= $this->Form->control('name',
+                        [
+                            'label' => false,
+                            'v-model' => 'searchQuery',
+                            'placeholder' => __('Search')
+                        ]) ?>
+                </td>
                 <td class="text-right"><?= $this->Number->format($products->sumOf('stock')) ?> <?= __('pcs') ?></td>
                 <td class="text-right">
                     <?= $this->Number->currency($products->sumOf(function ($product) {
@@ -27,8 +35,8 @@
                 </td>
             </tr>
         </thead>
-        <tbody class="p">
-            <tr v-for="product in products" :key="product.id" v-show="!product.hide">
+        <tbody>
+            <tr v-for="product in products" :key="product.id" v-show="!product.hidden">
                 <td><a :href="'view/' + product.id">{{product.name}}</a></td>
                 <td>{{product.code}}</td>
                 <td>{{product.size}}</td>
