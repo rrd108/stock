@@ -5,7 +5,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('name') ?> ({{searchResultsCount}} <?= __('products') ?>)</th>
-                <th scope="col" rowspan="2"><?= $this->Paginator->sort('code') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('code') ?></th>
                 <th scope="col" rowspan="2"><?= $this->Paginator->sort('size') ?></th>
                 <th scope="col"><?= __('Stock') ?></th>
                 <th scope="col" rowspan="2"><?= __('Avarage purchase price') ?></th>
@@ -19,7 +19,16 @@
                         [
                             'label' => false,
                             'autocomplete' => 'off',
-                            'v-model' => 'searchQuery',
+                            'v-model' => 'filterByName',
+                            'placeholder' => __('Search')
+                        ]) ?>
+                </td>
+                <td>
+                    <?= $this->Form->control('code',
+                        [
+                            'label' => false,
+                            'autocomplete' => 'off',
+                            'v-model' => 'filterByCode',
                             'placeholder' => __('Search')
                         ]) ?>
                 </td>

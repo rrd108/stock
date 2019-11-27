@@ -4,16 +4,30 @@ new Vue({
     data() {
         return {
             products: [],
-            searchQuery: '',
+            filterByName: '',
+            filterByCode : '',
             searchResultsCount: 0,
         }
     },
 
     watch: {
-        searchQuery(val) {
+        filterByName(val) {
+            this.filterOut(val, 'name');
+        },
+        filterByCode(val) {
+            this.filterOut(val, 'code');
+        },
+    },
+
+    methods: {
+        filterOut(val, field) {
             if (val) {
                 this.products.forEach((product) => {
-                    product.hidden = (product.name.toLowerCase().indexOf(val.toLowerCase()) == -1) ? true : false
+                    if (!product[field]) {
+                        product.hidden = true;
+                        return;
+                    }
+                    product.hidden = (product[field].toLowerCase().indexOf(val.toLowerCase()) == -1) ? true : false
                 })
             } else {
                 this.products.forEach((product) => {
