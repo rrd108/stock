@@ -1,11 +1,14 @@
-new Vue({
-    el: 'table',
+Vue.component('table-row-filter', {
+    template: '<input type="text" v-model="filterRow" :field="field" autocomplete="off" placeholder="Search">',
+
+    props : ['field'],
 
     data() {
         return {
             products: [],
             filterByName: '',
-            filterByCode : '',
+            filterByCode: '',
+            filterBySize: '',
             searchResultsCount: 0,
         }
     },
@@ -17,10 +20,13 @@ new Vue({
         filterByCode(val) {
             this.filterOut(val, 'code');
         },
+        filterBySize(val) {
+            this.filterOut(val, 'size');
+        },
     },
 
     methods: {
-        filterOut(val, field) {
+        filterRow(val) {
             if (val) {
                 this.products.forEach((product) => {
                     if (!product[field]) {
@@ -62,5 +68,12 @@ new Vue({
         toNum(value, precision) {
             return precision ? value : parseInt(value);
         }
+    }
+});
+
+new Vue({
+    el: 'table',
+    data: {
+        products: []
     }
 });
