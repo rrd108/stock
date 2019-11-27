@@ -109,4 +109,17 @@ new Vue({
             .catch(err => console.log(err));
     },
 
+    filters: {
+        toCurrency(value) {
+            // TODO set it from session
+            return new Intl.NumberFormat('hu-HU', {
+                style: 'currency',
+                currency: 'HUF',
+                minimumFractionDigits: 0
+            }).format(value);
+        },
+        toNum(value, precision) {
+            return precision ? value : parseInt(value);
+        }
+    }
 });
