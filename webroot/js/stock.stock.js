@@ -1,25 +1,24 @@
 Vue.component('table-row-filter', {
-    props: ['search'],
+    props: ['search', 'products'],
 
-    template: '<input type="text" v-model="filterRow" autocomplete="off" placeholder="Search">',
+    template: '<input type="text" v-model="filterRow" :search="search" autocomplete="off" placeholder="Search">',
 
     data() {
         return {
-            products: [],
+            filterRow: '',
             searchResultsCount: 0,
         }
     },
 
-
-    methods: {
+    watch: {
         filterRow(val) {
             if (val) {
                 this.products.forEach((product) => {
-                    if (!product[search]) {
+                    if (!product[this.search]) {
                         product.hidden = true;
                         return;
                     }
-                    product.hidden = (product[search].toLowerCase().indexOf(val.toLowerCase()) == -1) ? true : false
+                    product.hidden = (product[this.search].toLowerCase().indexOf(val.toLowerCase()) == -1) ? true : false
                 })
             } else {
                 this.products.forEach((product) => {
@@ -29,6 +28,15 @@ Vue.component('table-row-filter', {
             this.searchResultsCount = this.products.filter(product => product.hidden !== true).length;
             return;
         }
+    },
+
+});
+
+new Vue({
+    el: 'table',
+
+    data: {
+        products: []
     },
 
     created() {
@@ -54,12 +62,5 @@ Vue.component('table-row-filter', {
         toNum(value, precision) {
             return precision ? value : parseInt(value);
         }
-    }
-});
-
-new Vue({
-    el: 'table',
-    data: {
-        products: []
     }
 });
