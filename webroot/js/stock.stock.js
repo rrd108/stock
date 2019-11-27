@@ -66,7 +66,7 @@ Vue.component('filtered-tbody', {
                     product.hidden = false;
                 })
             }
-            this.searchResultsCount = this.products.filter(product => product.hidden !== true).length;
+            this.$parent.searchResultsCount = this.products.filter(product => product.hidden !== true).length;
             return;
         });
     },
@@ -90,7 +90,8 @@ new Vue({
     el: 'table',
 
     data: {
-        products: []
+        products: [],
+        searchResultsCount: 0,
     },
 
     created() {

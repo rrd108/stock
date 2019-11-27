@@ -4,7 +4,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('name') ?> ({searchResultsCount}} <?= __('products') ?>)</th>
+                <th scope="col"><?= $this->Paginator->sort('name') ?> ({{searchResultsCount}} <?= __('products') ?>)</th>
                 <th scope="col"><?= $this->Paginator->sort('code') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('size') ?></th>
                 <th scope="col"><?= __('Stock') ?></th>
