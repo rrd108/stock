@@ -14,9 +14,9 @@
                 <th scope="col"><?= __('Value') ?></th>
             </tr>
             <tr>
-                <td><table-row-filter search="name" :products="products" /></td>
-                <td><table-row-filter search="code" :products="products" /></td>
-                <td><table-row-filter search="size" :products="products" /></td>
+                <td><filter-input search="name" /></td>
+                <td><filter-input search="code" /></td>
+                <td><filter-input search="size" /></td>
                 <td class="text-right">
                     {products.reduce((sum, product) =>
                         sum + (product.hidden ? 0 : parseInt(product.stock))
@@ -28,17 +28,7 @@
                 <td class="text-right">{products.reduce((sum, product) => sum + (product.hidden ? 0 : parseInt(product.stock * product.lastPurchasePrice)) , 0) | toCurrency}}</td>
             </tr>
         </thead>
-        <tbody>
-            <tr v-for="product in products" :key="product.id" v-show="!product.hidden">
-                <td><a :href="'view/' + product.id">{{product.name}}</a></td>
-                <td>{{product.code}}</td>
-                <td>{{product.size}}</td>
-                <td class="text-right">{{product.stock | toNum(0)}}</td>
-                <td class="text-right">{{product.avaragePurchasePrice | toCurrency}}</td>
-                <td class="text-right">{{product.lastPurchasePrice | toCurrency}}</td>
-                <td class="text-right">{{product.stock * product.avaragePurchasePrice | toCurrency}}</td>
-                <td class="text-right">{{product.stock * product.lastPurchasePrice | toCurrency}}</td>
-            </tr>
+        <tbody is="filtered-tbody" :products="products" @row-filter="filterRow($event)" />
         </tbody>
     </table>
 </div>

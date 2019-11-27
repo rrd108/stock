@@ -1,11 +1,9 @@
-Vue.component('table-row-filter', {
+const eventBus = new Vue();     // communicate between components
+
+Vue.component('filter-input', {
     props: {
         search: {
             type: String,
-            required: true,
-        },
-        products: {
-            type: Array,
             required: true,
         }
     },
@@ -15,19 +13,53 @@ Vue.component('table-row-filter', {
     data() {
         return {
             filterRow: '',
-            searchResultsCount: 0,
         }
     },
 
     watch: {
         filterRow(val) {
-            if (val) {
+            eventBus.$emit('row-filter', { field: this.search, val: val });
+        }
+    },
+
+});
+
+Vue.component('filtered-tbody', {
+    props: {
+        products: {
+            type: Array,
+            required: true
+        }
+    },
+
+    template: '<tbody>\
+            <tr v-for="product in products" :key="product.id" v-show="!product.hidden">\
+                <td><a :href="\'view/\' + product.id">{{product.name}}</a></td>\
+                <td>{{product.code}}</td>\
+                <td>{{product.size}}</td>\
+                <td class="text-right">{{product.stock | toNum(0)}}</td>\
+                <td class="text-right">{{product.avaragePurchasePrice | toCurrency}}</td>\
+                <td class="text-right">{{product.lastPurchasePrice | toCurrency}}</td>\
+                <td class="text-right">{{product.stock * product.avaragePurchasePrice | toCurrency}}</td>\
+                <td class="text-right">{{product.stock * product.lastPurchasePrice | toCurrency}}</td>\
+            </tr>\
+        </tbody>',
+
+    data() {
+        return {
+            searchResultsCount: 0,
+        }
+    },
+
+    created() {
+        eventBus.$on('row-filter', (search) => {
+            if (search) {
                 this.products.forEach((product) => {
-                    if (!product[this.search]) {
+                    if (!product[search.field]) {
                         product.hidden = true;
                         return;
                     }
-                    product.hidden = (product[this.search].toLowerCase().indexOf(val.toLowerCase()) == -1) ? true : false
+                    product.hidden = (product[search.field].toLowerCase().indexOf(search.val.toLowerCase()) == -1) ? true : false
                 })
             } else {
                 this.products.forEach((product) => {
@@ -36,27 +68,7 @@ Vue.component('table-row-filter', {
             }
             this.searchResultsCount = this.products.filter(product => product.hidden !== true).length;
             return;
-        }
-    },
-
-});
-
-new Vue({
-    el: 'table',
-
-    data: {
-        products: []
-    },
-
-    created() {
-        fetch('stock.json')
-            .then(response => { return response.json() })
-            .then(products => {
-                this.products = products
-                this.searchResultsCount = products.length
-            }
-            )
-            .catch(err => console.log(err));
+        });
     },
 
     filters: {
@@ -72,4 +84,28 @@ new Vue({
             return precision ? value : parseInt(value);
         }
     }
+});
+
+new Vue({
+    el: 'table',
+
+    data: {
+        products: []
+    },
+
+    created() {
+        fetch('stock.json')
+            .then(response => { return response.json() })
+            .then(products => {
+                // vue will not listen to changes of the hidden property i it just added later dynamically
+                products.forEach((product) => {
+                    product.hidden = false;
+                })
+                this.products = products
+                this.searchResultsCount = products.length
+            }
+            )
+            .catch(err => console.log(err));
+    },
+
 });
