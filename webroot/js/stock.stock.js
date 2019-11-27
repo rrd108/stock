@@ -1,5 +1,14 @@
 Vue.component('table-row-filter', {
-    props: ['search', 'products'],
+    props: {
+        search: {
+            type: String,
+            required: true,
+        },
+        products: {
+            type: Array,
+            required: true,
+        }
+    },
 
     template: '<input type="text" v-model="filterRow" :search="search" autocomplete="off" placeholder="Search">',
 
