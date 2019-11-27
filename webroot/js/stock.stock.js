@@ -45,8 +45,8 @@ new Vue({
                 minimumFractionDigits: 0
             }).format(value);
         },
-        toInt(value) {
-            return parseInt(value);
+        toNum(value, precision) {
+            return precision ? value : parseInt(value);
         }
     }
 });
