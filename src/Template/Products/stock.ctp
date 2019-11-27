@@ -14,39 +14,9 @@
                 <th scope="col"><?= __('Value') ?></th>
             </tr>
             <tr>
-                <td><table-row-filter field="name" />
-                    <?php /*$this->Form->control(
-                        'name',
-                        [
-                            'label' => false,
-                            'autocomplete' => 'off',
-                            'v-model' => 'filterByName',
-                            'placeholder' => __('Search')
-                        ]
-                    ) */?>
-                </td>
-                <td>
-                    <?php /*$this->Form->control(
-                            'code',
-                        [
-                            'label' => false,
-                            'autocomplete' => 'off',
-                            'v-model' => 'filterByCode',
-                            'placeholder' => __('Search')
-                        ]
-                        )*/ ?>
-                </td>
-                <td>
-                    <?php /*$this->Form->control(
-                            'size',
-                        [
-                            'label' => false,
-                            'autocomplete' => 'off',
-                            'v-model' => 'filterBySize',
-                            'placeholder' => __('Search')
-                        ]
-                        )*/ ?>
-                </td>
+                <td><table-row-filter search="name" /></td>
+                <td><table-row-filter search="code" /></td>
+                <td><table-row-filter search="size" /></td>
                 <td class="text-right">
                     {products.reduce((sum, product) =>
                         sum + (product.hidden ? 0 : parseInt(product.stock))

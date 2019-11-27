@@ -1,39 +1,25 @@
 Vue.component('table-row-filter', {
-    template: '<input type="text" v-model="filterRow" :field="field" autocomplete="off" placeholder="Search">',
+    props: ['search'],
 
-    props : ['field'],
+    template: '<input type="text" v-model="filterRow" autocomplete="off" placeholder="Search">',
 
     data() {
         return {
             products: [],
-            filterByName: '',
-            filterByCode: '',
-            filterBySize: '',
             searchResultsCount: 0,
         }
     },
 
-    watch: {
-        filterByName(val) {
-            this.filterOut(val, 'name');
-        },
-        filterByCode(val) {
-            this.filterOut(val, 'code');
-        },
-        filterBySize(val) {
-            this.filterOut(val, 'size');
-        },
-    },
 
     methods: {
         filterRow(val) {
             if (val) {
                 this.products.forEach((product) => {
-                    if (!product[field]) {
+                    if (!product[search]) {
                         product.hidden = true;
                         return;
                     }
-                    product.hidden = (product[field].toLowerCase().indexOf(val.toLowerCase()) == -1) ? true : false
+                    product.hidden = (product[search].toLowerCase().indexOf(val.toLowerCase()) == -1) ? true : false
                 })
             } else {
                 this.products.forEach((product) => {
