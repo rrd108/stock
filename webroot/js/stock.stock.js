@@ -1,5 +1,18 @@
 const eventBus = new Vue();     // communicate between components
 
+Vue.filter('toCurrency', function(value) {
+    // TODO set it from session
+    return new Intl.NumberFormat('hu-HU', {
+        style: 'currency',
+        currency: 'HUF',
+        minimumFractionDigits: 0
+    }).format(value);
+});
+
+Vue.filter('toNum', function (value, precision) {
+    return precision ? value : parseInt(value);
+});
+
 Vue.component('filter-input', {
     props: {
         search: {
@@ -71,19 +84,6 @@ Vue.component('filtered-tbody', {
         });
     },
 
-    filters: {
-        toCurrency(value) {
-            // TODO set it from session
-            return new Intl.NumberFormat('hu-HU', {
-                style: 'currency',
-                currency: 'HUF',
-                minimumFractionDigits: 0
-            }).format(value);
-        },
-        toNum(value, precision) {
-            return precision ? value : parseInt(value);
-        }
-    }
 });
 
 new Vue({
@@ -109,17 +109,4 @@ new Vue({
             .catch(err => console.log(err));
     },
 
-    filters: {
-        toCurrency(value) {
-            // TODO set it from session
-            return new Intl.NumberFormat('hu-HU', {
-                style: 'currency',
-                currency: 'HUF',
-                minimumFractionDigits: 0
-            }).format(value);
-        },
-        toNum(value, precision) {
-            return precision ? value : parseInt(value);
-        }
-    }
 });
