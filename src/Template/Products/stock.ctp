@@ -28,7 +28,6 @@
                 <td class="text-right">{{products.reduce((sum, product) => sum + (product.hidden ? 0 : parseInt(product.stock * product.lastPurchasePrice)) , 0) | toCurrency}}</td>
             </tr>
         </thead>
-        <tbody is="filtered-tbody" :products="products" @row-filter="filterRow($event)" />
-        </tbody>
+        <tbody is="filtered-tbody" :products="products" @row-filter="filterRow($event)"></tbody>
     </table>
 </div>

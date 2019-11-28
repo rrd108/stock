@@ -1,3 +1,5 @@
+<?= $this->Html->script('stock.invoices', ['block' => true]) ?>
+
 <div class="invoices index small-12 columns content">
     <div class="row">
         <div class="column small-6">
@@ -18,46 +20,16 @@
                 <th scope="col"><?= $this->Paginator->sort('invoicetype_id') ?></th>
                 <th scope="col"><?= __('Amount') ?></th>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($invoices as $invoice): ?>
-            <tr class="<?= $invoice->sale ? 'out' : 'in' ?>">
-                <td>
-                    <?= $this->Html->link($invoice->sale ? '<i class="fi-arrow-left"></i>' : '<i class="fi-arrow-right"></i>', ['action' => 'view', $invoice->id], ['escape' => false]) ?>
-                </td>
-                <td>
-                    <?php if (strpos($invoice->number, '|')) : ?>
-                        <?php $num = explode('|', $invoice->number); ?>
-                        <?= $this->Html->link('<i class="fi-page-pdf"></i>', $num[2], ['escape' => false])
-                            . ' ' . $num[1] ?>
-                    <?php else : ?>
-                        <?= str_replace('|', '<br>', h($invoice->number)) ?>
-                    <?php endif; ?>
-                </td>
-                <td><?= h($invoice->date) ?></td>
-                <td><?= $this->Html->link('<i class="fi-torsos"> ' . $invoice->partner->name . '</i>', ['controller' => 'Partners', 'action' => 'view', $invoice->partner->id], ['escape' => false]) ?></td>
-                <td><?= '<i class="fi-contrast"> ' .  $invoice->storage->name . '</i>' ?></td>
-                <td><?= '<i class="fi-book"> ' . $invoice->invoicetype->name . '</i>' ?></td>
-                <td>
-                    <?= $this->Number->format(
-                        collection($invoice->items)->sumOf(function ($item) {
-                            return $item->quantity * $item->price;
-                        }),
-                        ['precision' => 2]) ?>
-                     <?= $invoice->currency ?>
-                </td>
+            <tr>
+                <td></td>
+                <td><filter-input search="number" /></td>
+                <td><filter-input search="date" /></td>
+                <td><filter-input search="partnerName" /></td>
+                <td><filter-input search="storageName" /></td>
+                <td><filter-input search="invoiceType" /></td>
+                <td></td>
             </tr>
-            <?php endforeach; ?>
-        </tbody>
+        </thead>
+        <tbody is="filtered-tbody" :invoices="invoices" @row-filter="filterRow($event)"></tbody>
     </table>
-    <div class="paginator">
-        <ul class="pagination text-center">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p class="text-center"><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
 </div>
