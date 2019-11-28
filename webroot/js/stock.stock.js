@@ -95,7 +95,7 @@ new Vue({
     },
 
     created() {
-        fetch('stock.json')
+        fetch('../api/products/stock.json')
             .then(response => { return response.json() })
             .then(products => {
                 // vue will not listen to changes of the hidden property i it just added later dynamically
