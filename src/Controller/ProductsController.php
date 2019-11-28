@@ -115,16 +115,5 @@ class ProductsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function stock()
-    {
-        if ($this->request->is('json')) {
-
-            $products = $this->Products->find('purchasePrice', ['currency' => 'HUF'])
-            ->find('stock')
-            ->order('Products.name');
-
-            $this->set(compact('products'));
-            $this->set('_serialize', 'products');
-        }
-    }
+    public function stock(){}
 }

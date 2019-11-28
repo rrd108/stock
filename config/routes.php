@@ -45,7 +45,7 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
-Router::extensions(['pdf', 'json']);
+Router::extensions(['pdf']);
 
 Router::scope('/', function (RouteBuilder $routes) {
     // Register scoped middleware for in scopes.
@@ -104,6 +104,11 @@ Router::scope('/', function (RouteBuilder $routes) {
  * });
  * ```
  */
+Router::prefix('api', function (RouteBuilder $routes) {
+    $routes->setExtensions(['json']);
+    $routes->fallbacks(DashedRoute::class);
+});
+
 Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
