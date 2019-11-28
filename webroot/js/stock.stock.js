@@ -29,7 +29,7 @@ Vue.component('filter-input', {
         }
     },
 
-    watch: {
+    computed: {
         filterRow(val) {
             eventBus.$emit('row-filter', { field: this.search, val: val });
         }
