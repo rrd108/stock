@@ -2,8 +2,8 @@ $(document).foundation();
 
 const StockTexts = {
     'hu': {
-        'sale': 'Elad?s',
-        'purchase': 'Beszerz?s'
+        'sale': 'Eladás',
+        'purchase': 'Beszerzés'
     }
 };
 
