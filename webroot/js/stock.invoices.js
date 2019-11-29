@@ -17,17 +17,6 @@ Vue.filter('toNum', function (value, precision) {
     return precision ? value : parseInt(value);
 });
 
-Vue.filter('invoiceNumber', function (value) {
-    if (value.indexOf('|') != -1) {
-        value = value.split('|');
-        value = value[1];
-        /*value = '<a href="' + value[2] + '">\
-            <i class="fi-page-pdf"></i>\
-            </a> ' + value[1];*/
-    }
-    return value;
-});
-
 new Vue({
     el: 'table',
 

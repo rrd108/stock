@@ -7,7 +7,7 @@
                     <i v-if="!invoice.sale" class="fi-arrow-right"></i>
                 </a>
             </td>
-            <td>{{invoice.number | invoiceNumber}}</td>
+            <td v-html="$options.filters.invoiceNumber(invoice.number)"></td>
             <td>{{invoice.date | toLocaleDateString}}</td>
             <td>
                 <a :href="'../partners/view/' + invoice.partner.id">
@@ -56,6 +56,18 @@ module.exports = {
             return;
         });
     },
+
+    filters : {
+        invoiceNumber(value) {
+            if (value.indexOf('|') != -1) {
+                value = value.split('|');
+                value = '<a href="' + value[2] + '">\
+                    <i class="fi-page-pdf"></i>\
+                    </a> ' + value[1];
+            }
+            return value;
+        }
+    }
 }
 </script>
 
