@@ -63,7 +63,7 @@ Vue.component('filtered-tbody', {
     template: '<tbody>\
         <tr v-for="invoice in invoices" :key="invoice.id" :class="invoice.sale ? \'out\' : \'in\'" v-show="!invoice.hidden">\
             <td>\
-                <a :href="\'view/\' + invoice.id">\
+                <a :href="\'invoices/view/\' + invoice.id">\
                     <i v-if= "invoice.sale" class="fi-arrow-left" ></i>\
                     <i v-if="!invoice.sale" class="fi-arrow-right"></i>\
                 </a>\
