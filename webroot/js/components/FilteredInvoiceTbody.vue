@@ -37,6 +37,7 @@ module.exports = {
         }
     },
 
+    // we can not use mixins here RowFilter.js
     created() {
         eventBus.$on('row-filter', (search) => {
             let items, field;
