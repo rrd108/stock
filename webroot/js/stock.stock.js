@@ -18,7 +18,7 @@ new Vue({
 
     components: {
         'filter-input': httpVueLoader('../js/components/FilterInput.vue'),
-        'filtered-tbody': httpVueLoader('../js/components/FilteredTbody.vue')
+        'filtered-tbody': httpVueLoader('../js/components/FilteredProductTbody.vue')
     },
 
     data: {
