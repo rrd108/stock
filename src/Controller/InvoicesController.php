@@ -267,10 +267,10 @@ class InvoicesController extends AppController
                         }
                         $data['items'][$i]['currency'] = $this->request->getData('currency');
                         $data['items'][$i]['product'] = [
-                        'company_id' => $storage->company_id,
-                        'name' => $value[$this->request->getData('name')],
-                        'vat' => $value[$this->request->getData('vat')]
-                    ];
+                            'company_id' => $storage->company_id,
+                            'name' => $value[$this->request->getData('name')],
+                            'vat' => $value[$this->request->getData('vat')]
+                        ];
                         $i++;
                     }
                 }
