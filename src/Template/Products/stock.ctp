@@ -14,9 +14,9 @@
                 <th scope="col"><?= __('Value') ?></th>
             </tr>
             <tr>
-                <td><filter-input search="name" /></td>
-                <td><filter-input search="code" /></td>
-                <td><filter-input search="size" /></td>
+                <td><filter-input search="products.name" /></td>
+                <td><filter-input search="products.code" /></td>
+                <td><filter-input search="products.size" /></td>
                 <td class="text-right">
                     {{products.reduce((sum, product) =>
                         sum + (product.hidden ? 0 : parseInt(product.stock))

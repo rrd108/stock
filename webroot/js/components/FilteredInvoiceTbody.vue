@@ -39,20 +39,25 @@ module.exports = {
 
     created() {
         eventBus.$on('row-filter', (search) => {
+            let items, field;
+            items = search.field.split('.');
+            field = items[1];
+            items = items[0];
+
             if (search) {
-                this.invoices.forEach((invoice) => {
-                    if (!invoice[search.field]) {
-                        invoice.hidden = true;
+                this[items].forEach((item) => {
+                    if (!item[field]) {
+                        item.hidden = true;
                         return;
                     }
-                    invoice.hidden = (invoice[search.field].toLowerCase().indexOf(search.val.toLowerCase()) == -1) ? true : false
+                    item.hidden = (item[field].toLowerCase().indexOf(search.val.toLowerCase()) == -1) ? true : false
                 })
             } else {
-                this.invoices.forEach((invoice) => {
-                    invoice.hidden = false;
+                this[items].forEach((item) => {
+                    item.hidden = false;
                 })
             }
-            this.$parent.searchResultsCount = this.invoices.filter(invoice => invoice.hidden !== true).length;
+            this.$parent.searchResultsCount = this[items].filter(item => item.hidden !== true).length;
             return;
         });
     },

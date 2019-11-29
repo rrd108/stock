@@ -22,11 +22,11 @@
             </tr>
             <tr>
                 <td></td>
-                <td><filter-input search="number" /></td>
-                <td><filter-input search="date" /></td>
-                <td><filter-input search="partnerName" /></td>
-                <td><filter-input search="storageName" /></td>
-                <td><filter-input search="invoiceType" /></td>
+                <td><filter-input search="invoices.number" /></td>
+                <td><filter-input search="invoices.date" /></td>
+                <td><filter-input search="invoices.partnerName" /></td>
+                <td><filter-input search="invoices.storageName" /></td>
+                <td><filter-input search="invoices.invoiceType" /></td>
                 <td></td>
             </tr>
         </thead>
