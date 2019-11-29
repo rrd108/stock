@@ -1,9 +1,9 @@
 {
-    "name": "cakephp/app",
-    "description": "CakePHP skeleton app",
-    "homepage": "https://cakephp.org",
+    "name": "StockR",
+    "description": "StockR",
+    "homepage": "https://webmania.cc",
     "type": "project",
-    "license": "MIT",
+    "license": "GPLv3",
     "require": {
         "php": ">=5.6",
         "cakedc/users": "^8.4",
