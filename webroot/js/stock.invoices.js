@@ -76,7 +76,7 @@ Vue.component('filtered-tbody', {
                 </a>\</td>\
             <td><i class="fi-contrast"> {{invoice.storage.name}}</i></td>\
             <td><i class="fi-book"> {{invoice.invoicetype.name}}</i></td>\
-            <td>{{invoice.items.reduce((total, item) => total + item.price * item.quantity, 0) | toCurrency}}</td>\
+            <td class="text-right">{{invoice.items.reduce((total, item) => total + item.price * item.quantity, 0) | toCurrency}}</td>\
         </tr>\
         </tbody>',
 
