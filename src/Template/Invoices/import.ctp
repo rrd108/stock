@@ -1,5 +1,5 @@
 <div class="column small-12">
-    <h3 class="collapseable"><?= __('Import') ?></h3>
+    <h3 class="collapseable">CSV <?= __('Import') ?></h3>
     <div class="row">
         <div class="column small-12">
             <?= $this->Form->create(
