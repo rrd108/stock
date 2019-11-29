@@ -5,7 +5,8 @@ Vue.filter('toCurrency', function(value) {
     return new Intl.NumberFormat('hu-HU', {
         style: 'currency',
         currency: 'HUF',
-        minimumFractionDigits: 0
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
     }).format(value);
 });
 

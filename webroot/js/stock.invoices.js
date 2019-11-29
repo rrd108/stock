@@ -5,7 +5,8 @@ Vue.filter('toCurrency', function (value) {
     return new Intl.NumberFormat('hu-HU', {
         style: 'currency',
         currency: 'HUF',
-        minimumFractionDigits: 0
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
     }).format(value);
 });
 
@@ -13,9 +14,6 @@ Vue.filter('toLocaleDateString', function (value) {
     return new Date(value).toLocaleDateString('hu-HU');
 });
 
-Vue.filter('toNum', function (value, precision) {
-    return precision ? value : parseInt(value);
-});
 
 new Vue({
     el: 'table',
@@ -47,5 +45,4 @@ new Vue({
             )
             .catch(err => console.log(err));
     },
-
 });
