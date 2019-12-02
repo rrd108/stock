@@ -19,8 +19,6 @@
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 
-    <?= $this->Html->script('vendor/vue.js') ?>
-    <?= $this->Html->script('vendor/httpVueLoader.js') ?>
 </head>
 <body>
 
