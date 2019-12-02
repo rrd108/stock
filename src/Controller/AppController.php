@@ -82,6 +82,7 @@ class AppController extends Controller
 
     public function beforeRender(Event $event)
     {
+        // Note to myself: CORS errors in vue can mean there was a server side PHP error, not necessary a real cors error
         parent::beforeRender($event);
         $this->response = $this->response->cors($this->request)
             ->allowOrigin(['localhost:8080'])
