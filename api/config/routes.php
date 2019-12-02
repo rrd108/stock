@@ -57,7 +57,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * Apply a middleware to the current route scope.
      * Requires middleware to be registered via `Application::routes()` with `registerMiddleware()`
      */
-    $routes->applyMiddleware('csrf');
+//    $routes->applyMiddleware('csrf');
 
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
@@ -90,6 +90,9 @@ Router::scope('/', function (RouteBuilder $routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
+
+    $routes->connect('user-get-token', ['plugin' => null, 'controller' => 'AppUsers', 'action' => 'getToken']);
+
     $routes->fallbacks(DashedRoute::class);
 });
 
