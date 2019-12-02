@@ -1,33 +1,36 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <stockRheader v-if="isLoggedIn" />
     <router-view/>
   </div>
 </template>
 
+<script>
+
+import StockRheader from '@/components/StockRheader.vue'
+
+export default {
+  name: 'home',
+
+  components: {
+    StockRheader
+  },
+
+  computed : {
+      isLoggedIn() {
+        return this.$store.state.user.email ? true : false;
+      }
+  },
+}
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 @import url('./assets/css/foundation.min.css');
+@import url('./assets/css/foundation-icons.min.css');
 
 #app {
   font-family: 'Quicksand', sans-serif;
   color: #2c3e50;
-}
-
-#nav {
-  text-align: center;
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
