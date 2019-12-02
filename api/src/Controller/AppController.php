@@ -79,4 +79,19 @@ class AppController extends Controller
             $this->redirect(['plugin' => false, 'controller' => 'Companies', 'action' => 'setDefault']);
         }
     }
+
+    public function beforeRender(Event $event)
+    {
+        // Note to myself: CORS errors in vue can mean there was a server side PHP error, not necessary a real cors error
+
+        parent::beforeRender($event);
+        $this->response = $this->response->cors($this->request)
+            ->allowOrigin(['localhost:8080'])
+            ->allowMethods(['GET', 'POST'])
+            ->allowHeaders(['X-CSRF-Token', 'Origin', 'X-Requested-With', 'Content-Type', 'Accept'])
+            ->allowCredentials()
+            ->exposeHeaders(['Link'])
+            ->maxAge(300)
+            ->build();
+    }
 }
