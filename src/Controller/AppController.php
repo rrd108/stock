@@ -56,7 +56,9 @@ class AppController extends Controller
         $this->loadComponent('CakeDC/Users.UsersAuth');
 
         // session is not available in models
-        Configure::write('company_id', $this->getRequest()->getSession()->read('company')->id);
+        if ($this->getRequest()->getSession()->read('company')) {
+            Configure::write('company_id', $this->getRequest()->getSession()->read('company')->id);
+        }
 
         Configure::write('CakePdf', [
             'engine' => 'CakePdf.Mpdf',
