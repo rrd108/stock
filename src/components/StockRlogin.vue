@@ -6,24 +6,22 @@
     <div class="row align-center">
         <h1>StockR</h1>
     </div>
-    <form>
+    <form @submit.prevent="login">
       <fieldset>
-        <!--
-          <div class="callout warning">
-            <legend>Please enter your email and password</legend>
+          <div v-if="hasError" class="callout warning">
+            <legend>Hibás név vagy jelszó</legend>
         </div>
-        -->
         <div class="input email required">
           <label for="email">Email</label>
-          <input type="email" name="email" required="required" id="email">
+          <input type="email" v-model="email" name="email" required="required" id="email">
         </div>
         <div class="input password required">
           <label for="password">Jelszó</label>
-          <input type="password" name="password" required="required" id="password">
+          <input type="password" v-model="password" name="password" required="required" id="password">
         </div>
 
         <div class="input checkbox">
-          <input type="hidden" name="remember_me" value="0">
+          <!-- TODO -->
           <label for="remember-me">
             <input type="checkbox" name="remember_me" value="1" checked="checked" id="remember-me">Emlékezz rám
           </label>
@@ -31,39 +29,62 @@
     </fieldset>
 
     <div class="row align-center">
-      <button class="button" type="submit" @click.prevent="login">Belép</button>
+      <button class="button" type="submit">Belép</button>
     </div>
   </form>
 
   <div class="row align-center">
-    <a href="./users/register" class="column align-self-middle">Regisztrálok</a>
-    <a href="./users/request-reset-password" class="column align-self-middle">Jelszó csere</a>
+    <!--<a TODO<a href="./users/request-reset-password">Jelszó csere</a>-->
   </div>
 </div>
 </template>
 
 <script>
 import axios from 'axios';
+import { required } from 'vuelidate/lib/validators'
+
 export default {
   name: 'StockRlogin',
+
+  data() {
+    return {
+      email : '',
+      password: '',
+      user : {}
+    }
+  },
+
+  validations: {
+    email: {required},
+    password: {required}
+  },
+
+  computed : {
+    hasError() {
+      return this.email && this.password && !this.$store.state.user;
+    }
+  },
 
   methods: {
     async login() {
       console.log('login');
-      const qs = require('qs');
-      axios({
-          method: 'post',
-          url: 'http://localhost/~rrd/stockrvue/api/user-get-token.json',
-          withCredentials : true,
-          data: qs.stringify({
-            email: 'rrd@krisna.hu',
-            password: '123'
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        const qs = require('qs');
+        axios({
+            method: 'post',
+            url: 'http://localhost/~rrd/stockrvue/api/user-get-token.json',
+            //withCredentials : true,
+            data: qs.stringify({
+              email: this.email,
+              password: this.password
+            })
           })
-        })
-        .then(resp => {
-            console.log(resp);
-        })
-        .catch(err => console.error(err));
+          .then(resp => {
+              this.$store.commit('saveUser',resp.data);
+          })
+          .catch(err => console.error(err));
+      }
     }
   }
 }
