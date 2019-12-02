@@ -107,10 +107,11 @@ Router::scope('/', function (RouteBuilder $routes) {
  * });
  * ```
  */
-Router::prefix('api', function (RouteBuilder $routes) {
+// TODO remove api urls as we are already in api
+/*Router::prefix('api', function (RouteBuilder $routes) {
     $routes->setExtensions(['json']);
     $routes->fallbacks(DashedRoute::class);
-});
+});*/
 
 Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);

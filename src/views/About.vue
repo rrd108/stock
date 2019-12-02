@@ -7,13 +7,18 @@
 <script>
 import axios from 'axios';
 export default {
-  methods : {
+  methods: {
     check() {
-      axios.get('http://localhost/~rrd/stockR/api/products/stock.json')
-          .then(response => {
-            console.log(response.data);
-          })
-          .catch(err => console.log(err));
+      console.log('check');
+      axios({
+          method: 'get',
+          url: 'http://localhost/~rrd/stockrvue/api/products/stock.json',
+          withCredentials : true,
+        })
+        .then(resp => {
+            console.log(resp);
+        })
+        .catch(err => console.error(err));
     }
   }
 }
