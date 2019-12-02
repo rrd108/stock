@@ -6,7 +6,19 @@ import Vuelidate from 'vuelidate'
 import i18n from './i18n'
 
 Vue.config.productionTip = false
+
 Vue.use(Vuelidate)
+
+router.beforeEach((to, from, next) => {
+  let language = to.params.lang;
+  if (!language) {
+    language = 'hu';
+  }
+
+  i18n.locale = language;
+  next();
+})
+
 
 new Vue({
   router,

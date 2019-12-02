@@ -10,7 +10,7 @@
 import StockRheader from '@/components/StockRheader.vue'
 
 export default {
-  name: 'home',
+  name: 'app',
 
   components: {
     StockRheader

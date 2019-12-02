@@ -14,7 +14,7 @@
                 <div class="top-bar-left">
                    <ul class="dropdown menu" data-dropdown-menu>
                         <li><img alt="StokR logo" src="../assets/img/logo.png"></li>
-                        <li><router-link to="/"><i class="fi-home"> Főoldal</i></router-link></li>
+                        <li><router-link :to="`/${$i18n.locale}/`"><i class="fi-home"> Főoldal</i></router-link></li>
                         <li><router-link to="/todo"><i class="fi-book"> Bizonylatok</i></router-link></li>
                         <li><router-link to="/todo"><i class="fi-list-thumbnails"> Készlet</i></router-link></li>
                         <li><router-link to="/todo"><i class="fi-upload"> Import</i></router-link></li>
@@ -24,14 +24,14 @@
                             <li><router-link to="/todo"><i class="fi-torso-business"> Cégek</i></router-link></li>
                           </ul>
                         </li>
-                        <li><router-link to="/about">About</router-link></li>
+                        <li><router-link :to="`/${$i18n.locale}/about`">About</router-link></li>
                    </ul>
                 </div>
 
                 <div class="top-bar-right">
                     <ul class="menu">
                       <li><router-link to="/todo"><i class="fi-torso"> TODO COMPANY</i></router-link></li>
-                      <li><a href="#" @click.prevent="logout" title="logout">{{this.$store.state.user.email}} <i class="fi-power"></i></a></li>
+                      <li><a href="/" @click.prevent="logout" title="logout">{{this.$store.state.user.email}} <i class="fi-power"></i></a></li>
                     </ul>
                 </div>
             </div>

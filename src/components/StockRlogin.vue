@@ -31,6 +31,14 @@
     <div class="row align-center">
       <button class="button" type="submit">{{$t("login.enter")}}</button>
     </div>
+
+    <div class="row align-center">
+      <div class="locale-changer">
+        <select v-model="$i18n.locale">
+          <option v-for="(lang, i) in $i18n.availableLocales" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
+        </select>
+      </div>
+    </div>
   </form>
 
   <div class="row align-center">
@@ -50,7 +58,7 @@ export default {
     return {
       email : '',
       password: '',
-      user : {}
+      user : {},
     }
   },
 
@@ -85,7 +93,11 @@ export default {
           })
           .catch(err => console.error(err));
       }
-    }
+    },
+
+    changeLanguage() {
+      //i18n.locale = 'en';
+    },
   }
 }
 </script>
