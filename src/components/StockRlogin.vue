@@ -9,27 +9,27 @@
     <form @submit.prevent="login">
       <fieldset>
           <div v-if="hasError" class="callout warning">
-            <legend>Hibás név vagy jelszó</legend>
+            <legend>{{$t("login.error")}}</legend>
         </div>
         <div class="input email required">
           <label for="email">Email</label>
           <input type="email" v-model="email" name="email" required="required" id="email">
         </div>
         <div class="input password required">
-          <label for="password">Jelszó</label>
+          <label for="password">{{$t("login.password")}}</label>
           <input type="password" v-model="password" name="password" required="required" id="password">
         </div>
 
         <div class="input checkbox">
           <!-- TODO -->
           <label for="remember-me">
-            <input type="checkbox" name="remember_me" value="1" checked="checked" id="remember-me">{{$t("rememberme")}}
+            <input type="checkbox" name="remember_me" value="1" checked="checked" id="remember-me">{{$t("login.rememberme")}}
           </label>
         </div>
     </fieldset>
 
     <div class="row align-center">
-      <button class="button" type="submit">Belép</button>
+      <button class="button" type="submit">{{$t("login.enter")}}</button>
     </div>
   </form>
 

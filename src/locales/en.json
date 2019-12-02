@@ -1,3 +1,9 @@
 {
-  "rememberme": "Remember me"
+  "login" : {
+    "rememberme": "Remember me",
+    "email": "Email",
+    "password" : "Password",
+    "enter": "Enter",
+    "error": "Email or password mismatch"
+  }
 }
