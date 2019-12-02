@@ -28,7 +28,7 @@ class AppUsersController extends CakeDCAppController
     public function getToken()
     {
         $user = $this->Auth->identify();
-        debug($user);
+        // TODO get the token $user = ['token' => $user['secret']];
         $this->set(compact('user'));
         $this->set('_serialize', 'user');
     }
