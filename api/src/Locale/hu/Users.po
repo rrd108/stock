@@ -1,0 +1,71 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2019-01-02 17:18+0000\n"
+"PO-Revision-Date: 2019-01-03 14:06+0100\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2\n"
+"Last-Translator: \n"
+"Language: hu\n"
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:22
+msgid "Please enter your username and password"
+msgstr "Add meg a felhasználó nevedet és a jelszavadat"
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:23
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:20
+msgid "Email"
+msgstr ""
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:24
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:21
+msgid "Password"
+msgstr "Jelszó"
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:32
+msgid "Remember me"
+msgstr "Emlékezz rám"
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:40
+msgid "Register"
+msgstr "Regisztrálok"
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:46
+msgid "Reset Password"
+msgstr "Jelszó csere"
+
+#: Template/Plugin/CakeDC/Users/Users/login.ctp:51
+msgid "Login"
+msgstr "Belép"
+
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:24
+msgid "Confirm password"
+msgstr "Jelszó megerősítés"
+
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:26
+msgid "First name"
+msgstr "Keresztnév"
+
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:27
+msgid "Last name"
+msgstr "Családi név"
+
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:31
+msgid "Accept TOS conditions?"
+msgstr "Elfogadod a felhasználási feltételeket?"
+
+#: Template/Plugin/CakeDC/Users/Users/register.ctp:38
+#: Template/Plugin/CakeDC/Users/Users/request_reset_password.ctp:8
+msgid "Submit"
+msgstr "Elküld"
+
+#: Template/Plugin/CakeDC/Users/Users/request_reset_password.ctp:5
+msgid "Please enter your email to reset your password"
+msgstr "Kérlek add meg az emailedet a jelszó cseréhez"
