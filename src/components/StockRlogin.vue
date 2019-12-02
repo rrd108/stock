@@ -23,7 +23,7 @@
         <div class="input checkbox">
           <!-- TODO -->
           <label for="remember-me">
-            <input type="checkbox" name="remember_me" value="1" checked="checked" id="remember-me">Emlékezz rám
+            <input type="checkbox" name="remember_me" value="1" checked="checked" id="remember-me">{{$t("rememberme")}}
           </label>
         </div>
     </fieldset>
