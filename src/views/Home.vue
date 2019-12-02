@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <StockRlogin/>
+    <StockRlogin v-if="!isLoggedIn" />
   </div>
 </template>
 
@@ -10,8 +10,15 @@ import StockRlogin from '@/components/StockRlogin.vue'
 
 export default {
   name: 'home',
+
   components: {
     StockRlogin
-  }
+  },
+
+  computed : {
+      isLoggedIn() {
+        return this.$store.state.user.email ? true : false;
+      }
+  },
 }
 </script>
