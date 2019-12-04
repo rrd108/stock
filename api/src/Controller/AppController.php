@@ -86,7 +86,7 @@ class AppController extends Controller
 
         parent::beforeRender($event);
         $this->response = $this->response->cors($this->request)
-            ->allowOrigin(['localhost:8080'])
+            ->allowOrigin(['localhost:8080', 'localhost.stockr'])
             ->allowMethods(['GET', 'POST'])
             ->allowHeaders(['X-CSRF-Token', 'Origin', 'X-Requested-With', 'Content-Type', 'Accept'])
             ->allowCredentials()
