@@ -55,9 +55,10 @@ class AppController extends Controller
 
         $this->loadComponent('CakeDC/Users.UsersAuth');
 
-        // session is not available in models
-        if ($this->getRequest()->getSession()->read('company')) {
-            Configure::write('company_id', $this->getRequest()->getSession()->read('company')->id);
+        $companyId = $this->request->getData('company') ? $this->request->getData('company') : $this->request->query('company');
+        $companyId = $companyId ? $companyId : $this->getRequest()->getSession()->read('company')->id;
+        if ($companyId) {
+            Configure::write('company_id', $companyId);
         }
 
         Configure::write('CakePdf', [
@@ -73,7 +74,8 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event)
     {
-        if (!$this->getRequest()->getSession()->read('company')
+        parent::beforeFilter($event);
+        if (!Configure::read('company_id')
             && $this->Auth->user('id')
             && ($this->name != 'Companies' || $this->request->getParam('action') != 'setDefault')) {
             $this->redirect(['plugin' => false, 'controller' => 'Companies', 'action' => 'setDefault']);

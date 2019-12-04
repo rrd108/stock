@@ -50,7 +50,7 @@ class AppView extends View
         $this->loadHelper('MenuLink.MenuLink');
         $this->loadHelper('CakeDC/Users.User');
 
-        if ($this->getRequest()->getSession()->read('company')) {
+        if (Configure::read('company_id')) {
             Number::defaultCurrency($this->getRequest()->getSession()->read('company')->currency);
             $this->precision = Configure::read('precisions.' . $this->getRequest()->getSession()->read('company')->currency);
         }

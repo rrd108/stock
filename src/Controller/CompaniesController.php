@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * Companies Controller
@@ -36,6 +37,7 @@ class CompaniesController extends AppController
 
         $company = $this->Companies->get($this->request->getData('company'));
         $this->getRequest()->getSession()->write('company', $company);
+        Configure::write('company_id', $company->id);
         $this->redirect('/');
     }
 }
