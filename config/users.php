@@ -1,4 +1,7 @@
 <?php
 return [
-	'Users.table' => 'AppUsers',
+	'Users' => [
+		'table' => 'AppUsers',
+		'controller' => 'AppUsers'
+	]
 ];
