@@ -56,7 +56,9 @@ class AppController extends Controller
         $this->loadComponent('CakeDC/Users.UsersAuth');
 
         $companyId = $this->request->getData('company') ? $this->request->getData('company') : $this->request->query('company');
-        $companyId = $companyId ? $companyId : $this->getRequest()->getSession()->read('company')->id;
+        if(!$companyId && $this->getRequest()->getSession()->read('company')) {
+            $companyId = $companyId ? $companyId : $this->getRequest()->getSession()->read('company')->id;
+        }
         if ($companyId) {
             Configure::write('company_id', $companyId);
         }
