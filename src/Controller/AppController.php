@@ -70,6 +70,13 @@ class AppController extends Controller
                 'top' => 45
             ],
         ]);
+
+        if ($this->request->getHeaderLine('ApiKey')) {
+            $this->Auth->config('storage', 'Memory');
+            $this->Auth->config('unauthorizedRedirect', 'false');
+            $this->Auth->config('checkAuthIn', 'Controller.initialize');
+            $this->Auth->config('loginAction', false);
+        }
     }
 
     public function beforeFilter(Event $event)
