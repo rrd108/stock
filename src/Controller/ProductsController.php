@@ -115,5 +115,13 @@ class ProductsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function stock(){}
+    public function stock(){
+        // TODO remove hard coded currency from here
+        $products = $this->Products->find('purchasePrice', ['currency' => 'HUF'])
+            ->find('stock')
+            ->order('Products.name');
+
+        $this->set(compact('products'));
+        $this->set('_serialize', 'products');
+    }
 }
