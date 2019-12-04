@@ -1,0 +1,9 @@
+{
+  "login" : {
+    "rememberme": "Emlékezz rám",
+    "email": "Email",
+    "password": "Jelszó",
+    "enter": "Belép",
+    "error": "Hibás email vagy jelszó"
+  }
+}
