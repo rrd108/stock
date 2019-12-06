@@ -73,7 +73,7 @@ class AppController extends Controller
             ],
         ]);
 
-        if ($this->request->getHeaderLine('ApiKey')) {
+        if ($this->request->getHeaderLine('ApiKey') || $this->request->getQuery('ApiKey')) {
             $this->Auth->config('storage', 'Memory');
             $this->Auth->config('unauthorizedRedirect', 'false');
             $this->Auth->config('checkAuthIn', 'Controller.initialize');
