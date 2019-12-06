@@ -98,8 +98,8 @@ class AppController extends Controller
         parent::beforeRender($event);
         $this->response = $this->response->cors($this->request)
             ->allowOrigin(['localhost:8080', 'localhost.stockr'])
-            ->allowMethods(['GET', 'POST'])
-            ->allowHeaders(['X-CSRF-Token', 'Origin', 'X-Requested-With', 'Content-Type', 'Accept'])
+            ->allowMethods(['GET', 'POST', 'PATCH', 'OPTIONS', 'DELETE', 'PUT'])
+            ->allowHeaders(['Origin', 'Content-Type', 'Accept', 'X-Requested-With', 'ApiKey', 'Access-Control-Request-*'])
             ->allowCredentials()
             ->exposeHeaders(['Link'])
             ->maxAge(300)
