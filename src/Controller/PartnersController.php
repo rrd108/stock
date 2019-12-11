@@ -19,12 +19,13 @@ class PartnersController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Companies', 'Groups']
-        ];
-        $partners = $this->paginate($this->Partners);
+
+        $partners = $this->Partners->find()
+            ->order('Partners.name');
 
         $this->set(compact('partners'));
+        $this->set('_serialize', 'partners');
+
     }
 
     /**
