@@ -21,12 +21,20 @@ class StatsController extends AppController
                 $this->Invoices->find('withTotal')
                     ->where(['sale' => false])
                 )->sumOf('total'),
-            'stock' => $this->Products->find('stock')->sumOf('stock')
+            'stock' => $this->Products->find('stock')->sumOf('stock'),
         ];
         $invoices = $this->Invoices->find()->count();
         $partners = $this->Partners->find()->count();
         $products = $this->Products->find()->count();
 
-        $this->set(compact('invoices', 'partners', 'products', 'totals'));
+        $stats = [
+            'invoices' => $invoices,
+            'partners' => $partners,
+            'products' => $products,
+            'totals' => $totals
+        ];
+
+        $this->set(compact('invoices', 'partners', 'products', 'totals', 'stats'));
+        $this->set('_serialize', 'stats');
     }
 }

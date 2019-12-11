@@ -29,6 +29,7 @@ class InvoicesController extends AppController
         $invoices = $this->paginate($this->Invoices);
 
         $this->set(compact('invoices'));
+        $this->set('_serialize', 'invoices');
     }
 
     /**

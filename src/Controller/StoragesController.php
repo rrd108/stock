@@ -19,12 +19,11 @@ class StoragesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Companies']
-        ];
-        $storages = $this->paginate($this->Storages);
+        $storages = $this->Storages->find()
+            ->order('Storages.name');
 
         $this->set(compact('storages'));
+        $this->set('_serialize', 'storages');
     }
 
     /**

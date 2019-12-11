@@ -23,8 +23,17 @@ class CompaniesController extends AppController
         $companies = $this->paginate($this->Companies);
 
         $this->set(compact('companies'));
+        $this->set('_serialize', 'companies');
     }
 
+    public function accessible()
+    {
+        $companies = $this->Companies->find()
+            ->where(['Companies.id IN' => $this->Auth->user('additional_data')]);
+
+        $this->set(compact('companies'));
+        $this->set('_serialize', 'companies');
+    }
 
     public function setDefault()
     {
