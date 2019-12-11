@@ -10,7 +10,7 @@ return [
         [
             'role' => '*',
             'controller' => 'Companies',
-            'action' => ['setDefault'],
+            'action' => ['accessible', 'setDefault'],
         ],
         [
             'role' => '*',
