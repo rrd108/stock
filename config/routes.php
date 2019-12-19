@@ -93,6 +93,8 @@ Router::scope('/', function (RouteBuilder $routes) {
 
     $routes->connect('user-get-token', ['plugin' => null, 'controller' => 'AppUsers', 'action' => 'getToken']);
 
+    $routes->resources('Invoices');
+
     $routes->fallbacks(DashedRoute::class);
 });
 

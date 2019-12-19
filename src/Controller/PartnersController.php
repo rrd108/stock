@@ -21,6 +21,7 @@ class PartnersController extends AppController
     {
 
         $partners = $this->Partners->find()
+            ->contain('Groups')
             ->order('Partners.name');
 
         $this->set(compact('partners'));
