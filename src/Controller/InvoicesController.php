@@ -46,6 +46,7 @@ class InvoicesController extends AppController
         ]);
 
         $this->set('invoice', $invoice);
+        $this->set(['_serialize' => ['invoice']]);
     }
 
     /**
