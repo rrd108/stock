@@ -22,11 +22,9 @@ class InvoicesController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Storages', 'Invoicetypes', 'Partners', 'Items'],
-            'order' => ['date' => 'DESC', 'id' => 'DESC']
-        ];
-        $invoices = $this->paginate($this->Invoices);
+        $invoices = $this->Invoices->find()
+            ->contain(['Storages', 'Invoicetypes', 'Partners', 'Items'])
+            ->order(['Invoices.date' => 'DESC', 'Invoices.id' => 'DESC']);
 
         $this->set(compact('invoices'));
         $this->set('_serialize', 'invoices');
