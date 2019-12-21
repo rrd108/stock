@@ -1,6 +1,9 @@
 <?php
 namespace App\Model\Table;
 
+use ArrayObject;
+use Cake\Core\Configure;
+use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -109,6 +112,13 @@ class InvoicesTable extends Table
         $rules->add($rules->existsIn(['partner_id'], 'Partners'));
 
         return $rules;
+    }
+
+    public function beforeFind(Event $event, Query $query, ArrayObject $options, $primary)
+    {
+        $query->innerJoinWith('Storages', function ($q) {
+            return $q->where(['Storages.company_id' => Configure::read('company_id')]);
+        });
     }
 
     public function findWithTotal(Query $query, array $options)
