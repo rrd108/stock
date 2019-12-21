@@ -59,15 +59,12 @@ class ProductsController extends AppController
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
-            if ($this->Products->save($product)) {
-                $this->Flash->success(__('The product has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The product could not be saved. Please, try again.'));
+            $this->Products->save($product);
         }
-        $companies = $this->Products->Companies->find('list', ['limit' => 200]);
-        $this->set(compact('product', 'companies'));
+        $this->set([
+            'product' => $product,
+            '_serialize' => ['product']
+        ]);
     }
 
     /**
