@@ -26,8 +26,10 @@ class InvoicesController extends AppController
             ->contain(['Storages', 'Invoicetypes', 'Partners', 'Items'])
             ->order(['Invoices.date' => 'DESC', 'Invoices.id' => 'DESC']);
 
-        $this->set(compact('invoices'));
-        $this->set('_serialize', 'invoices');
+        $this->set([
+            'invoices' => $invoices,
+            '_serialize' => ['invoices']
+        ]);
     }
 
     /**
