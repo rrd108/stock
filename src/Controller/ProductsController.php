@@ -19,7 +19,7 @@ class ProductsController extends AppController
      */
     public function index()
     {
-        $products = $this->Products->find();
+        $products = $this->Products->find('purchasePrice', ['currency' => 'HUF']);
 
         $this->set([
             'products' => $products,
@@ -118,7 +118,9 @@ class ProductsController extends AppController
             ->find('stock')
             ->order('Products.name');
 
-        $this->set(compact('products'));
-        $this->set('_serialize', 'products');
+        $this->set([
+            'products' => $products,
+            '_serialize' => ['products']
+        ]);
     }
 }
