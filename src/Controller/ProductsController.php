@@ -19,12 +19,12 @@ class ProductsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Companies']
-        ];
-        $products = $this->paginate($this->Products);
+        $products = $this->Products->find();
 
-        $this->set(compact('products'));
+        $this->set([
+            'products' => $products,
+            '_serialize' => ['products']
+        ]);
     }
 
     /**
