@@ -67,14 +67,14 @@ class InvoicesController extends AppController
                 // TODO if they are not equal with defaults
                 if (!$data['sale']) {
                     foreach ($data['items'] as $item) {
-                        foreach ($item['selling_price'] as $sPrice) {
+                        foreach ($item['selling_prices'] as $groupId => $sPrice) {
                             $sellingPrice = $this->Invoices->Items->Products->GroupsProducts->newEntity();
                             $sellingPrice = $this->Invoices->Items->Products->GroupsProducts->patchEntity(
                                 $sellingPrice,
                                 [
                                     'product_id' => $item['product_id'],
-                                    'group_id' => $sPrice['group_id'],
-                                    'price' => $sPrice['price']
+                                    'group_id' => $groupId,
+                                    'price' => $sPrice
                                 ]
                             );
                             $this->Invoices->Items->Products->GroupsProducts->save($sellingPrice);
@@ -85,13 +85,13 @@ class InvoicesController extends AppController
             }
             //$this->Flash->error(__('The invoice could not be saved. Please, try again.'));
         }
-        //$storages = $this->Invoices->Storages->find('list', ['limit' => 200])->order('name');
-        //$invoicetypes = $this->Invoices->Invoicetypes->find('list', ['limit' => 200])->order('name');
-        //$partners = $this->Invoices->Partners->find()->contain('Groups')->order('Partners.name');
-        //$groups = $this->Invoices->Partners->Groups->find()->where(['percentage']);
+        $storages = $this->Invoices->Storages->find('list', ['limit' => 200])->order('name');
+        $invoicetypes = $this->Invoices->Invoicetypes->find('list', ['limit' => 200])->order('name');
+        $partners = $this->Invoices->Partners->find()->contain('Groups')->order('Partners.name');
+        $groups = $this->Invoices->Partners->Groups->find()->where(['percentage']);
         // TODO handling currencies
-        //$products = $this->Invoices->Items->Products->find('purchasePrice', ['currency' => 'HUF'])->order('name');
-        //$this->set(compact('invoice', 'storages', 'invoicetypes', 'partners', 'groups', 'products'));
+        $products = $this->Invoices->Items->Products->find('purchasePrice', ['currency' => 'HUF'])->order('name');
+        $this->set(compact('invoice', 'storages', 'invoicetypes', 'partners', 'groups', 'products'));
         $this->set(compact('invoice'));
         $this->set(['_serialize' => ['invoice']]);
     }
