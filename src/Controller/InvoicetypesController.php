@@ -22,8 +22,10 @@ class InvoicetypesController extends AppController
         $invoicetypes = $this->Invoicetypes->find()
             ->order('Invoicetypes.name');
 
-        $this->set(compact('invoicetypes'));
-        $this->set('_serialize', 'invoicetypes');
+        $this->set([
+            'invoicetypes' => $invoicetypes,
+            '_serialize' => ['invoicetypes']
+        ]);
     }
 
     /**

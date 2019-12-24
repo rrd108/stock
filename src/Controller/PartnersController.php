@@ -24,8 +24,10 @@ class PartnersController extends AppController
             ->contain('Groups')
             ->order('Partners.name');
 
-        $this->set(compact('partners'));
-        $this->set('_serialize', 'partners');
+        $this->set([
+            'partners' => $partners,
+            '_serialize' => ['partners']
+        ]);
 
     }
 

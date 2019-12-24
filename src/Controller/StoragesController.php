@@ -22,8 +22,10 @@ class StoragesController extends AppController
         $storages = $this->Storages->find()
             ->order('Storages.name');
 
-        $this->set(compact('storages'));
-        $this->set('_serialize', 'storages');
+        $this->set([
+            'storages' => $storages,
+            '_serialize' => ['storages']
+        ]);
     }
 
     /**
