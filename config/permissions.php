@@ -20,7 +20,7 @@ return [
         [
             'role' => '*',
             'controller' => 'Invoices',
-            'action' => ['add', 'import', 'view'],
+            'action' => ['add', 'edit', 'import', 'view'],
         ],
         [
             'role' => '*',
