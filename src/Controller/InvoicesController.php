@@ -110,17 +110,13 @@ class InvoicesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $invoice = $this->Invoices->patchEntity($invoice, $this->request->getData());
-            if ($this->Invoices->save($invoice)) {
-                $this->Flash->success(__('The invoice has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
+            $this->Invoices->save($invoice);
         }
         $storages = $this->Invoices->Storages->find('list', ['limit' => 200]);
         $invoicetypes = $this->Invoices->Invoicetypes->find('list', ['limit' => 200]);
         $partners = $this->Invoices->Partners->find('list', ['limit' => 200]);
         $this->set(compact('invoice', 'storages', 'invoicetypes', 'partners'));
+        $this->set(['_serialize' => ['invoice']]);
     }
 
     /**
