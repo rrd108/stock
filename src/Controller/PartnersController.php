@@ -57,16 +57,14 @@ class PartnersController extends AppController
         $partner = $this->Partners->newEntity();
         if ($this->request->is('post')) {
             $partner = $this->Partners->patchEntity($partner, $this->request->getData());
-            if ($this->Partners->save($partner)) {
-                $this->Flash->success(__('The partner has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The partner could not be saved. Please, try again.'));
+            $this->Partners->save($partner);
         }
         $companies = $this->Partners->Companies->find('list', ['limit' => 200]);
         $groups = $this->Partners->Groups->find('list', ['limit' => 200]);
-        $this->set(compact('partner', 'companies', 'groups'));
+        $this->set([
+            'partner' => $partner,
+            '_serialize' => ['partner']
+        ]);
     }
 
     /**

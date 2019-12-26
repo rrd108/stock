@@ -1,6 +1,9 @@
 <?php
 namespace App\Model\Table;
 
+use ArrayObject;
+use Cake\Core\Configure;
+use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -69,5 +72,10 @@ class GroupsTable extends Table
             ->allowEmptyString('percentage');
 
         return $validator;
+    }
+
+    public function beforeFind(Event $event, Query $query, ArrayObject $options, $primary)
+    {
+        $query->where(['Groups.company_id' => Configure::read('company_id')]);
     }
 }
