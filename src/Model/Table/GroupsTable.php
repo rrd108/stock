@@ -76,6 +76,6 @@ class GroupsTable extends Table
 
     public function beforeFind(Event $event, Query $query, ArrayObject $options, $primary)
     {
-        $query->where(['Groups.company_id' => Configure::read('company_id')]);
+        $query->where(['Groups.company_id IN' => [0, Configure::read('company_id')]]);
     }
 }
