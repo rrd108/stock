@@ -110,7 +110,7 @@ class ProductsTable extends Table
             ->select(['stock' => 'SUM(IF(Invoices.sale, -1 * Items.quantity, Items.quantity))'])
             ->enableAutoFields(true)
             ->group('Products.id')
-            ->innerJoinWith('Items.Invoices');
+            ->leftJoinWith('Items.Invoices');
     }
 
     public function findPurchasePrice(Query $query, array $options)
@@ -150,6 +150,28 @@ class ProductsTable extends Table
             ->extract('id')
             ->toArray();
 
+        if (!count($invoiceIds)) {
+            //generate a subquery with an empty result to do not fail on findPurchasePrice
+            return $query->select(
+            [
+                'currency' => 'Invoices.currency',
+                'lastPurchasePrice' => 'Items.price',
+            ]
+            )
+            ->enableAutoFields(true)
+            ->matching(
+                'Items.Invoices',
+                function ($q) use ($options) {
+                    return $q->where(
+                    [
+                        'Invoices.currency' => $options['currency'],
+                        'Invoices.sale' => false,
+                    ]
+                );
+                }
+            );
+        }
+
         $latestItems = $this->getAssociation('Items')->find()
             ->where(['Items.invoice_id IN' => $invoiceIds]);
         $latestItems = $latestItems->select(['maxId' => $latestItems->func()->max('Items.id')])
@@ -160,7 +182,7 @@ class ProductsTable extends Table
                 'currency' => 'Invoices.currency',
                 'lastPurchasePrice' => 'Items.price',
             ]
-        )
+            )
             ->enableAutoFields(true)
             ->matching(
                 'Items.Invoices',

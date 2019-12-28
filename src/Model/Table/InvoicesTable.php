@@ -116,7 +116,7 @@ class InvoicesTable extends Table
 
     public function beforeFind(Event $event, Query $query, ArrayObject $options, $primary)
     {
-        $query->innerJoinWith('Storages', function ($q) {
+        $query->leftJoinWith('Storages', function ($q) {
             return $q->where(['Storages.company_id' => Configure::read('company_id')]);
         });
     }
