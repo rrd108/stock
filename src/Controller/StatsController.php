@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Model\Entity\Invoice;
+use Cake\Core\Configure;
 
 class StatsController extends AppController
 {
@@ -15,15 +16,15 @@ class StatsController extends AppController
         $totals = [
             'sells' => collection(
                 $this->Invoices->find('withTotal')
-                    ->where(['sale' => true])
+                    ->where(['sale' => true, 'Storages.company_id' => Configure::read('company_id')])
                 )->sumOf('total'),
             'purchases' => collection(
                 $this->Invoices->find('withTotal')
-                    ->where(['sale' => false])
+                    ->where(['sale' => false, 'Storages.company_id' => Configure::read('company_id')])
                 )->sumOf('total'),
             'stock' => $this->Products->find('stock')->sumOf('stock'),
         ];
-        $invoices = $this->Invoices->find()->count();
+        $invoices = $this->Invoices->find()->where(['Storages.company_id' => Configure::read('company_id')])->count();
         $partners = $this->Partners->find()->count();
         $products = $this->Products->find()->count();
 
