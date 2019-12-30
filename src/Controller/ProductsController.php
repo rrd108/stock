@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
  * Products Controller
@@ -19,7 +20,7 @@ class ProductsController extends AppController
      */
     public function index()
     {
-        $products = $this->Products->find('purchasePrice', ['currency' => 'HUF']);
+        $products = $this->Products->find('purchasePrice', ['currency' => Configure::read('currency')]);
 
         $this->set([
             'products' => $products,
@@ -42,7 +43,7 @@ class ProductsController extends AppController
                 'Items.Invoices' => ['Partners', 'Storages']]
         ]);
 
-        $product = $this->Products->find('purchasePrice', ['currency' => 'HUF'])
+        $product = $this->Products->find('purchasePrice', ['currency' => Configure::read('currency')])
             ->where(['Products.id' => $id])
             ->contain(['Companies','Items.Invoices' => ['Partners', 'Storages']])
             ->first();
@@ -114,7 +115,7 @@ class ProductsController extends AppController
 
     public function stock(){
         // TODO remove hard coded currency from here
-        $products = $this->Products->find('purchasePrice', ['currency' => 'HUF'])
+        $products = $this->Products->find('purchasePrice', ['currency' => Configure::read('currency')])
             ->find('stock')
             ->order('Products.name');
 

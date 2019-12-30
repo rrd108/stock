@@ -57,11 +57,14 @@ class AppController extends Controller
 
         $companyId = $this->request->getData('company') ? $this->request->getData('company') : $this->request->query('company');
         if(!$companyId && $this->getRequest()->getSession()->read('company')) {
-            $companyId = $companyId ? $companyId : $this->getRequest()->getSession()->read('company')->id;
+            $companyId = $this->getRequest()->getSession()->read('company')->id;
         }
         if ($companyId) {
             Configure::write('company_id', $companyId);
         }
+
+        $currency = $this->request->getData('currency') ? $this->request->getData('currency') : $this->request->query('currency');
+        Configure::write('currency', $currency ? $currency : 'HUF');
 
         Configure::write('CakePdf', [
             'engine' => 'CakePdf.Mpdf',
