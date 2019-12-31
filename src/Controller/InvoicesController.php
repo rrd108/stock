@@ -204,11 +204,14 @@ class InvoicesController extends AppController
         $downloadLink = $billingo->get('invoices/' . $billingoInvoice['id'] . '/code');
         $downloadLink = 'https://www.billingo.hu/access/c:' . $downloadLink['code'];
 
-        $invoice->number = $billingoInvoice['id']
+        $invoice->number = $invoice->number
             . '|' . $billingoInvoice['attributes']['invoice_no']
             . '|' . $downloadLink;
         $this->Invoices->save($invoice);
-        $this->redirect(['action' => 'view', $id]);
+        $this->set([
+            'invoice' => $invoice,
+            '_serialize' => ['invoice']
+        ]);
     }
 
     public function import()
