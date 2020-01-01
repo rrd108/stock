@@ -106,8 +106,10 @@ class ProductsTable extends Table
 
     public function findStock(Query $query, array $options)
     {
+        $stockDate = isset($options['stockDate']) ? $options['stockDate'] : date('Y-m-d');
         return $query
             ->select(['stock' => 'SUM(IF(Invoices.sale, -1 * Items.quantity, Items.quantity))'])
+            ->where(['Invoices.date <=' => $stockDate])
             ->enableAutoFields(true)
             ->group('Products.id')
             ->leftJoinWith('Items.Invoices');

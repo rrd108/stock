@@ -114,9 +114,8 @@ class ProductsController extends AppController
     }
 
     public function stock(){
-        // TODO remove hard coded currency from here
         $products = $this->Products->find('purchasePrice', ['currency' => Configure::read('currency')])
-            ->find('stock')
+            ->find('stock', ['stockDate' => $this->request->query('stockDate')])
             ->order('Products.name');
 
         $this->set([
