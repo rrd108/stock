@@ -271,6 +271,8 @@ class InvoicesController extends AppController
                         $data['items'][$i]['product'] = [
                             'company_id' => $storage->company_id,
                             'name' => $value[$this->request->getData('name')],
+                            'size' => isset($value[$this->request->getData('size')]) ? $value[$this->request->getData('size')]: '',
+                            'code' => isset($value[$this->request->getData('code')]) ? $value[$this->request->getData('code')] : '',
                             'vat' => $value[$this->request->getData('vat')]
                         ];
                         $i++;
