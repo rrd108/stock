@@ -109,7 +109,9 @@ class ProductsTable extends Table
         $stockDate = isset($options['stockDate']) ? $options['stockDate'] : date('Y-m-d');
         return $query
             ->select(['stock' => 'SUM(IF(Invoices.sale, -1 * Items.quantity, Items.quantity))'])
-            ->where(['Invoices.date <=' => $stockDate])
+            ->where([
+                'OR' => ['Invoices.date <=' => $stockDate, 'Invoices.date IS NULL']
+                ])
             ->enableAutoFields(true)
             ->group('Products.id')
             ->leftJoinWith('Items.Invoices');
