@@ -25,12 +25,12 @@ return [
         [
             'role' => '*',
             'controller' => 'Partners',
-            'action' => ['add'],
+            'action' => ['add', 'index'],
         ],
         [
             'role' => '*',
             'controller' => 'Products',
-            'action' => ['stock'],
+            'action' => ['stock', 'index'],
         ],
     ]
 ];
