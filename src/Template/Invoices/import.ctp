@@ -63,6 +63,14 @@
                 ]
             ) ?>
             <?= $this->Form->control(
+                'code',
+                [
+                    'label' => __('Code'),
+                    'options' => $columns,
+                    'empty' => __('--- choose ---')
+                ]
+            ) ?>
+            <?= $this->Form->control(
                 'size',
                 [
                     'label' => __('Size'),
