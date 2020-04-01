@@ -47,7 +47,10 @@ class ProductsController extends AppController
             ->where(['Products.id' => $id])
             ->contain(['Companies','Items.Invoices' => ['Partners', 'Storages']])
             ->first();
-        $this->set('product', $product);
+        $this->set([
+            'product' => $product,
+            '_serialize' => ['product']
+        ]);
     }
 
     /**
