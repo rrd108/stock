@@ -119,8 +119,9 @@ class ProductsController extends AppController
     public function stock(){
         // TODO sells should only show for this year ?
         $products = $this->Products->find('purchasePrice', ['currency' => Configure::read('currency')])
-            ->find('stock', ['stockDate' => $this->request->query('stockDate')])
-            ->find('sells', ['stockDate' => $this->request->query('stockDate')])
+            ->find('stock', ['stockDate' => $this->request->getQuery('stockDate')])
+            ->find('sells', ['stockDate' => $this->request->getQuery('stockDate')])
+            ->find('lastSellPrice')
             ->order('Products.name');
 
         $this->set([

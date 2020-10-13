@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Table;
 
+use App\Model\Entity\GroupsProduct;
 use ArrayObject;
 use Cake\Core\Configure;
 use Cake\Event\Event;
@@ -229,5 +230,13 @@ class ProductsTable extends Table
                 );
                 }
             )->group('Items.product_id');
+    }
+
+    public function findLastSellPrice(Query $query, array $options)
+    {
+        return $query->matching('Groups', function ($q) {
+            return $q;      // TODO match only the last entry
+        });
+
     }
 }
