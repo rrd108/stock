@@ -63,6 +63,9 @@ class Application extends BaseApplication
 
         $this->addPlugin('MenuLink');
         $this->addPlugin('Datalist');
+
+        Configure::load('cors', 'default', false);
+        $this->addPlugin('Cors');
     }
 
     public function pluginBootstrap()
