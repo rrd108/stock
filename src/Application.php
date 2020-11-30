@@ -78,7 +78,7 @@ class Application extends BaseApplication
                 'fields' => ['username' => 'email']
             ],
             'CakeDC/Auth.ApiKey' => [
-                //'type' => 'header',
+                // TODO 'type' => 'header',
                 'require_ssl' => false,
                 'name' => 'ApiKey'
             ],
