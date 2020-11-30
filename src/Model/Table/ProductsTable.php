@@ -141,6 +141,7 @@ class ProductsTable extends Table
             ->select([
                 'Products.id',
                 'Products.name',
+                'Products.code',
                 'Products.size',
                 'Products.vat',
                 'avaragePurchasePrice' => 'Avarage.avaragePurchasePrice',
