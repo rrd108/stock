@@ -117,7 +117,7 @@ class ProductsController extends AppController
         $products = $this->Products->find('purchasePrice', ['currency' => Configure::read('currency')])
             ->find('stock', ['stockDate' => $this->request->getQuery('stockDate')])
             ->find('sells', ['stockDate' => $this->request->getQuery('stockDate')])
-            ->find('lastSellPrice')
+            //->find('lastSellPrice');  TODO
             ->order('Products.name');
 
         $this->set([
