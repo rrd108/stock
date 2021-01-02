@@ -30,7 +30,7 @@ return [
         [
             'role' => '*',
             'controller' => 'Products',
-            'action' => ['stock', 'add', 'edit'],
+            'action' => ['stock', 'add', 'edit', 'view'],
         ],
     ]
 ];
