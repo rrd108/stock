@@ -16,15 +16,24 @@ class StatsController extends AppController
         $totals = [
             'sells' => collection(
                 $this->Invoices->find('withTotal')
-                    ->where(['sale' => true, 'Storages.company_id' => Configure::read('company_id')])
+                    ->where([
+                        'sale' => true, 'Storages.company_id' => Configure::read('company_id'),
+                        'YEAR(Invoices.date)' => date('Y')
+                        ])
                 )->sumOf('total'),
             'purchases' => collection(
                 $this->Invoices->find('withTotal')
-                    ->where(['sale' => false, 'Storages.company_id' => Configure::read('company_id')])
+                    ->where([
+                        'sale' => false, 'Storages.company_id' => Configure::read('company_id'),
+                        'YEAR(Invoices.date)' => date('Y')
+                        ])
                 )->sumOf('total'),
             'stock' => $this->Products->find('stock')->sumOf('stock'),
         ];
-        $invoices = $this->Invoices->find()->where(['Storages.company_id' => Configure::read('company_id')])->count();
+        $invoices = $this->Invoices->find()->where([
+            'Storages.company_id' => Configure::read('company_id'),
+            'YEAR(Invoices.date)' => date('Y')
+            ])->count();
         $partners = $this->Partners->find()->count();
         $products = $this->Products->find()->count();
 
