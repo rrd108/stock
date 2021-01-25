@@ -115,6 +115,7 @@ class ProductsController extends AppController
     public function stock(){
         // TODO sells should only show for this year ?
         $products = $this->Products->find('purchasePrice', ['currency' => Configure::read('currency')])
+            // TODO stock calculation will become slower and slower each year
             ->find('stock', ['stockDate' => $this->request->getQuery('stockDate')])
             ->find('sells', ['stockDate' => $this->request->getQuery('stockDate')])
             //->find('lastSellPrice');  TODO
@@ -123,6 +124,17 @@ class ProductsController extends AppController
         $this->set([
             'products' => $products,
             '_serialize' => ['products']
+        ]);
+    }
+
+    public function stockRotation() {
+        $rotation = $this->Products
+            ->find('stock', ['stockDate' => $this->request->getQuery('stockDate')])
+            ->find('purchases', ['stockDate' => date('Y-m-d', strtotime('-1 year'))])
+            ->find('sells', ['stockDate' => date('Y-m-d', strtotime('-1 year'))]);
+        $this->set([
+            'rotation' => $rotation,
+            '_serialize' => ['rotation']
         ]);
     }
 }

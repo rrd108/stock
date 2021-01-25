@@ -131,6 +131,19 @@ class ProductsTable extends Table
             ->leftJoinWith('Items.Invoices');
     }
 
+    public function findPurchases(Query $query, array $options)
+    {
+        $stockDate = isset($options['stockDate']) ? $options['stockDate'] : date('Y-m-d');
+        return $query
+            ->select(['purchases' => 'SUM(IF(Invoices.sale, 0, Items.quantity))'])
+            ->where([
+                'OR' => ['Invoices.date <=' => $stockDate, 'Invoices.date IS NULL']
+                ])
+            ->enableAutoFields(true)
+            ->group('Products.id')
+            ->leftJoinWith('Items.Invoices');
+    }
+
     public function findPurchasePrice(Query $query, array $options)
     {
         // cleanCopy() should be called for the first subquery to avoid query overwrite
