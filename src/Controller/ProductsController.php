@@ -128,10 +128,29 @@ class ProductsController extends AppController
     }
 
     public function stockRotation() {
-        $rotation = $this->Products
-            ->find('stock', ['stockDate' => $this->request->getQuery('stockDate')])
-            ->find('purchases', ['stockDate' => date('Y-m-d', strtotime('-1 year'))])
-            ->find('sells', ['stockDate' => date('Y-m-d', strtotime('-1 year'))]);
+        $lastYear = $this->Products
+            ->find('lastPurchases', ['startDate' => date('Y-m-d', strtotime('-1 year'))])
+            ->find('lastSells', ['startDate' => date('Y-m-d', strtotime('-1 year'))]);
+        $stock = $this->Products
+            ->find('stock', ['stockDate' => $this->request->getQuery('stockDate')]);
+
+        $rotation = $this->Products->find()
+            ->select([
+                'id' => 'stock.Products__id',
+                'name' => 'stock.Products__name',
+                'code' => 'stock.Products__code',
+                'size' => 'stock.Products__size',
+                'stock' => 'stock.stock',
+                'purchases' => 'lastYear.purchases',
+                'sells' => 'lastYear.sells'
+            ])
+            ->enableAutoFields(false)
+            ->from(['stock' => $stock])
+            ->leftJoin(
+                ['lastYear' => $lastYear],
+                ['lastYear.Products__id = stock.Products__id']
+            );
+
         $this->set([
             'rotation' => $rotation,
             '_serialize' => ['rotation']

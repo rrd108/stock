@@ -100,15 +100,16 @@ class ProductsTable extends Table
         return $rules;
     }
 
-    public function beforeFind(Event $event, Query $query, ArrayObject $options, $primary)
+    public function findForCompany(Query $query, array $options)
     {
-        $query->where(['Products.company_id' => Configure::read('company_id')]);
+        return $query->where(['Products.company_id' => Configure::read('company_id')]);
     }
 
     public function findStock(Query $query, array $options)
     {
         $stockDate = isset($options['stockDate']) ? $options['stockDate'] : date('Y-m-d');
         return $query
+            ->find('forCompany')
             ->select(['stock' => 'SUM(IF(Invoices.sale, -1 * Items.quantity, Items.quantity))'])
             ->where([
                 'OR' => ['Invoices.date <=' => $stockDate, 'Invoices.date IS NULL']
@@ -122,6 +123,7 @@ class ProductsTable extends Table
     {
         $stockDate = isset($options['stockDate']) ? $options['stockDate'] : date('Y-m-d');
         return $query
+            ->find('forCompany')
             ->select(['sells' => 'SUM(IF(Invoices.sale, -1 * Items.quantity, 0))'])
             ->where([
                 'OR' => ['Invoices.date <=' => $stockDate, 'Invoices.date IS NULL']
@@ -131,13 +133,26 @@ class ProductsTable extends Table
             ->leftJoinWith('Items.Invoices');
     }
 
-    public function findPurchases(Query $query, array $options)
+    public function findLastSells(Query $query, array $options)
     {
-        $stockDate = isset($options['stockDate']) ? $options['stockDate'] : date('Y-m-d');
         return $query
+            ->find('forCompany')
+            ->select(['sells' => 'SUM(IF(Invoices.sale, -1 * Items.quantity, 0))'])
+            ->where([
+                'OR' => ['Invoices.date >=' => $options['startDate'], 'Invoices.date IS NULL']
+                ])
+            ->enableAutoFields(true)
+            ->group('Products.id')
+            ->leftJoinWith('Items.Invoices');
+    }
+
+    public function findLastPurchases(Query $query, array $options)
+    {
+        return $query
+            ->find('forCompany')
             ->select(['purchases' => 'SUM(IF(Invoices.sale, 0, Items.quantity))'])
             ->where([
-                'OR' => ['Invoices.date <=' => $stockDate, 'Invoices.date IS NULL']
+                'OR' => ['Invoices.date >=' => $options['startDate'], 'Invoices.date IS NULL']
                 ])
             ->enableAutoFields(true)
             ->group('Products.id')
@@ -150,7 +165,7 @@ class ProductsTable extends Table
         $avaragePurchasePrice = $query->cleanCopy()->find('avaragePurchasePrice', $options);
         $lastPurchasePrice = $query->find('lastPurchasePrice', $options);
 
-        return $this->find()
+        return $this->find('forCompany')
             ->select([
                 'Products.id',
                 'Products.name',
