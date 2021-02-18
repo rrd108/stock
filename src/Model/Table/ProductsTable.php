@@ -137,7 +137,10 @@ class ProductsTable extends Table
     {
         return $query
             ->find('forCompany')
-            ->select(['sells' => 'SUM(IF(Invoices.sale, -1 * Items.quantity, 0))'])
+            ->select([
+                'sells' => 'SUM(IF(Invoices.sale, -1 * Items.quantity, 0))',
+                'sellsIncome' => 'SUM(IF(Invoices.sale, Items.price * Items.quantity, 0))'
+                ])
             ->where([
                 'OR' => ['Invoices.date >=' => $options['startDate'], 'Invoices.date IS NULL']
                 ])

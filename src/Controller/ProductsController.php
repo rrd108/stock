@@ -142,7 +142,8 @@ class ProductsController extends AppController
                 'size' => 'stock.Products__size',
                 'stock' => 'stock.stock',
                 'purchases' => 'lastYear.purchases',
-                'sells' => 'lastYear.sells'
+                'sells' => 'lastYear.sells',
+                'sellsIncome' => 'lastYear.sellsIncome'
             ])
             ->enableAutoFields(false)
             ->from(['stock' => $stock])
