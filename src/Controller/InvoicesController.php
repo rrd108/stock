@@ -22,8 +22,11 @@ class InvoicesController extends AppController
      */
     public function index()
     {
+        $year = $this->request->query['year'] ?? date('Y');
+        $month = $this->request->query['month'] ?? date('m');
         $invoices = $this->Invoices->find()
             ->contain(['Storages', 'Invoicetypes', 'Partners', 'Items'])
+            ->where(['YEAR(Invoices.date)' => $year, 'MONTH(Invoices.date)' => $month])
             ->order(['Invoices.date' => 'DESC', 'Invoices.id' => 'DESC']);
 
         $this->set([
