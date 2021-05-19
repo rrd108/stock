@@ -135,13 +135,10 @@ class InvoicesController extends AppController
     {
         $this->request->allowMethod(['post', 'delete']);
         $invoice = $this->Invoices->get($id);
-        if ($this->Invoices->delete($invoice)) {
-            $this->Flash->success(__('The invoice has been deleted.'));
-        } else {
-            $this->Flash->error(__('The invoice could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect(['action' => 'index']);
+        $invoice->status = 'd';
+        $this->Invoices->save($invoice);
+        $this->set(compact('invoice'));
+        $this->set(['_serialize' => ['invoice']]);
     }
 
     public function billingo(int $id)
