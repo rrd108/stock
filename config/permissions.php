@@ -25,7 +25,7 @@ return [
         [
             'role' => '*',
             'controller' => 'Partners',
-            'action' => ['add'],
+            'action' => ['add', 'edit'],
         ],
         [
             'role' => '*',
