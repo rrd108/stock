@@ -107,6 +107,7 @@ class ProductsTable extends Table
 
     public function findStock(Query $query, array $options)
     {
+        // TODO ignore invoices with the status 'd'
         $stockDate = isset($options['stockDate']) ? $options['stockDate'] : date('Y-m-d');
         return $query
             ->find('forCompany')
