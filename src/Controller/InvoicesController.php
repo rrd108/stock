@@ -175,7 +175,7 @@ class InvoicesController extends AppController
         $items = [];
         foreach ($invoice->items as $item) {
             $items[] = [
-                'description' => $item->product->name,
+                'description' => $item->product->name . ' ' . $item->product->code . ' ' . $item->product->size,
                 'vat_id' => array_search($item->product->vat, $vatCodes),
                 'qty' => $item->quantity,
                 'net_unit_price' => $item->price,
