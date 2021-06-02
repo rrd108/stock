@@ -184,10 +184,10 @@ class InvoicesController extends AppController
         }
 
         $data = [
-            'fulfillment_date' => $invoice->date->format('Y-m-d'),
-            'due_date' => $invoice->date->format('Y-m-d'),  // TODO
-            'payment_method' => 2,                  // TODO 1: cash, 2: wiretransfer, 4: cod, 5: bank card, 7: paypal
-            'comment' => '',
+            'fulfillment_date' => $this->request->getQuery('fulfillment_date'),
+            'due_date' => $this->request->getQuery('due_date'),
+            'payment_method' => $this->request->getQuery('payment_method'), // 1: cash, 2: wiretransfer, 4: cod, 5: bank card, 7: paypal
+            'comment' => $this->request->getQuery('invoice_comment'),
             'template_lang_code' => 'hu',
             'electronic_invoice' => 0,
             'currency' => 'HUF',                    // TODO
